@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 8 · Risk, fraud &amp; credit - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 8 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 8 of 10</div>
+    <h1>Risk, fraud &amp; credit: <span class="accent">let AI flag and explain, let a human decide</span></h1>
+    <p class="sub">This is the session where the rails matter most. AI is genuinely good at surfacing the odd transaction, the suspicious pattern, the applicant that does not fit - and at explaining why. But money decisions about real people are regulated, and credit scoring is a high-risk use of AI by law. So tonight you build a workflow where AI flags and explains, and a licensed human investigates, decides, and owns the outcome. Never the other way round.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Builder track</span>
+      <span class="chip audience">Practitioners: risk · audit · credit</span>
+      <span class="chip audience">ChatGPT or Claude</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-21 · Where AI helps, the red line</span>
+      <span class="a3" style="flex:5">21-42 · Build-along: triage &amp; reason codes</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>AI flags and explains - a human decides and owns it</h2>
+    </div>
+    <p class="lede">Read this frame before you touch a prompt, because it governs everything tonight. AI can rank a batch of transactions by how unusual they look, tell you which ones smell like duplicate payments or structuring, and score a credit applicant against a pattern. What it cannot do - not here, not ever in this workflow - is decide. A flag is a candidate for a human to investigate. A credit score is an input, not a verdict. Someone licensed and accountable makes the call and owns it. And credit scoring, specifically, is classified high-risk by the EU AI Act, which means explainability, human oversight, no prohibited bias, and adverse-action reasons are not optional extras - they are the law.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      An explainable anomaly-triage workflow: hand AI a batch of synthetic transactions, get back a ranked list of flags with a plain-language reason for each, and adjudicate them yourself - accept or reject, human in the loop. Plus a reusable pattern for drafting clear, defensible reason codes for a flagged item, the kind an adverse-action notice or an audit trail needs.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: WHERE AI HELPS + RED LINE ============ -->
+  <section class="section" id="where-helps">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the value, and the boundary you cannot cross</span>
+      <h2>Where AI helps - and the bright red line <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Three places AI genuinely earns its keep in risk work: spotting anomalies, surfacing fraud and money-laundering patterns, and assisting credit scoring. All three are real. But the third one sits behind a legal line, and the whole session bends around it: AI surfaces and explains, a human investigates and decides.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An anomaly-triage flow: a batch of transactions is scored by AI, which surfaces and explains flagged candidates, a human investigates each one, and only the human decides the outcome at a human gate">
+        <defs>
+          <marker id="b8xAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 Z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <style>
+          .b8xT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b8xI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b8xX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b8xXi { font: 400 12.5px Inter, sans-serif; fill: #3D2C05; }
+          .b8xN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+          .b8xH { font: 700 15px Inter, sans-serif; fill: #10201E; }
+        </style>
+        <rect x="24" y="86" width="176" height="96" rx="12" fill="#0A4A44"/>
+        <text class="b8xT" x="44" y="124">Batch of records</text>
+        <text class="b8xX" x="44" y="146">transactions,</text>
+        <text class="b8xX" x="44" y="164">expenses, journals</text>
+        <rect x="232" y="86" width="176" height="96" rx="12" fill="#0F766E"/>
+        <text class="b8xT" x="252" y="124">AI surfaces</text>
+        <text class="b8xX" x="252" y="146">ranks the odd ones,</text>
+        <text class="b8xX" x="252" y="164">flags candidates</text>
+        <rect x="440" y="86" width="176" height="96" rx="12" fill="#2DA89E"/>
+        <text class="b8xT" x="460" y="124">AI explains</text>
+        <text class="b8xX" x="460" y="146">a plain-language</text>
+        <text class="b8xX" x="460" y="164">reason per flag</text>
+        <rect x="648" y="86" width="208" height="96" rx="12" fill="#7FCFC6"/>
+        <text class="b8xH" x="668" y="124">Human investigates</text>
+        <text class="b8xXi" x="668" y="146">reviews the flag</text>
+        <text class="b8xXi" x="668" y="164">and its evidence</text>
+        <line x1="200" y1="134" x2="228" y2="134" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b8xAh)"/>
+        <line x1="408" y1="134" x2="436" y2="134" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b8xAh)"/>
+        <line x1="616" y1="134" x2="644" y2="134" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b8xAh)"/>
+        <rect x="648" y="220" width="208" height="72" rx="12" fill="#FBF3DA" stroke="#CA8A04" stroke-width="2"/>
+        <text class="b8xI" x="668" y="250">Human gate: decides</text>
+        <text class="b8xXi" x="668" y="272">accept, reject, escalate</text>
+        <line x1="752" y1="182" x2="752" y2="218" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b8xAh)"/>
+        <rect x="24" y="322" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b8xN" x="48" y="334">AI never closes a case or denies a person. It flags and explains - a licensed human owns the decision.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - an anomaly-triage flow that ends at a human gate: AI surfaces and explains, a person investigates and decides</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The three real uses - and why credit is different<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Anomaly detection.</strong> Point AI at a batch of transactions, expense claims, or journal entries and ask it to rank the ones that do not fit the pattern - round-number amounts, over-threshold approvals, duplicates, off-hours postings. It is a fast first pass over a pile no one could eyeball.</li>
+          <li><strong>Fraud &amp; AML pattern surfacing.</strong> Structuring just under a reporting limit, a new payee that suddenly receives a large sum, split invoices to dodge an approval tier - AI can describe these patterns in plain language so a human knows where to look first.</li>
+          <li><strong>Credit-scoring assist.</strong> AI can summarise an applicant's file and highlight what drives risk. But here the line is hard and legal: it assists, it never decides.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The bright red line, stated plainly</strong>
+          The EU AI Act classifies credit scoring and creditworthiness assessment as a <strong>high-risk</strong> use of AI. That triggers hard duties: the system must be explainable, kept under meaningful human oversight, free of prohibited bias, and it must produce adverse-action reasons when someone is turned down. On top of that, US model-risk guidance (SR 11-7) treats any model driving these decisions as something that must be validated, monitored, and governed. AI as an assistant is fine. AI as the decision-maker on someone's money is not - and in credit, it is regulated.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: ANOMALY TRIAGE WORKFLOW ============ -->
+  <section class="section" id="triage">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · surface, explain, adjudicate</span>
+      <h2>Anomaly triage workflow <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">Triage is the everyday shape of this work. AI does not close cases; it builds you a shortlist. It surfaces the candidates that look off, explains <em>why</em> each one was flagged, and then a human adjudicates - accept as clean, reject as a real issue, or escalate. The explanation is what makes the shortlist usable: a flag you cannot explain is a flag you cannot act on.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The patterns AI flags - and what a human then checks<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Pattern AI flags</th><th>Plain reason</th><th>What the human checks</th></tr></thead>
+          <tbody>
+            <tr><td>Duplicate</td><td>Same vendor, amount, and near-date as another entry</td><td>Is it a true double payment, or a legitimate instalment?</td></tr>
+            <tr><td>Round-number</td><td>Suspiciously clean amount (5,000.00) unlike normal spend</td><td>Real invoice, or an estimate or manual override?</td></tr>
+            <tr><td>Over-threshold</td><td>Just above or just below an approval or reporting limit</td><td>Split to dodge sign-off, or a genuine one-off?</td></tr>
+            <tr><td>Off-pattern</td><td>New payee, unusual timing, amount far from this account's norm</td><td>Known counterparty? Does the business context explain it?</td></tr>
+          </tbody>
+        </table>
+        <p>The workflow is always the same three moves: AI <strong>surfaces</strong> the candidates and ranks them, AI <strong>explains</strong> each flag in one plain sentence, and a human <strong>adjudicates</strong>. Nothing is closed or acted on until a person has looked.</p>
+        <div class="callout tip">
+          <strong>Make the explanation a required output</strong>
+          Always instruct: "For every flag, give one plain-language reason a reviewer can check, and point to the exact fields that triggered it. Do not accuse - describe what is unusual." That keeps the flag investigable and stops the tool from sounding like a verdict.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Rail one, for risk data<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Risk and fraud data is some of the most sensitive you will ever handle, so the privacy rail is at its strictest here.</p>
+        <ul>
+          <li><strong>Synthetic or public data only</strong> in consumer tools like a personal ChatGPT or Claude account. Every dataset in tonight's demos is fabricated for practice.</li>
+          <li><strong>Never</strong> paste real customer transactions, account numbers, PII, or material non-public information into a consumer tool. Real casework belongs in an enterprise or local system that does not train on your data and sits inside your controls.</li>
+          <li><strong>Credit files</strong> carry legal protections on top of confidentiality. Treat an applicant's data as regulated from the first keystroke.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: GOVERNANCE ============ -->
+  <section class="section" id="governance">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the governance that makes it defensible</span>
+      <h2>Credit &amp; fraud governance <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">If AI touches a decision about someone's money, five things have to be true, or the decision is not defensible. This is not paperwork - it is what lets you explain the outcome to the person, the auditor, and the regulator. AI ranks and flags; a person owns the decision and can account for it.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Five duties on any credit or fraud decision<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Explainability.</strong> You must be able to say why something was flagged or scored, in words the affected person could understand. A black box that no one can explain cannot drive a high-risk decision.</li>
+          <li><strong>Fairness.</strong> The system must not use prohibited attributes or their proxies, and it must not produce biased outcomes. Test for it; do not assume it.</li>
+          <li><strong>Adverse-action reason codes.</strong> When someone is declined, they are owed clear, specific reasons - not "the model said no". These reasons are a legal requirement, and drafting them well is a real skill (Demo 2).</li>
+          <li><strong>Model risk (SR 11-7).</strong> Any model driving these decisions is validated before use, monitored in production, and governed with an owner. A prompt-based workflow is still a process that needs controls.</li>
+          <li><strong>Audit trail.</strong> Record what was flagged, the reason, who reviewed it, and what they decided. The trail is how you prove a human was in the loop when it is questioned later.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>"The model said no" is not a reason.</strong> A lender let an automated score drive declines without human-readable reasons attached. When a declined applicant challenged it, the team could not explain the specific factors behind the outcome - and under adverse-action rules, that is the finding, not a detail. The fix was not a better model; it was reintroducing the human gate and generating clear reason codes for every decline. AI ranked the risk. A person had to own - and explain - the no.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Flag anomalies in a synthetic batch - then adjudicate <span class="tag demo">★ 13 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">Hand AI a small, fabricated set of transactions, ask it to flag the anomalies <em>and explain each one</em>, then do the part that is actually yours: adjudicate. Accept the clean ones, reject the real issues, escalate the unclear. Human in the loop, from the first flag.</p>
+
+    <div class="steps">
+      <div class="step"><p>Use the synthetic data below - copy it straight into the prompt. It is fabricated for practice, so a consumer ChatGPT or Claude account is fine (rail one: synthetic only).</p></div>
+      <div class="step"><p>Ask AI to rank the rows by how unusual they are and, for each flag, give one plain reason and the exact fields that triggered it. Tell it to describe, not accuse.</p></div>
+      <div class="step"><p>Read every flag critically. For each one, decide: accept (looks clean), reject (real issue to pursue), or escalate (need more context). Write your call next to each - that is the adjudication.</p></div>
+      <div class="step"><p>Look for a flag you disagree with. Where did the tool over-call or miss? That instinct is exactly why a human sits at the gate - note it.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The explainable anomaly-triage prompt</span>Here is a small batch of SYNTHETIC vendor payments (fabricated for training).
+Rank them from most to least unusual. For every row you flag, give:
+- one plain-language reason a reviewer can check
+- the exact fields that triggered it
+Describe what is unusual - do NOT accuse or conclude fraud. You are surfacing
+candidates for a human to investigate, not deciding anything.
+
+id,date,vendor,amount,approver,payee_status
+T01,2026-03-02,Cloudline Ltd,1284.40,J.Ortega,existing
+T02,2026-03-02,Cloudline Ltd,1284.40,J.Ortega,existing
+T03,2026-03-04,Meridian Supplies,4999.00,J.Ortega,existing
+T04,2026-03-05,Northgate Print,86.20,S.Ree,existing
+T05,2026-03-05,BrightPay Consulting,5000.00,J.Ortega,new
+T06,2026-03-11,BrightPay Consulting,4980.00,J.Ortega,new
+T07,2026-03-14,Northgate Print,91.75,S.Ree,existing
+T08,2026-03-22,Harbor Freight Co,15200.00,J.Ortega,existing
+
+After the ranked list, tell me which fields I should verify first. Do not
+close or clear anything - I will adjudicate each flag myself.</div>
+
+    <div class="callout tip">
+      <strong>Why the adjudication is the lesson</strong>
+      The tool can rank and explain in seconds - that is the easy part. The skill is your judgement on each flag: is this a real issue, a false alarm, or something to escalate? AI narrows the pile; you own every accept and reject. That is the human gate, in practice.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Draft plain-language reason codes for a flagged item <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">When a flag becomes a decision that affects someone - a declined application, a held payment - the reason has to be written in words the person and an auditor can understand. Practise drafting explainable reason codes for one synthetic case. This is the adverse-action and audit-trail skill from Part 3, made concrete.</p>
+
+    <div class="steps">
+      <div class="step"><p>Take one flagged synthetic case - use the profile below, or a fabricated one of your own. Never a real applicant.</p></div>
+      <div class="step"><p>Ask AI to draft the reasons in plain language: specific factors, no jargon, no protected attributes, phrased so the affected person could understand them.</p></div>
+      <div class="step"><p>Review each reason for fairness and clarity. Strip anything vague ("did not meet criteria") and anything that looks like a proxy for a prohibited attribute. Keep it factual and specific.</p></div>
+      <div class="step"><p>Remember the frame: these are a draft for a licensed human to review, approve, and own. The final decision and its reasons belong to a person, not the model.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The reason-code drafting prompt</span>Here is a SYNTHETIC flagged case (fabricated for training). Draft clear,
+plain-language reason codes suitable for an adverse-action notice and an
+audit trail.
+
+Case: application flagged as elevated risk.
+Contributing factors observed in the file:
+- debt-to-income ratio above internal threshold
+- two missed payments in the last 12 months
+- short credit history relative to the amount requested
+
+Write 3-4 specific reasons a person could understand and check. Rules:
+- no jargon, no "the model said so"
+- do NOT use or hint at any protected attribute (age, gender, race, etc.)
+- describe factual, decision-relevant factors only
+
+Flag it clearly as a DRAFT for a licensed reviewer to approve. State that the
+final decision and its wording belong to a human, not to you.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>From "declined" to a reason you can defend.</strong> A credit team used a drafting step exactly like this to turn terse internal flags into clear, specific adverse-action reasons - each tied to a factual factor, none touching a protected attribute. The AI produced a fast first draft; a human reviewed every one, corrected two, and signed off. When a decline was later challenged, the reasons held up because a person had written and owned them. The model assisted the wording; the accountability stayed human.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Finish both demos if you did not complete them live. The adjudication step in Demo 1 is the one that matters - do not let the tool "decide".</li>
+      <li>Build your own synthetic batch (10-15 fabricated rows) for a data type you actually handle - expense claims, journal entries, or payments. Plant two or three anomalies on purpose, then see if AI catches them and explains them well.</li>
+      <li>Draft reason codes for a second synthetic flagged case. Test them against one question: could the affected person understand and check every reason? Rewrite any that fail.</li>
+      <li>Write, in one paragraph, where the human gate sits in a risk workflow you own today. Name who investigates, who decides, and where the audit trail lives. If any of those is "the tool", that is the gap to fix.</li>
+      <li>Optional: read the EU AI Act's high-risk provisions on creditworthiness, and skim SR 11-7's model-risk lifecycle, so you can name the duties, not just sense them.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches AI-assisted risk, fraud, and credit work as a hands-on practitioner, anchored to the credit-scoring and default-risk material in the mapped programs and to the regulatory canon. Building or fine-tuning risk models from scratch stays with the dedicated ML courses - said honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Coursera - Generative AI in Finance (credit scoring / loan risk)</span><span class="note">Parts 1-3 · credit-scoring assist framed as high-risk, human-owned</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Columbia Business School x WSP - loan default &amp; risk module</span><span class="note">Parts 1-2 · anomaly and default-risk surfacing patterns</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">EU AI Act - high-risk classification of credit scoring</span><span class="note">Parts 1, 3 · explainability, oversight, bias, adverse-action reasons</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">US Fed SR 11-7 - model risk management</span><span class="note">Part 3 · validation, monitoring, governance, audit trail</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Building / fine-tuning risk models from scratch</span><span class="note">Not here · stays with learn-intro-ml + learn-classification-regression</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · How does the EU AI Act treat credit scoring and creditworthiness assessment?</p>
+      <button class="qopt" type="button">A · As a low-risk, unregulated use of AI</button>
+      <button class="qopt" type="button">B · As prohibited - you may not use AI for it at all</button>
+      <button class="qopt" type="button">C · As a high-risk use, triggering explainability, human oversight, no prohibited bias, and adverse-action reasons</button>
+      <p class="qwhy">The EU AI Act classifies credit scoring as high-risk. AI may assist, but the system must be explainable, kept under meaningful human oversight, free of prohibited bias, and able to produce adverse-action reasons.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Why is a human gate mandatory on a credit or fraud decision, not just nice to have?</p>
+      <button class="qopt" type="button">A · Because the decision affects a real person's money, must be explainable and accountable, and a licensed human has to own it - AI only flags and explains</button>
+      <button class="qopt" type="button">B · Because AI is too slow to keep up with the volume</button>
+      <button class="qopt" type="button">C · Because the tool cannot format its output nicely enough</button>
+      <p class="qwhy">These are regulated decisions about people's money. AI surfaces and explains; a licensed, accountable human must investigate, decide, and own the outcome - including being able to explain it to the person and an auditor.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · What are explainability and adverse-action reason codes for?</p>
+      <button class="qopt" type="button">A · To make the model run faster</button>
+      <button class="qopt" type="button">B · To say, in words the affected person and an auditor can understand, why something was flagged or declined - so the decision is checkable and defensible</button>
+      <button class="qopt" type="button">C · To let the AI make the final decision without a human</button>
+      <p class="qwhy">Explainability and reason codes give the specific, plain-language factors behind a flag or a decline. They make the outcome checkable and defensible - and they are a legal requirement, never a substitute for the human gate.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 8 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The frame</b><span>AI flags and explains; a licensed human investigates, decides, and owns the outcome. Never the reverse.</span></div>
+      <div class="cheat-item"><b>Where AI helps</b><span>anomaly detection, fraud + AML pattern surfacing, credit-scoring assist - all as an assistant, not a decider.</span></div>
+      <div class="cheat-item"><b>The bright red line</b><span>EU AI Act = credit scoring is HIGH-RISK: explainability, human oversight, no prohibited bias, adverse-action reasons.</span></div>
+      <div class="cheat-item"><b>Triage workflow</b><span>AI surfaces + ranks → AI explains each flag → a human adjudicates: accept, reject, or escalate.</span></div>
+      <div class="cheat-item"><b>Patterns to flag</b><span>duplicate, round-number, over/under-threshold, off-pattern (new payee, odd timing, far-from-norm amount).</span></div>
+      <div class="cheat-item"><b>Five governance duties</b><span>explainability, fairness, adverse-action reason codes, model risk (SR 11-7), audit trail.</span></div>
+      <div class="cheat-item"><b>Rail one, hard</b><span>synthetic or public data only in consumer tools; never real transactions, PII, or MNPI. No advice.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b9 - markets &amp; investing with AI: research assistant and screening as a survey, never investment advice.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 8 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b7-documents-data-rag.html">← Previous: Documents &amp; data - RAG</a> &nbsp;·&nbsp; <a href="b9-markets-investing.html">Next: Markets &amp; investing with AI →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

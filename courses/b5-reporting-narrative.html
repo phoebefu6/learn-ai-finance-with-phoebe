@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 5 · Reporting &amp; narrative generation - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 5 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 5 of 10</div>
+    <h1>Reporting &amp; narrative generation: <span class="accent">turn reconciled numbers into words the board trusts</span></h1>
+    <p class="sub">Numbers-to-narrative is the single biggest time-saver AI offers finance - variance commentary, MD&amp;A, exec summaries, board bullets. Tonight you build a board-grade variance commentary and an exec summary draft, both grounded in numbers you supply, both edited by you. The number was always the hard part; the write-up should stop eating your evenings.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Builder track</span>
+      <span class="chip audience">Practitioners: FP&amp;A · controllership · IR</span>
+      <span class="chip audience">ChatGPT or Claude</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Why this</span>
+      <span class="a2" style="flex:4">3-20 · Numbers to board-grade narrative</span>
+      <span class="a3" style="flex:5">20-40 · Build-along: commentary + exec summary</span>
+      <span class="a4" style="flex:1">40-45 · Wrap</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where the evenings actually go</h2>
+    </div>
+    <p class="lede">You closed the month. The numbers are reconciled and right. Then you spend three hours writing them up - the variance commentary, the exec summary, the board bullets - saying almost the same things you said last month with different figures. That write-up is exactly what a grounded LLM is good at: it is a language task over data you supply, not silent arithmetic. This is the highest-leverage, lowest-risk AI use in the whole function, as long as you keep the two rails from b1 and edit the draft yourself.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A board-ready variance commentary drafted from a variance bridge you supply and then edited by you, a clean exec summary drafted from a small management pack with the filler stripped and the "so what" fixed, and a reusable house-style prompt that keeps every future write-up structured, grounded, and in your firm's voice.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE KILLER USE-CASE ============ -->
+  <section class="section" id="numbers-to-narrative">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers CFI AI-enhanced analysis + Coursera GenAI Essentials</span>
+      <h2>The killer use-case: numbers to narrative <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Survey after survey, the reporting write-up is the task finance teams most want to hand to AI - and the one where the payoff is fastest. The numbers are already done and checked; the model is only turning them into sentences. That framing matters: you are not asking it to know anything, you are asking it to phrase what you already know. The human owns the final word, always.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Numbers-to-narrative pipeline: reconciled numbers flow into a grounded prompt, produce an AI draft, get a human edit, and become the final board-ready output - the human owns the final step">
+        <defs>
+          <marker id="b5pAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#BCD3CF"/></marker>
+        </defs>
+        <style>
+          .b5pT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b5pI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b5pX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b5pXi { font: 400 12.5px Inter, sans-serif; fill: #3D2C05; }
+          .b5pN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <rect x="24" y="50" width="150" height="92" rx="12" fill="#0A4A44"/>
+        <text class="b5pT" x="44" y="88">Reconciled</text>
+        <text class="b5pT" x="44" y="106">numbers</text>
+        <text class="b5pX" x="44" y="128">already checked</text>
+        <line x1="176" y1="96" x2="204" y2="96" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b5pAh)"/>
+        <rect x="206" y="50" width="150" height="92" rx="12" fill="#0F766E"/>
+        <text class="b5pT" x="226" y="88">Grounded</text>
+        <text class="b5pT" x="226" y="106">prompt</text>
+        <text class="b5pX" x="226" y="128">numbers + structure</text>
+        <line x1="358" y1="96" x2="386" y2="96" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b5pAh)"/>
+        <rect x="388" y="50" width="150" height="92" rx="12" fill="#2DA89E"/>
+        <text class="b5pT" x="408" y="88">AI draft</text>
+        <text class="b5pX" x="408" y="110">fast first pass,</text>
+        <text class="b5pX" x="408" y="128">70% there</text>
+        <line x1="540" y1="96" x2="568" y2="96" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b5pAh)"/>
+        <rect x="570" y="50" width="150" height="92" rx="12" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="b5pI" x="590" y="82">Human edit</text>
+        <text class="b5pXi" x="590" y="104">cut filler, fix</text>
+        <text class="b5pXi" x="590" y="122">the "so what"</text>
+        <line x1="722" y1="96" x2="750" y2="96" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b5pAh)"/>
+        <rect x="752" y="50" width="104" height="92" rx="12" fill="#0F766E"/>
+        <text class="b5pT" x="772" y="88">Final</text>
+        <text class="b5pX" x="772" y="110">board-ready</text>
+        <rect x="570" y="176" width="286" height="30" rx="8" fill="#E6F4F2"/>
+        <text class="b5pN" x="586" y="196" fill="#0A4A44">Human owns the final step</text>
+        <rect x="24" y="250" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b5pN" x="48" y="262">The model phrases what you already know - it does not know your results.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - reconciled numbers to a grounded prompt to a draft to your edit to final; the human owns the last step</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Four write-ups, one move<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>MD&amp;A, variance commentary, the exec summary, and board-deck bullets look like four jobs. They are one move done at four lengths: take reconciled numbers, explain <em>what changed, why, and what it means</em>, in the right voice for the reader. AI drafts all four fast once you feed it the numbers and the structure. Your job shifts from typing to judging.</p>
+        <ul>
+          <li><strong>Variance commentary</strong> - the line-by-line story of actual vs plan/prior. Most repetitive, biggest time win.</li>
+          <li><strong>MD&amp;A</strong> - the management discussion around the statements. Longer, more standardised, style-sensitive.</li>
+          <li><strong>Exec summary</strong> - the one-screen "so what" for leadership. Ruthless compression is the whole skill.</li>
+          <li><strong>Board bullets</strong> - the deck version. Decision-relevant, no throat-clearing.</li>
+        </ul>
+        <div class="callout win">
+          <strong>Why the payoff is real and safe</strong>
+          The numbers are already reconciled, so there is no arithmetic to trust the model with. It is a pure language task over supplied data - the exact quadrant b1 said to trust. Low risk, high hours saved.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: TECHNIQUES ============ -->
+  <section class="section" id="board-grade">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers CFI analysis + Coursera GenAI Essentials prompting</span>
+      <h2>Techniques that make it board-grade <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">A generic prompt gives you generic prose - the vague, padded paragraphs everyone recognises as "written by AI". Board-grade output comes from five deliberate moves. Each one trades a bit of prompt effort for a draft that needs far less editing and sounds like your firm, not a chatbot.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The five moves, and what each buys you<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Technique</th><th>Effect on the draft</th></tr></thead>
+          <tbody>
+            <tr><td>Feed reconciled numbers <em>and</em> last period's commentary as a style example (few-shot)</td><td>Draft copies your house voice, structure, and length - not the model's default register</td></tr>
+            <tr><td>Enforce structure: <strong>what changed / why / outlook</strong></td><td>Every point becomes decision-relevant; no wandering paragraphs</td></tr>
+            <tr><td>Apply a materiality filter (e.g. "only variances over $50k or 5%")</td><td>The board sees the three things that matter, not fifteen that do not</td></tr>
+            <tr><td>Fix terminology up front (gross margin, run-rate, opex - your definitions)</td><td>Consistent language across sections and across months</td></tr>
+            <tr><td>Strip AI "tells" - demand specificity from the actual numbers</td><td>Kills generic filler ("various factors", "market dynamics"); forces "$240k, driven by the freight rate step-up"</td></tr>
+          </tbody>
+        </table>
+        <p>The last one matters most for credibility. AI filler is vague <em>because</em> the model is guessing at meaning. When you require every claim to cite a supplied figure, there is nothing left to pad with - the draft either ties to your numbers or it does not, and you can see which instantly.</p>
+        <div class="callout tip">
+          <strong>Few-shot is your secret weapon</strong>
+          Paste last quarter's commentary and say "match this voice, structure, and length, using this quarter's numbers". One good example teaches the model your style faster than a paragraph of instructions ever will.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Spotting AI "tells" before the board does<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Reviewers smell AI prose instantly, and it costs you trust. Learn the tells so you can strip them on the edit pass:</p>
+        <ul>
+          <li><strong>Vague causation.</strong> "Driven by a combination of factors" - if it does not name the figure and the driver, cut or replace it.</li>
+          <li><strong>Hedging everywhere.</strong> "May have contributed to a potential shift" - the board wants a view, not a weather forecast.</li>
+          <li><strong>Symmetry padding.</strong> A tidy sentence for every line even when only three lines matter. Delete the filler; keep the material.</li>
+          <li><strong>No "so what".</strong> It describes the movement but never says what leadership should do or watch. That missing sentence is your job.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The commentary that got sent back.</strong> An FP&amp;A analyst shipped an AI first draft nearly unedited. The CFO returned it with one comment: "This says a lot and tells me nothing." The numbers were right; the narrative had no view. The fix took ten minutes of human editing - and became the standing rule: AI writes the draft, a human puts the spine in.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: AUDIENCE ============ -->
+  <section class="section" id="write-for-board">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the reader lens that changes everything</span>
+      <h2>Audience: write for the board <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">The same numbers get written up completely differently for the board than for your finance peers. The board is time-poor, non-specialist on the detail, and there to decide. Write for them and the whole draft tightens.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Four rules for board-facing narrative<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Concise.</strong> One screen, not three. If it does not change a decision, it does not make the cut.</li>
+          <li><strong>Decision-relevant.</strong> Lead with what the board should notice, approve, or worry about - not a tour of every line.</li>
+          <li><strong>Always the "so what".</strong> Every material point ends with the implication: what it means for the forecast, the covenant, the plan.</li>
+          <li><strong>No jargon.</strong> "Run-rate opex" and "phasing" are fine internally; spell out the meaning for a mixed board. Clarity reads as competence.</li>
+        </ul>
+        <p>Bake these into the prompt as instructions, and again into your edit pass. The model can follow "write for a time-poor board, lead with the so-what, no unexplained jargon" - but only you can judge whether it actually landed.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Draft board-grade variance commentary from a bridge <span class="tag demo">★ 12 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">You are given a synthetic variance bridge - actual vs budget by line. You ground the model with it, enforce the what-changed / why / outlook structure and a materiality filter, get a draft, then edit it into something you would actually send. Numbers are made up and safe for any consumer tool (rail one).</p>
+
+    <div class="steps">
+      <div class="step"><p>Open any chat AI. Copy the variance bridge below into your prompt exactly - these are the only numbers the model may use.</p></div>
+      <div class="step"><p>Ask for commentary structured as <strong>what changed / why / outlook</strong>, with a materiality filter so only the big movers get a paragraph.</p></div>
+      <div class="step"><p>Read the draft against the numbers. Does every "why" cite a figure? Is anything invented or hedged? Flag the tells.</p></div>
+      <div class="step"><p><strong>Edit it.</strong> Cut the filler, add the real driver where the model guessed, and write the one "so what" sentence the board needs on each material line.</p></div>
+      <div class="step"><p>Re-run with last month's commentary pasted as a style example and compare - the few-shot version should need far less editing.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The variance-commentary prompt (grounded)</span>You are drafting the monthly variance commentary for a finance team.
+Use ONLY the numbers in this bridge (Actual vs Budget, $000s):
+
+Line            Actual   Budget   Variance
+Revenue          4,180    4,000     +180
+COGS             2,560    2,380     -180
+Gross profit     1,620    1,620        0
+Sales &amp; mktg       620      560      -60
+G&amp;A               410      420      +10
+EBITDA             590      640      -50
+
+Write commentary structured as: WHAT CHANGED / WHY / OUTLOOK.
+Rules: only comment on variances of $40k or more (materiality filter);
+every "why" must cite a figure from the bridge; if a driver is not in the
+data, say "driver not in data - to confirm" rather than inventing one;
+plain language for a time-poor board; end each material line with the "so what".</div>
+
+    <div class="callout tip">
+      <strong>The "driver not in data" trick</strong>
+      A bridge shows the size of a variance, not its cause. Forcing the model to say "driver not in data - to confirm" turns invisible guesses into a checklist of things you go and confirm. That is grounding doing its job.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Exec summary from a management pack - then edit the filler out <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">Now the compression skill. You get a small synthetic management pack, ask for a one-screen exec summary, then do the human edit pass that removes filler and fixes the "so what" - the 30% that turns a draft into something a CEO reads and acts on.</p>
+
+    <div class="steps">
+      <div class="step"><p>Paste the mini management pack below. Ask for an exec summary of no more than six bullets, each decision-relevant, no jargon.</p></div>
+      <div class="step"><p>Read the draft as the CEO would. Which bullets describe rather than decide? Which hedge? Which bury the "so what"?</p></div>
+      <div class="step"><p><strong>Edit pass:</strong> delete any bullet that does not change a decision, rewrite vague causation with the actual figure, and add the implication to each survivor.</p></div>
+      <div class="step"><p>Sanity check the tone: would you say this out loud to the board in the meeting? If not, plainer words.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The exec-summary prompt (grounded)</span>Write a board exec summary from ONLY this management pack (synthetic, $000s):
+
+Revenue 4,180 (budget 4,000, prior month 3,950); EBITDA 590 (budget 640).
+Cash 2,300, down 180 on the month (one-off tax payment 220).
+DSO 52 days, up from 46 - two large customers now paying at 75 days.
+Order book 6,100, up 12% on prior month.
+Headcount 84, plan 90 - two open sales roles unfilled for 3 months.
+
+Rules: max 6 bullets, each decision-relevant, no unexplained jargon,
+every bullet cites a figure and ends with the "so what" for the board.
+Do not invent any number or driver not shown above.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The two open roles that were the real story.</strong> A raw AI summary listed all five metrics evenly. The human edit cut three, and led with the buried one: two sales roles unfilled for three months while the order book grew 12% - a revenue risk the board needed to fund now. Same numbers, completely different summary. The judgement about <em>what matters</em> is the human's, every time.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Take last month's real variance commentary (use a synthetic or already-published version if the real one is not cleared for a consumer tool - rail one) and rebuild it with the grounded prompt. Compare the AI draft to what you actually shipped.</li>
+      <li>Save a reusable "house-style" prompt: your structure, your materiality threshold, your terminology, and one pasted example of your best past commentary.</li>
+      <li>Run the exec-summary prompt on a real pack (synthetic numbers if needed) and time your edit pass. Note which tells you keep having to strip - those go into your house prompt as rules.</li>
+      <li>Share one AI-drafted, human-edited write-up with a colleague and ask: "can you tell which parts I edited?" If yes, your edit pass is working.</li>
+      <li>Optional: draft the board-bullet version of the same numbers and see how much further the compression can go.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches from public finance-AI curricula. Certificates, graded assessments, and paid tooling stay with the official programs - noted honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">CFI - AI-enhanced financial analysis</span><span class="note">Parts 1-2 · turning analysis into board-grade narrative</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Coursera - Generative AI Essentials for Finance &amp; Accounting</span><span class="note">Parts 2-3 · prompting for reporting, few-shot style transfer</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">MD&amp;A / IR reporting conventions</span><span class="note">Part 3 · audience framing; deep disclosure rules stay with the standards</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Why feed the model the reconciled numbers <em>and</em> last period's commentary?</p>
+      <button class="qopt" type="button">A · So it can double-check your arithmetic</button>
+      <button class="qopt" type="button">B · So it can look up the industry benchmark</button>
+      <button class="qopt" type="button">C · Grounding stops fabrication, and the past commentary is a few-shot example that copies your house voice and structure</button>
+      <p class="qwhy">The numbers ground the draft so it ties to reality; the example commentary teaches your voice, length, and structure far faster than instructions. Together they cut editing dramatically.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · What is the point of a materiality filter in the prompt (e.g. "only variances over $50k or 5%")?</p>
+      <button class="qopt" type="button">A · The board sees the few movements that matter, not a paragraph on every line</button>
+      <button class="qopt" type="button">B · It makes the model run faster</button>
+      <button class="qopt" type="button">C · It lets the model skip the numbers it finds hard</button>
+      <p class="qwhy">Board narrative should be decision-relevant. A materiality filter forces the draft to focus on the handful of movements that change a decision and drop the symmetry padding.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · The AI produced a clean, well-formatted variance commentary. Who owns the final word before it goes to the board?</p>
+      <button class="qopt" type="button">A · The model, since it wrote it</button>
+      <button class="qopt" type="button">B · A qualified human, who edits, adds the "so what", and signs off</button>
+      <button class="qopt" type="button">C · Whoever pastes it into the deck</button>
+      <p class="qwhy">Rail two. AI drafts; a human reviews, puts the view in, and owns every word that reaches the board. "The AI wrote it" is no defence to a director or an auditor.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The killer use-case</b><span>numbers to narrative - variance commentary, MD&amp;A, exec summary, board bullets. Highest leverage, lowest risk.</span></div>
+      <div class="cheat-item"><b>Why it is safe</b><span>numbers are already reconciled; it is a pure language task over supplied data. No silent arithmetic to trust.</span></div>
+      <div class="cheat-item"><b>Ground + few-shot</b><span>feed the numbers AND last period's commentary as a style example. Copies your voice, cuts your editing.</span></div>
+      <div class="cheat-item"><b>Enforce structure</b><span>what changed / why / outlook. Every point becomes decision-relevant, no wandering.</span></div>
+      <div class="cheat-item"><b>Materiality filter</b><span>"only variances over $X or Y%". The board sees the three that matter, not fifteen that do not.</span></div>
+      <div class="cheat-item"><b>Strip the tells</b><span>vague causation, hedging, symmetry padding, no "so what". Demand a figure behind every claim.</span></div>
+      <div class="cheat-item"><b>Write for the board</b><span>concise, decision-relevant, always the "so what", no jargon. Would you say it out loud in the meeting?</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b6 - Excel / Sheets + AI: generate and verify formulas, clean data, keep the math in the sheet.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 5 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b4-fpa-forecasting.html">← Previous: FP&amp;A forecasting</a> &nbsp;·&nbsp; <a href="b6-excel-sheets-ai.html">Next: Excel / Sheets + AI →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

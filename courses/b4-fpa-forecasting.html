@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 4 · FP&A forecasting - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 4 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 4 of 10</div>
+    <h1>FP&amp;A: forecasting &amp; scenarios: <span class="accent">let AI shape the story, keep the math in the sheet</span></h1>
+    <p class="sub">Forecasting is where finance people most want AI to "just predict the number" - and where that instinct gets them in the most trouble. Tonight you learn the honest division of labour: the statistical math stays in your spreadsheet with real methods, and AI does the parts it is genuinely good at - surfacing drivers, articulating assumptions, stress-testing scenarios, and writing the narrative. You will build a driver-based assumption set and three scenarios you can defend line by line.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Builder track</span>
+      <span class="chip audience">Practitioners: FP&amp;A · analysts</span>
+      <span class="chip audience">ChatGPT/Claude + a spreadsheet</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · The forecasting trap</span>
+      <span class="a2" style="flex:4">3-23 · Role, drivers, scenarios</span>
+      <span class="a3" style="flex:5">23-43 · Build-along: assumptions + narrative</span>
+      <span class="a4" style="flex:1">43-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>AI does not forecast - you do, out loud</h2>
+    </div>
+    <p class="lede">By now you can brief an AI like a spec (b2) and run a month-end close copilot (b3). Forecasting feels like the natural next ask: "here is our history, predict next quarter." Resist it. A chat AI typing a revenue number is not forecasting - it is guessing plausibly, and it cannot show you the method. Tonight we split the work honestly: the numbers get computed with real methods in a spreadsheet you control, and AI does the thinking-and-writing around them - finding the drivers, drafting the assumptions, stress-testing the scenarios, and turning the results into a narrative your CFO can read.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A driver-based assumption set for one line of your P&amp;L, three scenarios (base, bull, bear) with every assumption documented for audit, a small sensitivity table built in your sheet, and an AI-drafted scenario narrative that reads like you wrote it - grounded in numbers you computed and verified yourself.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: AI'S REAL ROLE ============ -->
+  <section class="section" id="role">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers CFI scenario analysis + IE AI-Powered Finance</span>
+      <h2>AI's real role in forecasting <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">The single most important idea tonight: AI is not a black-box predictor. The temptation is to paste a history and ask for "the forecast". What comes back looks confident and is untraceable - you cannot check the method, so you cannot sign it. Instead, keep the statistical math in the spreadsheet and point AI at the four things it is genuinely good at.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A driver-based forecast pipeline: drivers to assumptions to model in the sheet to scenarios to narrative, with AI-assist points marked at the drivers, assumptions, scenarios and narrative stages and the model stage owned by the spreadsheet">
+        <style>
+          .b4pT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b4pI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b4pX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b4pXi { font: 400 12.5px Inter, sans-serif; fill: #10201E; }
+          .b4pN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+          .b4pK { font: 700 13px Inter, sans-serif; fill: #0F766E; }
+        </style>
+        <defs>
+          <marker id="b4pAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0 L9 4.5 L0 9 z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <rect x="20" y="70" width="150" height="70" rx="9" fill="#0A4A44"/>
+        <text class="b4pT" x="36" y="100">DRIVERS</text>
+        <text class="b4pX" x="36" y="120">what moves the</text>
+        <text class="b4pX" x="36" y="135">number</text>
+        <rect x="196" y="70" width="150" height="70" rx="9" fill="#0F766E"/>
+        <text class="b4pT" x="212" y="100">ASSUMPTIONS</text>
+        <text class="b4pX" x="212" y="120">rate, growth,</text>
+        <text class="b4pX" x="212" y="135">churn, mix</text>
+        <rect x="372" y="70" width="150" height="70" rx="9" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="b4pI" x="388" y="97">MODEL</text>
+        <text class="b4pXi" x="388" y="117">in the sheet -</text>
+        <text class="b4pXi" x="388" y="132">real methods</text>
+        <rect x="548" y="70" width="150" height="70" rx="9" fill="#2DA89E"/>
+        <text class="b4pT" x="564" y="100">SCENARIOS</text>
+        <text class="b4pX" x="564" y="120">base · bull ·</text>
+        <text class="b4pX" x="564" y="135">bear</text>
+        <rect x="724" y="70" width="136" height="70" rx="9" fill="#7FCFC6"/>
+        <text class="b4pI" x="740" y="100">NARRATIVE</text>
+        <text class="b4pXi" x="740" y="120">the story a CFO</text>
+        <text class="b4pXi" x="740" y="135">can read</text>
+        <path d="M170 105 L192 105" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b4pAh)"/>
+        <path d="M346 105 L368 105" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b4pAh)"/>
+        <path d="M522 105 L544 105" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b4pAh)"/>
+        <path d="M698 105 L720 105" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b4pAh)"/>
+        <text class="b4pK" x="36" y="200">AI assists</text>
+        <text class="b4pK" x="212" y="200">AI assists</text>
+        <text class="b4pI" x="388" y="200" style="font:700 13px Inter,sans-serif;fill:#CA8A04">You own</text>
+        <text class="b4pK" x="564" y="200">AI assists</text>
+        <text class="b4pK" x="740" y="200">AI assists</text>
+        <path d="M95 148 L95 186" stroke="#BCD3CF" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <path d="M271 148 L271 186" stroke="#BCD3CF" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <path d="M447 148 L447 186" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <path d="M623 148 L623 186" stroke="#BCD3CF" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <path d="M792 148 L792 186" stroke="#BCD3CF" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <rect x="20" y="240" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b4pN" x="44" y="252">The math lives in the sheet with real methods - AI shapes the drivers, scenarios and story around it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - a driver-based forecast pipeline with AI-assist points marked</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why free-text "forecasts" are extrapolation, not forecasting<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>When you paste a history into a chat window and ask for next quarter, the model is pattern-matching text - it eyeballs the trend and continues it. That is extrapolation dressed as analysis. It has no seasonality handling, no confidence interval, no method you can name to your audit committee. Worse, it will sound certain.</p>
+        <ul>
+          <li><strong>Do the numbers with real methods.</strong> Trend, moving average, regression, driver math - in the spreadsheet, where formulas are visible and checkable.</li>
+          <li><strong>Use AI for structure and story.</strong> Which drivers matter, how to phrase an assumption, what a bear case should stress, how to narrate the result.</li>
+          <li><strong>The line to remember.</strong> If AI hands you a number you cannot trace to a formula, it is a guess. Guesses do not go in a board pack.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The honest division of labour</strong>
+          AI is a brilliant analyst-assistant and a poor calculator-of-record. Let it help you decide what to model and how to tell the story - never let it be the thing that produced the number. That single boundary keeps forecasting defensible.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What "good at" actually means here<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>AI earns its place at four points in the pipeline - and only those four. Everywhere else, your sheet and your judgement lead.</p>
+        <ul>
+          <li><strong>Identify drivers</strong> - read a history plus business context and name the handful of things that actually move the line.</li>
+          <li><strong>Articulate assumptions</strong> - turn a fuzzy "growth slows a bit" into a labelled, numeric, auditable statement.</li>
+          <li><strong>Generate and stress scenarios</strong> - build base/bull/bear and then argue against each one to find where it breaks.</li>
+          <li><strong>Write the narrative</strong> - convert your computed results into prose a CFO reads in thirty seconds.</li>
+        </ul>
+        <p>Notice what is missing: computing the forecast. That stays with you. GROUND it, make it SHOW WORK, VERIFY the math - the same method from b1, now applied to the future instead of the past.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: DRIVER-BASED FORECASTING ============ -->
+  <section class="section" id="drivers">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers CFI scenario analysis + IE FP&amp;A</span>
+      <h2>Driver-based forecasting with AI <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Driver-based forecasting means you build the number up from the things that cause it - units times price, headcount times cost, traffic times conversion - not by drawing a line through last year and extending it. AI is a strong partner for finding drivers and drafting assumptions; the sheet still owns every calculation.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Who does what - the split, task by task<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Task</th><th>AI assists with...</th><th>Human + sheet own...</th></tr></thead>
+          <tbody>
+            <tr><td>Surface drivers</td><td>Reads history + business context, proposes the drivers that move the line</td><td>Confirm they are real, drop spurious ones, decide the driver tree</td></tr>
+            <tr><td>Draft assumptions</td><td>Turns vague expectations into labelled, numeric, testable statements</td><td>Set the actual values from evidence; own every number</td></tr>
+            <tr><td>Run sensitivity / what-if</td><td>Suggests which assumptions to flex and by how much</td><td>Compute the table with formulas; read which driver dominates</td></tr>
+            <tr><td>Rolling re-forecast</td><td>Flags what changed vs last cycle, drafts the "why" note</td><td>Re-run the model on new actuals; verify the deltas</td></tr>
+            <tr><td>Narrative</td><td>Writes the story from your verified results</td><td>Check it matches the numbers; sign it</td></tr>
+          </tbody>
+        </table>
+        <p>Rolling re-forecast is where the AI-assist compounds: every month the model is the same, only the actuals change, and AI drafts the "here is what moved and why" note in seconds so you spend your time judging, not typing.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>From history to a driver tree<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A driver tree makes your forecast arguable. Instead of "revenue grows 8%", you say "revenue = active accounts x average revenue per account", and now each half has its own drivers and its own assumptions - each one visible, each one challengeable.</p>
+        <p>The move that unlocks it: ask AI to <em>decompose</em>, not to predict.</p>
+        <div class="prompt-box good"><span class="label">★ Ask for the driver tree, not the number</span>You are an FP&amp;A analyst. Here is 8 quarters of history for our
+subscription revenue line (SGD thousands), plus context: mid-market SaaS,
+one product, sales-led.
+
+[paste the short history]
+
+Do NOT forecast a number. Instead, break this revenue line into its
+underlying drivers as a driver tree (e.g. accounts x ARPA), and for each
+driver list what I would need to assume to project it. Flag which driver
+history suggests matters most.</div>
+        <p>You now have a structure to fill with real assumptions and compute in the sheet - exactly the shape we build in Demo 1.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: SCENARIO ANALYSIS ============ -->
+  <section class="section" id="scenarios">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers CFI scenario analysis</span>
+      <h2>Scenario analysis <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">One forecast is a guess about the future; three scenarios is a conversation about it. Base, bull, and bear turn "the number" into a range with reasons, and that is what boards actually want. AI helps you articulate each case and then stress it - but every assumption goes on the record.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Base, bull, bear - and stress every one<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Base.</strong> Your best single view - the assumptions you would defend as most likely. Everything else flexes from here.</li>
+          <li><strong>Bull.</strong> What has to go right, stated as specific assumption changes, not vibes: "conversion +2pts, churn -1pt".</li>
+          <li><strong>Bear.</strong> What could go wrong, equally specific. The bear case is a risk tool, not pessimism theatre.</li>
+          <li><strong>Stress it.</strong> Have AI argue against each scenario - which assumption is doing all the work, what single break flips the story. This is where AI is genuinely useful and where humans get lazy.</li>
+          <li><strong>Document everything.</strong> Every assumption, its value, and its source, in a table. If it is not written down, it did not happen - and it will not survive audit.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The bull case that hid one heroic assumption.</strong> A team presented a confident bull forecast to the board; the whole upside rested on a single line - "win rate jumps from 22% to 40%" - buried in the model. Asking AI to "tell me which one assumption this scenario depends on most" surfaced it in seconds. They kept the scenario but re-labelled it "aggressive - contingent on win-rate step change", and the board conversation got honest. Stress-testing is cheap insurance.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Drivers in, structured assumption set + 3 scenarios out <span class="tag demo">★ 12 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">We give AI the drivers plus a short supplied history and ask for a structured assumption set and three scenarios - as structure, not as final numbers. Then you plug the numbers into your sheet, compute the forecast, and verify. AI shaped the frame; you own the math.</p>
+
+    <div class="steps">
+      <div class="step"><p>Open ChatGPT or Claude, plus a blank spreadsheet. The history below is synthetic - safe for any tool (rail one: public or synthetic data only).</p></div>
+      <div class="step"><p><strong>Run the prompt</strong> below. You get a driver-based assumption set (each assumption labelled with a value and a rationale) and base / bull / bear variants - as a structured table, not a hand-wavy paragraph.</p></div>
+      <div class="step"><p><strong>Move it into the sheet.</strong> Put drivers and assumptions in cells, then write the formulas yourself: revenue = accounts x ARPA, and so on. The AI's suggested values are inputs you accept or overwrite - the formulas are yours.</p></div>
+      <div class="step"><p><strong>Compute and verify.</strong> Check each output ties to a formula you can read. If a number cannot be traced, delete it. This is the SHOW WORK -&gt; VERIFY half of the method.</p></div>
+      <div class="step"><p><strong>Stress once.</strong> Ask AI which single assumption each scenario depends on most, and sanity-check that against your sheet. Adjust labels if a scenario is riskier than it looked.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ Demo 1 prompt - drivers + history to assumption set + 3 scenarios</span>You are an FP&amp;A analyst building a driver-based revenue forecast for
+next fiscal year. All figures SGD thousands. Mid-market SaaS, one product.
+
+Drivers I want to use: active accounts, average revenue per account (ARPA),
+gross new accounts per quarter, quarterly churn rate.
+
+History (use ONLY these numbers):
+Quarter   Accounts   ARPA   Revenue
+Q1         1,000      4.0    4,000
+Q2         1,060      4.1    4,346
+Q3         1,120      4.1    4,592
+Q4         1,190      4.2    4,998
+
+Do NOT compute a final forecast number - I will model it in a spreadsheet.
+Instead give me:
+1. A structured assumption set as a table: Assumption | Base value | Rationale.
+   Cover new accounts/qtr, churn %, ARPA growth %.
+2. Three scenarios (Base / Bull / Bear) as a table showing each assumption's
+   value in each case - change only the assumptions, keep the driver structure.
+3. For each scenario, name the ONE assumption it depends on most.
+
+Rules:
+- Use ONLY the history above; state any assumption as a labelled line.
+- If something needed is missing, say "not in the data" - do not estimate.
+- Keep every value as an input I can plug into my own formulas.</div>
+
+    <div class="callout tip">
+      <strong>Why "do not compute the number" is the whole point</strong>
+      By explicitly banning AI from producing the forecast figure, you force it into the role it is good at - structuring assumptions - and keep the calculation where it belongs. The prompt is doing the division of labour for you.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Sensitivity table in the sheet, then an AI-drafted narrative <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">Now we close the loop: build a small sensitivity table in your spreadsheet, then hand the computed results to AI and ask it to write the scenario narrative. The numbers are yours and verified; AI turns them into the story.</p>
+
+    <div class="steps">
+      <div class="step"><p>In your sheet, take the base case from Demo 1 and flex two assumptions - say churn and ARPA growth - across a small grid. A 3x3 table of resulting revenue is plenty. Write the formulas yourself.</p></div>
+      <div class="step"><p>Read the table: which assumption moves revenue more? That is your dominant driver, and it is the spine of the narrative.</p></div>
+      <div class="step"><p><strong>Hand the results to AI</strong> using the prompt below - paste your computed base/bull/bear revenue and the dominant driver you found - and ask for a short scenario narrative.</p></div>
+      <div class="step"><p><strong>Verify the story matches the math.</strong> Read the draft against your table. If it claims a swing your numbers do not show, fix the prose - never the numbers to fit the prose.</p></div>
+      <div class="step"><p>Save both the sensitivity template and the narrative prompt into your prompt library from b2. Rolling re-forecast next month reuses both.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ Demo 2 prompt - draft the scenario narrative from my results</span>You are an FP&amp;A analyst writing next year's forecast narrative for the CFO.
+All figures SGD thousands. I computed these in my model - use ONLY them.
+
+Results (full-year revenue):
+Base 20,400 · Bull 22,100 · Bear 18,600
+
+Dominant driver from my sensitivity table: quarterly churn rate
+(a 1pt churn change moves full-year revenue ~900).
+
+Write a short narrative (max 180 words):
+- Lead with the base case and the range.
+- Explain what separates bull from bear in plain business terms.
+- Name churn as the assumption to watch and why.
+- End with "Verify before use": list any assumption you inferred and what
+  I should double-check against my model before sending.
+
+Rules: use ONLY the numbers above; do not invent figures; if you need
+something I did not give you, say "not in the data".</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The forecast that finally got read.</strong> An FP&amp;A lead used to attach a dense scenario grid to the board pack that nobody opened. She kept the grid but had AI draft a 150-word narrative from her verified numbers - base, range, the one driver to watch. The board engaged with the story and asked better questions. The model did not change; the packaging did. AI was the ghostwriter, she was the author and the accountable one.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Take one line of your own P&amp;L (public or synthetic if you are in a consumer tool) and ask AI for its driver tree - not a forecast. Confirm or prune the drivers yourself.</li>
+      <li>Build a base-case assumption set as a labelled table, then create bull and bear by changing only the assumption values. Document each one and its source.</li>
+      <li>Build a 3x3 sensitivity table in your sheet flexing your two most uncertain assumptions. Note which one dominates - that is your headline risk.</li>
+      <li>Feed your verified results to AI and get a scenario narrative under 180 words. Check every claim against your table before you would ever send it.</li>
+      <li>Optional: run the stress prompt - "which one assumption does each scenario depend on most" - and re-label any scenario that turns out riskier than its name suggested.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches from public FP&amp;A and scenario-analysis curricula. Certificates, graded assessments, and paid tooling stay with the official programs - noted honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">CFI - AI for Finance: scenario analysis</span><span class="note">Parts 1-3 · driver-based logic, base/bull/bear, stress-testing assumptions</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">IE Business School - AI-Powered Finance (FP&amp;A, planning)</span><span class="note">Parts 1-2 · driver identification, rolling re-forecast, what-if with ChatGPT</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">FP&amp;A Professional Institute - AIFPA (role of AI in FP&amp;A)</span><span class="note">Part 1 · where AI fits vs where the human decides in planning workflows</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · In driver-based forecasting with AI, who computes the actual forecast number?</p>
+      <button class="qopt" type="button">A · The AI - you paste the history and it predicts next quarter</button>
+      <button class="qopt" type="button">B · You, in the spreadsheet with real methods - AI does structure and story</button>
+      <button class="qopt" type="button">C · Whichever is faster on the day</button>
+      <p class="qwhy">Keep the statistical math in the sheet where formulas are visible and checkable. AI identifies drivers, articulates assumptions, stresses scenarios, and writes the narrative - it never becomes the calculator-of-record.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · What does "driver-based" forecasting mean?</p>
+      <button class="qopt" type="button">A · Drawing a trend line through last year and extending it</button>
+      <button class="qopt" type="button">B · Asking AI to predict the number in free text</button>
+      <button class="qopt" type="button">C · Building the number up from what causes it - e.g. accounts x ARPA - each driver with its own assumption</button>
+      <p class="qwhy">Driver-based means you decompose the line into its causes and forecast each driver, so every assumption is visible and arguable - not one opaque growth rate.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · You have a confident bull scenario. What is the discipline before you present it?</p>
+      <button class="qopt" type="button">A · Document every assumption and stress it - find the one assumption doing all the work</button>
+      <button class="qopt" type="button">B · Round the numbers so they look cleaner</button>
+      <button class="qopt" type="button">C · Trust it because the AI generated it</button>
+      <p class="qwhy">Scenarios need every assumption on the record for audit, and each one stress-tested. Surfacing the single heroic assumption keeps the board conversation honest.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 4 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>AI is not a predictor</b><span>a chat AI typing a number is extrapolation, not forecasting. Keep the statistical math in the sheet.</span></div>
+      <div class="cheat-item"><b>AI's four jobs</b><span>identify drivers · articulate assumptions · generate + stress scenarios · write the narrative. Nothing else.</span></div>
+      <div class="cheat-item"><b>Driver-based</b><span>build the number from its causes (accounts x ARPA), not one growth rate. Each driver gets its own assumption.</span></div>
+      <div class="cheat-item"><b>Ask to decompose</b><span>"break this into a driver tree, do not forecast the number" - forces AI into the role it is good at.</span></div>
+      <div class="cheat-item"><b>Base · bull · bear</b><span>change only assumption values, keep the structure. Specific numbers, not vibes.</span></div>
+      <div class="cheat-item"><b>Stress + document</b><span>have AI name the one assumption each scenario depends on; write every assumption + source for audit.</span></div>
+      <div class="cheat-item"><b>Narrative from results</b><span>compute + verify first, then AI ghostwrites the story. Fix prose to fit numbers, never numbers to fit prose.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b5 - reporting &amp; narrative generation: MD&amp;A, board decks, and variance commentary at report scale.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 4 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b3-month-end-close-copilot.html">← Previous: Month-end close copilot</a> &nbsp;·&nbsp; <a href="b5-reporting-narrative.html">Next: Reporting &amp; narrative generation →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

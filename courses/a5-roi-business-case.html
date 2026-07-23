@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 5 · ROI &amp; the business case - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Leader session 5 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Leader track · Session 5 of 6</div>
+    <h1>ROI &amp; the business case: <span class="accent">prove the value honestly</span></h1>
+    <p class="sub">Your CFO peers are asking the same question you are: is any of this AI spend actually paying off? This session gives you an honest way to measure value - time, cycle-time, error reduction, and capacity you redeploy - and a one-page business case you can put in front of a finance committee without overclaiming. We will also look squarely at why so many pilots show no P&amp;L impact, so yours is not one of them.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Leader track</span>
+      <span class="chip audience">Leaders: CFO · FP&amp;A leadership</span>
+      <span class="chip audience">No code, ever</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Intro</span>
+      <span class="a2" style="flex:4">3-18 · Measuring value honestly</span>
+      <span class="a3" style="flex:4">18-33 · Pilot, scale, buy vs build</span>
+      <span class="a4" style="flex:3">33-45 · The one-pager + exercise</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why this session exists</h2>
+    </div>
+    <p class="lede">You have picked use-cases (a2), set the guardrails (a3), and thought about the team (a4). Now comes the question that unlocks budget or kills it: <strong>what is the return, and can you defend the number?</strong> The uncomfortable truth is that most AI value is claimed loosely and measured badly - which is exactly why finance leaders, of all people, should hold it to a higher standard. This session hands you an honest scorecard and a one-page business case, so your bet is credible in the room where money is decided.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Questions for your team</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A business-case one-pager for one real use-case - problem, use-case, cost, expected value with an honest metric, risk and guardrails, and the ask - plus a value scorecard you can reuse for every future bet, and a clear reason your pilot will not join the majority that never touch the P&amp;L.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: MEASURING VALUE HONESTLY ============ -->
+  <section class="section" id="value-honestly">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers Wharton AI for Business (finance module) + industry ROI evidence</span>
+      <h2>Measuring value honestly <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">There are real value levers, and there is theatre. The real levers are measurable and modest at first; the theatre is a headcount-reduction slide that never survives contact with reality. As a finance leader your credibility rests on counting only what you can defend, so let us name the levers that hold up.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An ROI bridge: an AI investment on the left flows through measurable value levers - time saved, cycle-time cut, error reduction, and capacity redeployed - to a net value on the right">
+        <defs>
+          <marker id="a5xAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 Z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <style>
+          .a5xT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .a5xI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .a5xX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .a5xXi { font: 400 12.5px Inter, sans-serif; fill: #3D2C05; }
+          .a5xXm { font: 400 12.5px Inter, sans-serif; fill: #5B6B69; }
+          .a5xN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+
+        <rect x="24" y="120" width="170" height="100" rx="12" fill="#0A4A44"/>
+        <text class="a5xT" x="44" y="158">AI investment</text>
+        <text class="a5xX" x="44" y="180">licenses · setup</text>
+        <text class="a5xX" x="44" y="198">· training time</text>
+
+        <line x1="196" y1="170" x2="300" y2="170" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#a5xAh)"/>
+
+        <rect x="308" y="30" width="248" height="58" rx="10" fill="#2DA89E"/>
+        <text class="a5xT" x="328" y="55">Time saved</text>
+        <text class="a5xX" x="328" y="76">hours off recurring tasks</text>
+
+        <rect x="308" y="98" width="248" height="58" rx="10" fill="#2DA89E"/>
+        <text class="a5xT" x="328" y="123">Cycle-time cut</text>
+        <text class="a5xX" x="328" y="144">e.g. close days reduced</text>
+
+        <rect x="308" y="166" width="248" height="58" rx="10" fill="#7FCFC6"/>
+        <text class="a5xI" x="328" y="191">Error / rework down</text>
+        <text class="a5xXi" x="328" y="212" font-weight="400" font-size="12.5">fewer restatements, catches</text>
+
+        <rect x="308" y="234" width="248" height="58" rx="10" fill="#7FCFC6"/>
+        <text class="a5xI" x="328" y="259">Capacity redeployed</text>
+        <text class="a5xXi" x="328" y="280" font-weight="400" font-size="12.5">same team, higher-value work</text>
+
+        <line x1="560" y1="170" x2="648" y2="170" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#a5xAh)"/>
+
+        <rect x="656" y="120" width="196" height="100" rx="12" fill="#0F766E"/>
+        <text class="a5xT" x="676" y="158">Net value</text>
+        <text class="a5xX" x="676" y="180">measured, defensible,</text>
+        <text class="a5xX" x="676" y="198">not theatrical</text>
+
+        <rect x="24" y="322" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="a5xN" x="48" y="334">Count capacity you redeploy - not headcount you promise to cut and never do.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the ROI bridge: investment in, measurable levers, an honest net value out</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The value levers that actually hold up<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every credible AI return in finance traces back to one of a small set of levers. Learn to name them, and you can measure any use-case honestly.</p>
+        <ul>
+          <li><strong>Time saved.</strong> Hours pulled out of recurring, low-judgement work - reconciliations, first-draft commentary, data cleanup. Count it as hours, then convert to cost cautiously.</li>
+          <li><strong>Cycle-time.</strong> How much faster something finishes - a close cut from ten days to eight, a board pack drafted in a morning not a week. Speed has real value even when hours are flat.</li>
+          <li><strong>Error and rework reduction.</strong> Fewer restatements, fewer missed accruals, more anomalies caught before they matter. Quality is money you never lose.</li>
+          <li><strong>Capacity redeployed.</strong> The honest version of "efficiency": the same people spend freed hours on analysis, business partnering, and judgement. This is the lever that survives scrutiny - a promise to cut heads usually does not.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The baseline rule</strong>
+          You cannot measure a saving you never sized. Record the "before" - close days, hours per report, error rate - before the pilot starts. No baseline, no credible ROI. This one discipline separates real cases from wishful ones.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The counterweight - why most pilots miss the P&amp;L<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>You should walk in clear-eyed. Independent evidence keeps finding that a large share of generative-AI pilots show no measurable P&amp;L impact, and analysts expect a meaningful fraction of ambitious "agentic" projects to be scrapped before they scale. That is not a reason to avoid the bet - it is a map of the potholes.</p>
+        <ul>
+          <li><strong>No baseline.</strong> The value was never measured before, so the "after" is a story, not a number. Fixable, and the reason Part 1 opens with the baseline rule.</li>
+          <li><strong>No adoption.</strong> The tool works in a demo and dies in the workflow, because no one changed how the team actually does the task. Value lives in adoption, not in the license.</li>
+          <li><strong>Wrong use-case.</strong> The pilot chased something flashy instead of something painful, high-volume, and low-risk. Your a2 scoring exists to stop exactly this.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The pilot that "worked" and delivered nothing.</strong> A team ran a slick forecasting-assistant pilot, declared success, and moved on. A year later the forecast still took the same number of days - because the tool never entered the monthly routine and no one had recorded the original cycle time to compare. The lesson: a demo is not a deployment, and a number you cannot compare is not a return.</p>
+        </div>
+        <div class="callout win">
+          <strong>★ Questions to ask your team</strong>
+          What was the "before" number, and who wrote it down? Six months in, has anyone actually changed how they do the task, or are we still doing it the old way plus a tool? If this pilot vanished tomorrow, would anyone notice - and if not, what does that tell us?
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: PILOT TO SCALE + BUY VS BUILD ============ -->
+  <section class="section" id="pilot-scale">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers IE + AIFPA implementation, industry evidence</span>
+      <h2>Pilot to scale, and buy vs build <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Two decisions sit under every business case. First, how to run the pilot so it can prove something. Second, how to source the capability - do you buy a tool, build your own, or blend copilots into what you have? Get these right and scaling is a formality; get them wrong and you fund a demo.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>A pilot that can actually prove value<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A good pilot is small, measurable, and time-boxed - designed from day one to produce a decision, not just an experience.</p>
+        <ul>
+          <li><strong>One measurable use-case.</strong> Pick a painful, high-volume, low-risk task from your a2 map. Narrow beats grand.</li>
+          <li><strong>A baseline, written down.</strong> Close days, hours per report, error rate - captured before you start, by a named person.</li>
+          <li><strong>Guardrails in place.</strong> The a3 rails apply from the first day: privacy, human sign-off, an audit trail. A pilot that skips governance cannot scale even if it "works".</li>
+          <li><strong>A decision gate.</strong> Set the date and the threshold now: "if we cut cycle time by X with adoption above Y, we scale; if not, we stop and learn." A pilot with no kill criterion never ends and never scales.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Buy vs build vs blend - the three doors<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>You rarely need to build. Most finance value today comes from buying governed tools or blending copilots into existing systems. The tradeoff is always the same three dials: cost, control, and speed.</p>
+        <table class="clean">
+          <thead><tr><th>Door</th><th>What it is</th><th>Cost</th><th>Control</th><th>Speed</th><th>Best when</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Buy</strong></td><td>License an enterprise tool or finance-native platform</td><td>Predictable subscription</td><td>Vendor-set; read the terms</td><td>Fast to start</td><td>The need is common and a good tool exists</td></tr>
+            <tr><td><strong>Build</strong></td><td>Custom solution on an API or internal platform</td><td>High + ongoing upkeep</td><td>Full - your data, your rules</td><td>Slow; needs engineering</td><td>The workflow is a true differentiator or nothing fits</td></tr>
+            <tr><td><strong>Blend</strong></td><td>Embedded copilots inside Excel, ERP, or your FP&amp;A tool</td><td>Often bundled with what you own</td><td>Shared with the vendor</td><td>Fastest - it is already there</td><td>You want value inside existing workflows now</td></tr>
+          </tbody>
+        </table>
+        <p>For most finance teams the honest answer is blend first, buy where a specialist tool clearly wins, and build only when you have proven the need and can fund the upkeep. "Build" is rarely the cheap or fast door it looks like in a vendor deck.</p>
+        <div class="callout win">
+          <strong>★ Questions to ask your team</strong>
+          For this use-case, is there a tool we could blend into next week instead of a project we build over months? If we build, who owns it in two years when the person who wrote it has moved on? What are we actually paying for - the model, or the workflow and governance around it?
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: THE ONE-PAGER ============ -->
+  <section class="section" id="one-pager">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the artifact that unlocks the budget</span>
+      <h2>The business-case one-pager <span class="tag concept">4 min live</span></h2>
+    </div>
+    <p class="lede">Everything so far collapses into a single page a finance committee can read in three minutes and act on. Keep it to one page on purpose - if the case does not fit, the thinking is not done. Six sections, in this order.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The six sections, in order<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ol>
+          <li><strong>Problem.</strong> The painful, specific status quo - in numbers. "Month-end close takes ten working days; three of them are manual reconciliation."</li>
+          <li><strong>Use-case.</strong> What the AI will do, narrowly. "Draft reconciliation summaries and flag anomalies for review." Not "transform finance."</li>
+          <li><strong>Cost.</strong> Licenses, setup, training time, and any build effort. Total cost of ownership, not just the sticker.</li>
+          <li><strong>Expected value.</strong> The honest metric with its baseline: "cut close from ten days to eight, redeploying ~X hours to analysis." State the lever and the "before".</li>
+          <li><strong>Risk + guardrails.</strong> The a3 rails made concrete: privacy handling, human sign-off, audit trail, and what could go wrong plus how you contain it.</li>
+          <li><strong>The ask.</strong> The specific decision you want: budget, a named pilot, a decision gate date. Make it easy to say yes.</li>
+        </ol>
+        <p>This one-pager is the seed of the a6 roadmap: a portfolio of these, sequenced over 24 months, is your strategy. Nail one, and the next four write themselves.</p>
+        <div class="callout tip">
+          <strong>The honesty test</strong>
+          Before you present, ask: "If this delivers exactly what I wrote and no more, is it still worth it?" If yes, you have an honest case. If it only works with the optimistic slide, cut the optimistic slide.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Presenting it in the room<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Lead with the problem, not the technology.</strong> Committees fund pain relief, not novelty. The word "AI" should arrive after the problem, not before it.</li>
+          <li><strong>Show the baseline first.</strong> "Here is what this costs us today" earns the right to claim a saving.</li>
+          <li><strong>Under-promise the value.</strong> A modest number you hit beats a bold one you miss - and your credibility for the next four cases depends on this one landing.</li>
+          <li><strong>Name the guardrails unprompted.</strong> A finance audience trusts the leader who raised the risk before they had to ask.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ EXERCISE ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Exercise</span>
+      <h2>Draft a mini business case <span class="tag exercise">◐ 15 min · on paper</span></h2>
+    </div>
+    <p class="lede">Take one use-case from your a2 map - ideally the highest-scoring, lowest-risk one - and draft its business case on a single page. You are not building anything; you are proving you can defend the value before you spend a dollar.</p>
+    <ul>
+      <li>Write the <strong>problem</strong> in numbers. What does the status quo cost in days, hours, or errors today?</li>
+      <li>Define the <strong>baseline</strong>: the specific "before" figure you would measure, and who would record it before the pilot starts.</li>
+      <li>State the <strong>success metric</strong> using an honest lever - capacity redeployed or cycle-time cut, never a headcount promise you would not keep.</li>
+      <li>Sketch the <strong>cost</strong> (buy, build, or blend) and the <strong>guardrails</strong> from a3.</li>
+      <li>Write the one-sentence <strong>ask</strong>: the exact decision and the decision-gate date.</li>
+    </ul>
+    <div class="callout win">
+      <strong>★ Questions to ask your team</strong>
+      Do we have a real baseline for this, or would we be guessing? Which door - buy, build, or blend - gets us to a measurable pilot fastest? If the committee said "yes, but half the budget", what would we cut and would the case still hold?
+    </div>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches from public finance-AI curricula and published industry evidence on AI returns. Certificates, graded assessments, and paid tooling stay with the official programs - noted honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Wharton (Coursera) - AI for Business Specialization, finance module</span><span class="note">Parts 1-3 · value measurement, pricing/efficiency framing</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">IE Business School + AIFPA - implementation strategy</span><span class="note">Part 2 · pilot design, adoption, scaling</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Industry ROI evidence (pilot P&amp;L impact, agentic project attrition)</span><span class="note">Part 1 · the counterweight; figures move - re-verify</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Which is the most defensible way to state the value of a close-automation pilot?</p>
+      <button class="qopt" type="button">A · "It will let us cut two roles from the team"</button>
+      <button class="qopt" type="button">B · "It makes finance more strategic"</button>
+      <button class="qopt" type="button">C · "It cuts close from ten days to eight and redeploys those hours to analysis"</button>
+      <p class="qwhy">Honest value is measurable: cycle-time cut and capacity redeployed against a baseline. Headcount-cut promises rarely survive reality, and vague "more strategic" claims are theatre, not a number.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · A big share of AI pilots show no P&amp;L impact. What is the most common avoidable cause?</p>
+      <button class="qopt" type="button">A · The models are not good enough yet</button>
+      <button class="qopt" type="button">B · No baseline and no adoption - the tool never entered the real workflow, and there was no "before" to compare</button>
+      <button class="qopt" type="button">C · Finance teams are too cautious</button>
+      <p class="qwhy">Pilots miss the P&amp;L mostly for process reasons: no baseline was recorded, and no one actually changed how the work gets done. Both are fixable, and both are why the baseline rule and adoption come first.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · For a common finance need where a good governed tool already exists, which door is usually right first?</p>
+      <button class="qopt" type="button">A · Buy or blend - fastest to a measurable pilot, with predictable cost</button>
+      <button class="qopt" type="button">B · Build a custom solution - it is always cheaper long term</button>
+      <button class="qopt" type="button">C · Wait until you can build in-house</button>
+      <p class="qwhy">Build is rarely the cheap or fast door it looks like; it carries high upkeep and an ownership question. When a governed tool fits a common need, buying or blending gets you to a measurable pilot fastest, at predictable cost.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The four honest levers</b><span>time saved, cycle-time cut, error/rework down, capacity redeployed. Count these; skip the headcount theatre.</span></div>
+      <div class="cheat-item"><b>The baseline rule</b><span>no "before" number, no credible ROI. Record it before the pilot, name who owns it.</span></div>
+      <div class="cheat-item"><b>Why pilots miss</b><span>no baseline, no adoption, wrong use-case. All three are avoidable - and all three are on you, not the model.</span></div>
+      <div class="cheat-item"><b>Pilot design</b><span>one measurable use-case + baseline + guardrails + a decision gate with a kill threshold.</span></div>
+      <div class="cheat-item"><b>Three doors</b><span>buy (fast, predictable) · build (control, high upkeep) · blend (fastest, in your workflow). Blend first, build last.</span></div>
+      <div class="cheat-item"><b>The one-pager</b><span>problem · use-case · cost · expected value with baseline · risk + guardrails · the ask.</span></div>
+      <div class="cheat-item"><b>The honesty test</b><span>if it delivers exactly what you wrote and no more, is it still worth it? If only the optimistic slide sells it, cut that slide.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>a6 - strategy &amp; the 24-month roadmap: sequence a portfolio of these one-pagers into a board-ready plan.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 5 of 6 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a4-ai-ready-team.html">← Previous: The AI-ready finance team</a> &nbsp;·&nbsp; <a href="a6-strategy-roadmap.html">Next: Strategy &amp; the 24-month roadmap →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 9 · Markets &amp; investing with AI - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 9 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 9 of 10</div>
+    <h1>Markets &amp; investing with AI: <span class="accent">a research assistant, never an advisor</span></h1>
+    <p class="sub">This is the session everyone is most excited and most nervous about - and the one with the sharpest rail. Tonight we survey how AI legitimately helps a research or investor-relations desk: summarising filings, comparing companies, screening on criteria you define. What it never does is decide. It assists, a licensed human advises. We hold that line the whole way through.</p>
+    <div class="chip-row">
+      <span class="chip level">🔴 Builder track</span>
+      <span class="chip audience">Practitioners: IR · research · analysts</span>
+      <span class="chip audience">ChatGPT or Claude</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-4 · The frame</span>
+      <span class="a2" style="flex:4">4-24 · Assist vs advise, uses, hard lines</span>
+      <span class="a3" style="flex:5">24-45 · Build-along: summarise &amp; compare</span>
+      <span class="a4" style="flex:1">45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Read this before anything else</h2>
+    </div>
+    <p class="lede">This session is a <strong>survey of research-assistant uses</strong> of AI in markets - nothing more. It is <strong>not investment advice</strong>. It is <strong>not a trading system</strong>. It is <strong>not a stock-picking or recommendation engine</strong>. We will summarise public filings, compare public figures, and screen on criteria you define - all things that help a human think faster. We will never tell you, or anyone, what to buy, sell, or hold.</p>
+    <p class="lede">The deep material - portfolio construction math, factor models, algorithmic and high-frequency trading, order execution - is <strong>deliberately deferred</strong> to future dedicated courses. It is a craft that deserves its own program, taught properly, not squeezed into one evening. Tonight is the honest, bounded version: AI as a fast, tireless reader and organiser of <em>public</em> information, with a person owning every single conclusion.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A clear map of what AI may and may not do on a research or IR desk; two build-along habits - a structured earnings-call summary and a public-figures comparison table - each with a verify pass baked in; and a reflex that never lets a market figure out of an AI go anywhere without checking it against the primary source. The rail, said once so it sticks: AI assists, the licensed human decides.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE BOUNDARY ============ -->
+  <section class="section" id="boundary">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the line that defines this whole session</span>
+      <h2>Assist, never advise: the boundary <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Every use of AI in markets sits on one side of a hard line. On the left, it helps a human read, organise, and compare public information faster - assist. On the right, it makes or implies a decision - advise. The left is fair game with discipline. The right is off-limits for a tool, full stop.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A boundary diagram: legitimate assist uses on the left, forbidden advise and decision uses on the right, with a hard line between them">
+        <defs>
+          <marker id="b9xAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 Z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <style>
+          .b9xT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b9xI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b9xX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b9xXi { font: 400 12.5px Inter, sans-serif; fill: #10201E; }
+          .b9xN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+          .b9xH { font: 700 16px Inter, sans-serif; fill: #10201E; }
+        </style>
+
+        <text class="b9xH" x="40" y="36">✓ Assist - AI may do this</text>
+        <text class="b9xH" x="470" y="36">✗ Advise - AI must not</text>
+
+        <rect x="40" y="54" width="360" height="44" rx="9" fill="#0F766E"/>
+        <text class="b9xT" x="58" y="72">Summarise filings</text>
+        <text class="b9xX" x="58" y="90">condense a 10-K or transcript, cite passages</text>
+
+        <rect x="40" y="108" width="360" height="44" rx="9" fill="#0F766E"/>
+        <text class="b9xT" x="58" y="126">Compare public figures</text>
+        <text class="b9xX" x="58" y="144">tidy reported numbers into a table you check</text>
+
+        <rect x="40" y="162" width="360" height="44" rx="9" fill="#0F766E"/>
+        <text class="b9xT" x="58" y="180">Screen on YOUR stated criteria</text>
+        <text class="b9xX" x="58" y="198">filter a list on rules you define, then verify</text>
+
+        <rect x="40" y="216" width="360" height="44" rx="9" fill="#0F766E"/>
+        <text class="b9xT" x="58" y="234">Draft a research memo</text>
+        <text class="b9xX" x="58" y="252">a first draft a human edits, sources, and signs</text>
+
+        <rect x="470" y="54" width="370" height="44" rx="9" fill="#E6F4F2"/>
+        <text class="b9xI" x="488" y="72">Personalised advice</text>
+        <text class="b9xXi" x="488" y="90">"you should buy X" for someone's situation</text>
+
+        <rect x="470" y="108" width="370" height="44" rx="9" fill="#E6F4F2"/>
+        <text class="b9xI" x="488" y="126">Automated trading</text>
+        <text class="b9xXi" x="488" y="144">a bot placing orders with no human gate</text>
+
+        <rect x="470" y="162" width="370" height="44" rx="9" fill="#E6F4F2"/>
+        <text class="b9xI" x="488" y="180">Unverified figures</text>
+        <text class="b9xXi" x="488" y="198">a number from the model, used without checking</text>
+
+        <rect x="470" y="216" width="370" height="44" rx="9" fill="#E6F4F2"/>
+        <text class="b9xI" x="488" y="234">MNPI / insider information</text>
+        <text class="b9xXi" x="488" y="252">any material non-public data, ever</text>
+
+        <line x1="435" y1="50" x2="435" y2="264" stroke="#CA8A04" stroke-width="3" stroke-dasharray="6 5"/>
+
+        <rect x="40" y="300" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b9xN" x="64" y="312">Everything on the left is a draft for a human. Nothing on the right is ever a tool's job. The licensed human decides.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the assist / advise boundary: what AI may help with on a markets desk, and what it must never touch</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Which side of the line am I on?<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The test is simple. Ask: <em>does the output help a person read and reason, or does it stand in for their judgement?</em> If it is a summary, a table, or a filtered list that a human then evaluates, you are assisting. The moment the output implies "do this", you have crossed into advice - and a tool has no business there.</p>
+        <ul>
+          <li><strong>Assist keeps a human in the loop.</strong> The AI drafts; the analyst reads, checks the sources, and forms the view. The AI never gets the last word.</li>
+          <li><strong>Advise removes the human.</strong> A recommendation, a personalised "should", an order placed automatically - these hand the decision to a machine. That is the line we do not cross.</li>
+          <li><strong>When in doubt, add a human step.</strong> If a workflow feels like it is drifting toward a decision, insert an explicit "a person reviews and signs" gate. That gate is not bureaucracy - it is the rail.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The rail, restated - carry it out of this room</strong>
+          AI assists, the licensed human decides. Everything in this session lives on the assist side of that line. If a use would place a trade, give personalised advice, or lean on unchecked figures or non-public information, it is out of scope here and out of bounds for a tool.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: LEGIT USES ============ -->
+  <section class="section" id="legit-uses">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · what a research or IR desk can actually use</span>
+      <h2>Legit research-assistant uses <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Stay on the left of the line and there is real, everyday value here. The through-line is always the same: AI does the fast reading and organising of <em>public</em> information; you do the verifying and the thinking. Here is where it earns its keep - and the check that makes each one safe.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Five uses, each with its verify step<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Assist use</th><th>What you feed it</th><th>Verify step - non-negotiable</th></tr></thead>
+          <tbody>
+            <tr><td>Summarise a filing</td><td>public 10-K, 10-Q, annual report</td><td>open cited sections, confirm the summary matches</td></tr>
+            <tr><td>Summarise an earnings call</td><td>public transcript excerpt</td><td>trace each bull/bear point back to the words said</td></tr>
+            <tr><td>Comparison table</td><td>public reported figures you supply</td><td>tie every cell to the source number and period</td></tr>
+            <tr><td>Screen on your criteria</td><td>a list plus rules you define</td><td>re-check the data behind each pass and fail</td></tr>
+            <tr><td>Sentiment on public text</td><td>public commentary, press, transcripts</td><td>read the passages; sentiment is a signal, not a fact</td></tr>
+          </tbody>
+        </table>
+        <p>Two of these are draft-a-memo and screen-a-list, and both hide the same trap: the model will confidently produce figures. Screening is only ever as good as the data behind it, so define the criteria yourself and then verify the numbers each pass and fail rests on - do not let the tool source the data <em>and</em> apply the rule unchecked.</p>
+        <div class="callout tip">
+          <strong>Markets-data hallucination is severe - verify every figure against the primary source</strong>
+          This is the loudest caution in the whole session. Language models invent plausible market numbers - a revenue figure, an EPS, a price, a ratio - with total confidence and no flag. Never let a figure from an AI reach a memo, a screen, or a colleague until you have matched it to the primary source: the filing, the exchange, the company's own release. Treat every unverified number as wrong.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Public data only - the privacy rail, applied to markets<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Everything in this session runs on <em>public</em> information: published filings, released transcripts, exchange data, company press. That is not an accident - it is the rail. The instant you are tempted to feed something non-public into a tool, stop.</p>
+        <ul>
+          <li><strong>Public filings and transcripts</strong> - a company's own 10-K, a posted earnings call, published market data - are fine to summarise and compare. They are already public.</li>
+          <li><strong>Draft research, internal notes, client holdings</strong> go only into an enterprise tool that does not train on your data, and even then with care. A client's portfolio is confidential; treat it that way.</li>
+          <li><strong>Material non-public information never touches a tool at all.</strong> That is not a privacy preference, it is the law - covered head-on in Part 3.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: HARD LINES ============ -->
+  <section class="section" id="hard-lines">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the lines that carry legal and career risk</span>
+      <h2>The hard lines <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">The assist side is safe only if you respect the boundaries around it. These are not style preferences - several are legal lines with real consequences. Know them cold, because "the AI did it" is never a defence. The analyst owns the call.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The five you must not cross<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>No personalised advice.</strong> An AI telling a specific person what to buy, sell, or hold for their situation is regulated advice a tool is not licensed to give. Keep outputs general, sourced, and framed as research a human evaluates.</li>
+          <li><strong>No automated trading.</strong> This course does not build order-placing systems, and you should not wire an LLM to a trading account. Execution without a human gate is exactly the decision-making we bar. Trading mechanics are a future dedicated course.</li>
+          <li><strong>MNPI and insider-trading rules.</strong> Material non-public information must never go into an AI tool, and AI must never be used to act on it. This is the sharpest legal line in finance - insider trading is a crime. Public data only, always.</li>
+          <li><strong>SEC "AI-washing".</strong> Regulators are scrutinising firms that overstate their AI capability. Do not claim an AI-driven process, edge, or product it does not have. Describe what the tool actually does - assist, not decide.</li>
+          <li><strong>Backtest illusion and overfitting.</strong> A strategy that looks brilliant on past data often means the model memorised noise, not signal. Impressive backtests are the easiest way to fool yourself; healthy skepticism, out-of-sample thinking, and a human's judgement are the guard. The deep version of this lives in the future markets and trading courses.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The confident price that was never real.</strong> An analyst asked a chatbot for a company's latest reported quarterly revenue to seed a comparison. It returned a precise figure with a decimal - and it was wrong, invented from patterns, not the filing. Pasted into a memo it would have poisoned every downstream number and any conclusion drawn from it. One check against the 10-Q caught it in under a minute. The model assisted; the human, by verifying, decided what was true.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Structure a public earnings-call excerpt - then verify it <span class="tag demo">★ 13 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">Paste an excerpt from a <em>public</em> earnings-call transcript and turn it into a structured read: bull points, bear points, and open questions for management. The value is the structure and speed - the discipline is tracing every point back to the words that were actually said.</p>
+
+    <div class="steps">
+      <div class="step"><p>Grab a public earnings-call transcript - most companies post them in investor relations, and several sites publish them free. Copy a real excerpt of a few paragraphs. It is public, so any chat tool is fine (rail one).</p></div>
+      <div class="step"><p>Paste the excerpt and set the ground rule: work only from this text, quote the line behind each point, and never add outside knowledge or a view on the stock.</p></div>
+      <div class="step"><p>Ask for a structured summary - bull points, bear points, and questions a human analyst should put to management - each tied to a quoted line from the excerpt.</p></div>
+      <div class="step"><p><strong>Now the real work:</strong> for each bull and bear point, find the quoted line in the transcript and confirm it actually supports the framing. Watch for the model editorialising beyond what was said.</p></div>
+      <div class="step"><p>Delete any point whose quote does not hold up, and flag any figure the model mentions to check against the filing. The output is a draft for a human, not a verdict on the company.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The structured earnings-call summary prompt</span>Below is a PUBLIC earnings-call transcript excerpt. Work ONLY from this text.
+Do not use outside knowledge. Do not give any opinion, rating, or view on the
+stock - you are organising what was said, not advising.
+
+Produce three lists:
+1. Bull points - management statements a reader might read positively.
+2. Bear points - statements a reader might read as a concern or risk.
+3. Questions for management - what an analyst should follow up on.
+
+For every point, quote the exact line from the excerpt it comes from. If you
+mention any number, mark it "[verify against filing]". If something is not in
+the text, do not include it.
+
+--- transcript excerpt ---
+[paste public transcript here]</div>
+
+    <div class="callout tip">
+      <strong>Why the verify step is the whole lesson</strong>
+      Anyone can get a tidy summary. The professional's edge is checking that each point is grounded in what was actually said, and that no figure slips through unverified. The tool structures the text; you decide what is true and what it means. That is assist, never advise, in practice.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Build a comparison table from supplied public figures <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">Compare three companies on figures you supply from public sources. The point is to see AI as a fast organiser of numbers you already trust - not a source of numbers. So we feed it verified figures, then run a verify pass anyway, because even copied numbers can get transposed.</p>
+
+    <div class="steps">
+      <div class="step"><p>Pull a few public metrics for three companies from their own filings or releases - revenue, operating margin, and headcount, say - and write them down with the source and period next to each.</p></div>
+      <div class="step"><p>Give the model only those figures and ask it to build a clean, aligned comparison table. Tell it explicitly not to add, estimate, or "improve" any number.</p></div>
+      <div class="step"><p>Ask for one short, neutral observation about the differences - purely descriptive, no view on which is a better investment. Description, not recommendation.</p></div>
+      <div class="step"><p><strong>Verify pass:</strong> check every cell against the figures you supplied. Confirm nothing was changed, transposed, or invented, and that periods line up. Any mismatch, fix it and note where the tool drifted.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The public-figures comparison prompt</span>Here are PUBLIC figures I have already verified against each company's filings.
+Use ONLY these numbers. Do not add, estimate, adjust, or supplement any value
+from your own knowledge. If a value is missing, leave the cell as "n/a".
+
+Company A: revenue 12.4B (FY25), operating margin 18%, headcount 41,000
+Company B: revenue 9.1B (FY25), operating margin 22%, headcount 28,500
+Company C: revenue 15.8B (FY25), operating margin 14%, headcount 63,200
+
+1. Build a clean comparison table with companies as rows and metrics as columns.
+2. Add one short, neutral, descriptive observation about the differences.
+   Do NOT give any opinion on which company is a better investment.
+
+Then list, in one line each, exactly which number you placed in every cell so
+I can verify nothing was changed.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The transposed margin.</strong> An IR team used a chat tool to tidy a peer comparison from figures they had pulled by hand. The table looked perfect - except one company's operating margin had been swapped with its net margin, a subtle slip the model made while "aligning" the data. The final-line "which number went in which cell" check surfaced it instantly. The lesson stuck: even when you supply the numbers, verify the output. The tool organised; the humans owned the table.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Finish both demos if you did not complete them live. The verify pass is the point - never skip it, and keep any figure the tool got wrong as evidence for why.</li>
+      <li>Take one public earnings call you would normally read end to end and run the structured-summary prompt on an excerpt. Time the verified read against reading the whole thing, and note where the model editorialised.</li>
+      <li>Write the assist/advise boundary in your own words, in one sentence, and stick it somewhere you will see it. If a colleague asks AI to "pick a stock", you should be able to explain the line in ten seconds.</li>
+      <li>Find one market figure an AI gives you that turns out to be wrong when you check the primary source. You will not have to look hard - and it is the most convincing lesson in this whole course.</li>
+      <li>Note which uses on your desk are genuinely assist, and flag any that quietly drift toward advice or unchecked figures. Those are the ones to redesign with a human gate.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session surveys markets and investing AI at research-assistant depth only, drawing on the Columbia and Wharton finance material and the SEC/FINRA marketing guidance. Portfolio construction math, factor models, and trading mechanics are deferred to future dedicated courses - said honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Columbia Business School x WSP - portfolio / optimization module</span><span class="note">Parts 1-2 · surveyed as research-assistant uses; deep portfolio math deferred to future AI + Investment course</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Wharton (Coursera) - AI for Business, finance module</span><span class="note">Part 2 · applied AI in a finance/markets context, at assist depth</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">SEC / FINRA marketing guidance - "AI-washing"</span><span class="note">Part 3 · not overstating AI capability in market-facing claims</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">MNPI / insider-trading and assist-not-advise rails</span><span class="note">Parts 1 &amp; 3 · public data only, a licensed human owns every conclusion</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Which of these is a legitimate <em>assist</em> use of AI on a research desk?</p>
+      <button class="qopt" type="button">A · Telling a specific client which stock to buy for their situation</button>
+      <button class="qopt" type="button">B · Wiring the model to a trading account to place orders automatically</button>
+      <button class="qopt" type="button">C · Summarising a public earnings-call transcript into bull and bear points a human then checks</button>
+      <p class="qwhy">Summarising public text into a structured draft a human verifies is assist. Personalised advice and automated trading are on the advise side of the line - off-limits for a tool.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · An AI gives you a company's latest revenue figure, stated confidently. What do you do first?</p>
+      <button class="qopt" type="button">A · Verify it against the primary source - the filing or release - before using it anywhere</button>
+      <button class="qopt" type="button">B · Use it right away, since it was stated with confidence</button>
+      <button class="qopt" type="button">C · Ask the model whether it is sure and take its word for it</button>
+      <p class="qwhy">Markets-data hallucination is severe. Models invent plausible figures with total confidence. Every number must be matched to the primary source before it goes anywhere - treat unverified figures as wrong.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · A colleague wants to paste a not-yet-public earnings number into a chatbot to "get a head start". What is the issue?</p>
+      <button class="qopt" type="button">A · It is fine as long as an enterprise tool is used</button>
+      <button class="qopt" type="button">B · That is material non-public information - it must never go into an AI tool, and acting on it is insider trading</button>
+      <button class="qopt" type="button">C · It only matters if the number turns out to be wrong</button>
+      <p class="qwhy">MNPI is the sharpest legal line in finance. Material non-public information must never touch an AI tool, and using AI to act on it is insider trading - a crime. Public data only, always.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 9 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The spine</b><span>AI assists, the licensed human decides. This session is a survey of research-assistant uses - not advice, not a trading system, not stock-picking.</span></div>
+      <div class="cheat-item"><b>Assist side (OK)</b><span>summarise filings + transcripts, compare public figures, screen on criteria you define, draft memos, sentiment on public text.</span></div>
+      <div class="cheat-item"><b>Advise side (never)</b><span>personalised advice, automated trading, unverified figures, and any use of MNPI or insider information.</span></div>
+      <div class="cheat-item"><b>Loudest caution</b><span>markets-data hallucination is severe - models invent confident numbers. Verify every figure against the primary source.</span></div>
+      <div class="cheat-item"><b>Public data only</b><span>public filings, transcripts, exchange data. Never paste MNPI, client holdings, or unpublished financials into a tool.</span></div>
+      <div class="cheat-item"><b>The hard lines</b><span>no personalised advice, no auto-trading, MNPI is a crime, no SEC "AI-washing", beware backtest illusion + overfitting.</span></div>
+      <div class="cheat-item"><b>Verify pass, always</b><span>trace every point to the source text; tie every cell to the source number - even numbers you supplied yourself.</span></div>
+      <div class="cheat-item"><b>Deferred by design</b><span>portfolio math, factor models, and algorithmic trading get their own future courses - taught properly, not squeezed in here.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 9 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b8-risk-fraud-credit.html">← Previous: Risk, fraud &amp; credit</a> &nbsp;·&nbsp; <a href="b10-governance-security-production.html">Next: Governance, security &amp; production →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

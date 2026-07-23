@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 7 · Documents &amp; data: RAG - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 7 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 7 of 10</div>
+    <h1>Documents &amp; data: <span class="accent">interrogate a 10-K with grounded, cited answers</span></h1>
+    <p class="sub">The single most common finance-AI wish: "let me just ask my 10-K, my contract, my policy stack a question." Retrieval-Augmented Generation makes that safe - the model answers from YOUR document and cites the passage, instead of guessing from memory. Tonight you upload a real filing and pull trustworthy, checkable answers out of it.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Builder track</span>
+      <span class="chip audience">Practitioners: analysts · controllership</span>
+      <span class="chip audience">Enterprise chat with file upload</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-21 · RAG, finance uses, limits</span>
+      <span class="a3" style="flex:5">21-42 · Build-along: query &amp; extract</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Ask your documents, not the model's memory</h2>
+    </div>
+    <p class="lede">By now you have grounded answers by pasting numbers into the prompt. That works for a small P&amp;L - it falls apart when the source is a 200-page 10-K, a 40-page credit agreement, or a folder of policies. This session is the grown-up version of grounding: upload the whole document, let the tool find the relevant passages, and get an answer that quotes and cites the source. It is the same rail-one, rail-two discipline you already know, scaled to real filings.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The ability to interrogate a 10-K, an annual report, or a contract and get grounded, cited answers you can verify against the source; a repeatable habit of checking every citation before you trust it; and a field-extraction pattern that turns a dense document into a clean, spot-checkable table of terms.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: RAG IN ONE PICTURE ============ -->
+  <section class="section" id="rag-picture">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · reuses learn-rag-with-phoebe framing</span>
+      <h2>RAG in one picture <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Retrieval-Augmented Generation is a plain idea with a clumsy name. Instead of asking the model what it remembers, you first <em>retrieve</em> the passages of your own document that match the question, then ask the model to answer using only those passages - and to cite them. It solves the "know my 10-K" problem without the model guessing.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A RAG pipeline: your documents are chunked and embedded, the question retrieves the most relevant chunks, and the model produces a grounded answer with a citation">
+        <defs>
+          <marker id="b7pAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 Z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <style>
+          .b7pT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b7pI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b7pX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b7pXi { font: 400 12.5px Inter, sans-serif; fill: #3D2C05; }
+          .b7pN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <rect x="24" y="70" width="176" height="96" rx="12" fill="#0A4A44"/>
+        <text class="b7pT" x="44" y="108">Your documents</text>
+        <text class="b7pX" x="44" y="130">10-K, contract,</text>
+        <text class="b7pX" x="44" y="148">policy stack</text>
+        <rect x="232" y="70" width="176" height="96" rx="12" fill="#0F766E"/>
+        <text class="b7pT" x="252" y="108">Chunk &amp; embed</text>
+        <text class="b7pX" x="252" y="130">split into passages,</text>
+        <text class="b7pX" x="252" y="148">index for search</text>
+        <rect x="440" y="70" width="176" height="96" rx="12" fill="#2DA89E"/>
+        <text class="b7pT" x="460" y="108">Retrieve relevant</text>
+        <text class="b7pX" x="460" y="130">find passages that</text>
+        <text class="b7pX" x="460" y="148">match the question</text>
+        <rect x="648" y="70" width="208" height="96" rx="12" fill="#7FCFC6"/>
+        <text class="b7pI" x="668" y="108">Grounded answer</text>
+        <text class="b7pXi" x="668" y="130">answer + a citation</text>
+        <text class="b7pXi" x="668" y="148">to the source page</text>
+        <line x1="200" y1="118" x2="228" y2="118" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b7pAh)"/>
+        <line x1="408" y1="118" x2="436" y2="118" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b7pAh)"/>
+        <line x1="616" y1="118" x2="644" y2="118" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b7pAh)"/>
+        <rect x="440" y="196" width="176" height="52" rx="10" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="b7pI" x="460" y="218">Your question</text>
+        <text class="b7pXi" x="460" y="238">drives the retrieval</text>
+        <line x1="528" y1="196" x2="528" y2="168" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#b7pAh)"/>
+        <rect x="24" y="286" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b7pN" x="48" y="298">The model never sees the whole file - only the retrieved passages. That is what keeps it grounded.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - a RAG pipeline: documents to chunks to retrieved passages to a grounded, cited answer</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why retrieval beats "I read the whole thing"<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>You could paste a whole filing into a long-context model and sometimes get away with it. RAG is better for finance because it changes <em>what</em> the model answers from, and it leaves a trail you can audit.</p>
+        <ul>
+          <li><strong>Grounded, not remembered.</strong> The answer is built from passages pulled out of your file, so it reflects that document - not a half-remembered version of a similar one from training.</li>
+          <li><strong>Cited, so checkable.</strong> A good RAG tool tells you which section or page it used. That citation is the thing you verify - it turns "trust me" into "here, look".</li>
+          <li><strong>It scales.</strong> One 10-K, a stack of contracts, or a whole policy library - retrieval finds the needle so you do not read the haystack. The mechanics are the same at any size.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The deep dive lives next door</strong>
+          Chunking, embeddings, and retrieval quality are a whole craft. If you want the mechanics under the hood - how chunks are sized, what an embedding is, why retrieval sometimes misses - that is the <em>learn-rag-with-phoebe</em> course. Tonight you use RAG as a finance tool; that course is how it works.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: FINANCE USES ============ -->
+  <section class="section" id="finance-uses">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · enterprise doc-Q&amp;A in the finance function</span>
+      <h2>Finance uses <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Once you can ask a document a grounded question, a surprising slice of finance work turns into a query. The pattern is always the same: point the tool at the source, ask a precise question, and demand a citation. The variety is only in the document.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Where document Q&amp;A earns its keep<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Use case</th><th>The grounded question you ask</th></tr></thead>
+          <tbody>
+            <tr><td>10-K / annual-report Q&amp;A</td><td>"What is the revenue recognition policy? Cite the section."</td></tr>
+            <tr><td>Contract &amp; covenant extraction</td><td>"List every financial covenant and its threshold, with the clause."</td></tr>
+            <tr><td>Policy-stack search</td><td>"What is our approval limit for capital spend? Quote the policy."</td></tr>
+            <tr><td>Invoice / PO field extraction</td><td>"Pull vendor, PO number, net terms, and total from this document."</td></tr>
+          </tbody>
+        </table>
+        <p>Notice the tools you would reach for: an enterprise chat with <strong>file upload</strong>, a "Projects" workspace where you load reference documents once and ask across them, or a vendor's document-Q&amp;A feature built into a contract or filings tool. All the same idea underneath.</p>
+        <div class="callout tip">
+          <strong>Citations are the whole point - so require them</strong>
+          Always add: "Answer only from the document I gave you. Quote the exact passage and its section or page. If the answer is not in the document, say 'not in the document' - do not use outside knowledge." That one instruction converts a plausible summary into a checkable, sourced answer.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Consumer vs enterprise, for documents<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Rail one does not relax just because you are uploading a file instead of pasting text - it gets sharper. A document upload is often <em>more</em> sensitive than a pasted line.</p>
+        <ul>
+          <li><strong>Public filings</strong> (a company's own 10-K, a published annual report) are fine anywhere - they are already public.</li>
+          <li><strong>Your contracts, unpublished policies, and internal financials</strong> go only into an enterprise or local tool that does not train on your data. A signed credit agreement is confidential; treat it that way.</li>
+          <li><strong>Client documents</strong> may carry PII and contractual confidentiality on top. Enterprise or local only, and check you are even allowed to process them this way.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: THE LIMITS ============ -->
+  <section class="section" id="limits">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the failure modes you must know</span>
+      <h2>The limits <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">RAG is a huge upgrade over ungrounded chat, but it is not magic and it is not proof. It can retrieve the wrong passage, or miss the right one entirely, and it reads tables and figures badly. The document is the source of truth - the model's summary is a helpful draft you must check against it.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Three ways RAG quietly misleads you<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Retrieval can miss.</strong> If the relevant passage was not retrieved, the model answers from what it did get - which can be incomplete or the wrong section. A confident answer does not prove the right passage was found.</li>
+          <li><strong>Tables and figures parse poorly.</strong> A number sitting in a multi-column table, a footnote, or an image can be misread or dropped. Financial data lives in exactly these structures, so treat any figure from a table as unverified until you look.</li>
+          <li><strong>The citation is the check, so use it.</strong> Always open the cited passage and confirm it actually says what the answer claims. A citation that does not support the claim is the single most common RAG failure - and the easiest to catch.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The covenant that was almost misread.</strong> An analyst asked a doc-Q&amp;A tool for a leverage covenant threshold. The tool returned a clean "4.0x" with a citation - but the cited clause was the <em>definition</em> of leverage, and the actual threshold, in a table two pages later, was 3.5x stepping down to 3.0x. The number looked authoritative. Opening the citation caught it in seconds. The document was the source of truth; the summary was not.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Interrogate a public 10-K - and check every citation <span class="tag demo">★ 13 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">Upload a real, public filing and ask it three targeted questions. The skill you practise is not asking - it is <em>checking</em>: for each answer, you open the cited passage and confirm it says what the model claims.</p>
+
+    <div class="steps">
+      <div class="step"><p>Grab a public 10-K or annual report - a company you follow, downloaded from its investor-relations site or the SEC. It is public, so any enterprise chat with file upload is fine (rail one).</p></div>
+      <div class="step"><p>Upload it and set the ground rule up front: answer only from this document, quote the passage, cite the section or page, and say "not in the document" if it is not there.</p></div>
+      <div class="step"><p>Ask three targeted questions: (1) the revenue recognition policy, (2) the largest risk factor management flags, (3) the segment or geographic revenue breakdown.</p></div>
+      <div class="step"><p><strong>Now the real work:</strong> for each answer, open the cited section in the filing and read it. Does the passage actually support the claim? Note any answer where the citation is vague or does not match.</p></div>
+      <div class="step"><p>Stress the segment question - it usually lives in a table. See whether the numbers it pulled tie exactly to the table in the document. This is where RAG is weakest, and where your check matters most.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The grounded document-Q&amp;A prompt</span>I have uploaded a public 10-K. Answer ONLY from this document.
+For each question: give a short answer, then quote the exact passage you used
+and cite its section heading or page. If the answer is not in the document,
+say "not in the document" - do not use outside knowledge.
+
+1. What is the company's revenue recognition policy?
+2. What does management describe as the single largest risk factor?
+3. What is the revenue breakdown by segment or geography?
+
+For the segment numbers, tell me which table you read them from so I can check
+them against the source.</div>
+
+    <div class="callout tip">
+      <strong>Why the check is the lesson</strong>
+      Anyone can upload a file and ask a question. The finance professional's edge is the verification step: open the citation, tie the table, catch the miss. The tool retrieves; you decide whether to trust it. That is rail two, applied to documents.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Extract a clean table of fields from a document <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">The other half of document work is extraction: turning prose into a structured list you can act on. Same grounding discipline, different output - and the same duty to spot-check.</p>
+
+    <div class="steps">
+      <div class="step"><p>Pick a document with structured terms - a public contract template, a published bond prospectus, or a synthetic agreement you write yourself. Keep it safe for the tool tier you are using.</p></div>
+      <div class="step"><p>Ask for a clean, structured extraction of specific fields - not a summary. Name the exact fields you want so the output is consistent and comparable.</p></div>
+      <div class="step"><p>Require a citation per field, so each extracted value points back to the clause it came from. A field with no citation is a field you have not verified.</p></div>
+      <div class="step"><p>Spot-check accuracy: pick three fields at random, open the cited clauses, and confirm the value is exact. Dates, amounts, and thresholds are where extraction slips most.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The field-extraction prompt</span>I have uploaded a contract. Extract the following fields into a clean list.
+For each field: give the value, then cite the exact clause or section it came
+from. If a field is not present, write "not in the document".
+
+Fields: parties, effective date, term / expiry, total contract value,
+payment terms, any financial covenants and their thresholds,
+termination-for-convenience notice period, governing law.
+
+Do not infer or estimate - pull only what the document states.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>From a folder of PDFs to a covenant tracker.</strong> A controllership team had 30 loan agreements and no single view of the covenants. A doc-Q&amp;A extraction like this built a first-draft tracker in an afternoon - thresholds, test dates, definitions, each with a clause citation. The draft was 80% right; the team's spot-checks fixed the rest and, crucially, knew <em>where</em> to look because every field carried its source. The AI did the reading; the humans owned the tracker.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Finish both demos if you did not complete them live. The citation-checking step is the one that matters - do not skip it.</li>
+      <li>Take one document you actually work with (public, or synthetic if it is confidential and you lack an enterprise tool) and ask it three questions you usually answer by hand. Time how long the verified answer takes versus reading the whole thing.</li>
+      <li>Find one answer where the citation did not fully support the claim, or a table number that did not tie. Keep it - it is your evidence for why the check is mandatory.</li>
+      <li>Build a small extraction into a table for a document type you handle often (contracts, invoices, filings). Note which fields the tool got wrong so you know where to always look.</li>
+      <li>Optional: skim <em>learn-rag-with-phoebe</em> part 1 if you want to understand why retrieval missed on any question that went wrong.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches document Q&amp;A as a finance tool, reusing the retrieval framing from the sibling course and enterprise doc-Q&amp;A documentation. The under-the-hood mechanics stay with the dedicated RAG course - said honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">learn-rag-with-phoebe - retrieval framing</span><span class="note">Part 1 · RAG concept reused; chunking/embeddings depth stays in that course</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Enterprise document-Q&amp;A documentation (file upload / Projects)</span><span class="note">Parts 1-2 · grounded, cited answers over uploaded documents</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Finance document use-cases (10-K, contracts, policies, invoices)</span><span class="note">Part 2 · where doc-Q&amp;A earns its keep in the finance function</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">RAG failure modes + verification discipline</span><span class="note">Part 3 · retrieval misses, table parsing, citation checking</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · In one line, what does RAG actually do?</p>
+      <button class="qopt" type="button">A · It makes the model memorise your document so it can recall it later</button>
+      <button class="qopt" type="button">B · It retrieves the relevant passages from your document, then answers grounded in them</button>
+      <button class="qopt" type="button">C · It fine-tunes the model on your files overnight</button>
+      <p class="qwhy">Retrieval-Augmented Generation retrieves matching passages from your own document first, then grounds the answer in them - no memorising, no fine-tuning required.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Why do citations matter so much in a finance document-Q&amp;A workflow?</p>
+      <button class="qopt" type="button">A · They make the output look more professional</button>
+      <button class="qopt" type="button">B · They are optional formatting the tool adds automatically</button>
+      <button class="qopt" type="button">C · They point back to the source passage so you can verify the answer against the document</button>
+      <p class="qwhy">A citation is the check. It lets you open the exact passage and confirm the answer is supported - turning a plausible summary into a sourced, checkable one.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · The tool returns a clean segment-revenue figure with a citation. What should you do before using it?</p>
+      <button class="qopt" type="button">A · Open the cited table and confirm the number ties exactly - tables parse poorly</button>
+      <button class="qopt" type="button">B · Trust it, since it gave a citation</button>
+      <button class="qopt" type="button">C · Ask the model to double-check its own answer and take its word for it</button>
+      <p class="qwhy">Tables and figures are where RAG is weakest. A citation is not proof - open the source table and tie the number yourself before it goes anywhere.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 7 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>RAG in one line</b><span>retrieve the relevant passages from YOUR document, then answer grounded in them - and cite the source.</span></div>
+      <div class="cheat-item"><b>The problem it solves</b><span>"know my 10-K / contract / policy" without the model guessing from memory. Scales past what you can paste.</span></div>
+      <div class="cheat-item"><b>Finance uses</b><span>10-K / annual-report Q&amp;A, contract + covenant extraction, policy-stack search, invoice/PO field extraction.</span></div>
+      <div class="cheat-item"><b>The one instruction</b><span>"answer only from the document, quote + cite the passage, say 'not in the document' otherwise."</span></div>
+      <div class="cheat-item"><b>The limits</b><span>retrieval can miss, tables/figures parse poorly, and the answer is not proof - the document is.</span></div>
+      <div class="cheat-item"><b>Always verify</b><span>open every citation and confirm it supports the claim; tie any table number to the source table.</span></div>
+      <div class="cheat-item"><b>Rail one still holds</b><span>public filings anywhere; your contracts, internal financials, client docs → enterprise or local only.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b8 - risk, fraud &amp; credit: explainable anomaly triage, reason codes, and the human gate on every decision.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 7 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b6-excel-sheets-ai.html">← Previous: Excel / Sheets + AI</a> &nbsp;·&nbsp; <a href="b8-risk-fraud-credit.html">Next: Risk, fraud &amp; credit →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

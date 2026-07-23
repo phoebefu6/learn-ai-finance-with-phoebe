@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 2 · Prompting for financial analysis - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 2 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 2 of 10</div>
+    <h1>Prompting for financial analysis: <span class="accent">turn a vague ask into a checkable answer</span></h1>
+    <p class="sub">A finance prompt is not a wish - it is a spec. Tonight you learn the six parts that make an AI answer reliable, the handful of patterns that do the heavy lifting, and the guardrails that keep currency, periods, and rounding honest. You will rebuild a lazy "comment on these results" into a structured prompt that shows its work, then bottle it as a reusable template.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Builder track</span>
+      <span class="chip audience">Practitioners: analysts · FP&amp;A · accounting</span>
+      <span class="chip audience">ChatGPT or Claude</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Why prompts are specs</span>
+      <span class="a2" style="flex:4">3-23 · Anatomy, patterns, guardrails</span>
+      <span class="a3" style="flex:5">23-43 · Build-along: rebuild + template</span>
+      <span class="a4" style="flex:1">43-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>A prompt is a work order, not a wish</h2>
+    </div>
+    <p class="lede">Last session you learned the universal method: <strong>ground it, make it show its work, verify</strong>. This session is where you get good at the "ground it" half. Most disappointing AI output in finance is not a model problem - it is a briefing problem. You would never ask a junior analyst to "comment on these results" with no numbers, no format, and no deadline; a chat AI deserves the same respect. Tonight you write prompts the way you would brief a sharp new hire: role, context, data, task, format, and the rules they must not break.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A six-part checklist for any finance prompt, the five patterns that cover almost everything you will ask, a guardrail block you paste into every prompt so currency and periods stay honest, and a reusable variance-commentary template with placeholders - the first entry in your own prompt library.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: ANATOMY ============ -->
+  <section class="section" id="anatomy">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers CFI advanced prompting + Coursera GenAI Essentials</span>
+      <h2>Anatomy of a reliable finance prompt <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">A strong finance prompt has six layers, and they stack. Drop one and the answer gets vaguer, more invented, or wrongly formatted. You do not need all six every time - but knowing the full stack means you know exactly which layer to add when an answer disappoints.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six stacked layers of a reliable finance prompt: role, context, data, task, format, and constraints - together they equal one strong prompt">
+        <style>
+          .b2aT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b2aI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b2aX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b2aXi { font: 400 12.5px Inter, sans-serif; fill: #10201E; }
+          .b2aN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+          .b2aB { font: 700 14px Inter, sans-serif; fill: #10201E; }
+        </style>
+        <rect x="30" y="24" width="560" height="46" rx="9" fill="#0A4A44"/>
+        <text class="b2aT" x="50" y="45">ROLE</text>
+        <text class="b2aX" x="140" y="45">"You are an FP&amp;A analyst..."</text>
+        <text class="b2aX" x="140" y="61">sets the voice and the standard</text>
+        <rect x="30" y="76" width="560" height="46" rx="9" fill="#0F766E"/>
+        <text class="b2aT" x="50" y="97">CONTEXT</text>
+        <text class="b2aX" x="140" y="97">the business, the period, why it matters</text>
+        <text class="b2aX" x="140" y="113">so the reasoning fits your world</text>
+        <rect x="30" y="128" width="560" height="46" rx="9" fill="#2DA89E"/>
+        <text class="b2aT" x="50" y="149">DATA</text>
+        <text class="b2aX" x="140" y="149">the actual numbers, pasted in</text>
+        <text class="b2aX" x="140" y="165">this is the grounding - no data, no trust</text>
+        <rect x="30" y="180" width="560" height="46" rx="9" fill="#7FCFC6"/>
+        <text class="b2aI" x="50" y="201">TASK</text>
+        <text class="b2aXi" x="140" y="201">the one thing to do: explain, compare, draft</text>
+        <text class="b2aXi" x="140" y="217">specific verb, single job</text>
+        <rect x="30" y="232" width="560" height="46" rx="9" fill="#E6F4F2"/>
+        <text class="b2aB" x="50" y="253">FORMAT</text>
+        <text class="b2aXi" x="140" y="253">table, bullets, or JSON - and how long</text>
+        <text class="b2aXi" x="140" y="269">so the output drops straight into your work</text>
+        <rect x="30" y="284" width="560" height="46" rx="9" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="b2aB" x="50" y="305">CONSTRAINTS</text>
+        <text class="b2aXi" x="140" y="305">show work · only supplied numbers</text>
+        <text class="b2aXi" x="140" y="321">say "not in the data" · state assumptions</text>
+        <path d="M610 24 q22 0 22 22 v240 q0 22 22 22" fill="none" stroke="#BCD3CF" stroke-width="2"/>
+        <text class="b2aB" x="644" y="180">= one strong</text>
+        <text class="b2aB" x="644" y="200">prompt</text>
+        <rect x="30" y="348" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b2aN" x="54" y="360">Answer disappointed? Add the missing layer - do not just say "try again".</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - six layers that stack into one strong finance prompt</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The six layers, in the order you write them<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Write them top to bottom and the prompt almost drafts itself. Each layer answers one question the model would otherwise guess at.</p>
+        <ul>
+          <li><strong>Role</strong> - "You are a controller / FP&amp;A analyst / credit analyst." Sets vocabulary and rigour. A model told it is an analyst hedges and shows work; told nothing, it chats.</li>
+          <li><strong>Context</strong> - the business, the period, the audience for the answer. "This is for a board pack" produces different prose than "explain to me".</li>
+          <li><strong>Data</strong> - paste the actual numbers. This is rail-one grounding from b1. Public or synthetic data in a consumer tool; real financials in enterprise or local only.</li>
+          <li><strong>Task</strong> - one clear verb: explain, compare, reconcile, draft. Two tasks in one prompt gives you two half-answers.</li>
+          <li><strong>Format</strong> - table, bullets, JSON, word count. Say it up front and you stop re-asking "now put that in a table".</li>
+          <li><strong>Constraints</strong> - the honesty rules: show every calculation, use only the numbers supplied, say "not in the data" instead of inventing, and state any assumption made.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The constraints layer is where finance lives</strong>
+          Anyone can ask for a summary. The four constraint lines - show work, only supplied numbers, "not in the data", state assumptions - are what turn a chatty answer into one you can put your name on. Never skip them.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The constraint lines, ready to paste<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Keep these four lines on a sticky note. They are the difference between an answer you trust and one you re-check line by line.</p>
+        <div class="prompt-box good"><span class="label">★ The reusable constraint block</span>Rules:
+- Use ONLY the numbers I supplied above. Do not add outside figures.
+- Show every calculation step by step so I can check the math.
+- If something you need is missing, say "not in the data" - do not estimate.
+- State any assumption you make as a separate, labelled line.</div>
+        <p>Paste this at the end of any analytical prompt. It costs you four lines and buys you a checkable answer. Everything after this in the track assumes you are using something like it.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: CORE PATTERNS ============ -->
+  <section class="section" id="patterns">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers CFI advanced prompting patterns</span>
+      <h2>The core patterns - five moves that cover most work <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">You do not need fifty prompt tricks. Five patterns handle the overwhelming majority of finance asks, and they combine. Learn when each one earns its place and you stop guessing.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Pattern picker - when to reach for each<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Pattern</th><th>What it does</th><th>Reach for it when...</th></tr></thead>
+          <tbody>
+            <tr><td>Few-shot (show an example)</td><td>Give one sample comment in your house style; the model matches it</td><td>You want consistent tone and structure across many outputs</td></tr>
+            <tr><td>Role prompting</td><td>"You are a controller reviewing the close"</td><td>You want the rigour and vocabulary of a specific finance role</td></tr>
+            <tr><td>Step-by-step decomposition</td><td>"First compute variances, then rank, then comment on the top 3"</td><td>The task has stages and you want the math visible and ordered</td></tr>
+            <tr><td>Output control</td><td>"Return a 3-column table" or "return valid JSON with these keys"</td><td>The answer feeds a doc, a sheet, or another system</td></tr>
+            <tr><td>Self-check</td><td>"List your assumptions and what I should verify before I use this"</td><td>Always - it is your built-in rail-two review step</td></tr>
+          </tbody>
+        </table>
+        <p>Few-shot is the quiet hero. One good example of a variance comment teaches the model your style faster than three paragraphs of instructions ever will.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Few-shot and self-check, shown<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Few-shot</strong> means you supply the pattern, not just the instruction. Watch how one example locks the style:</p>
+        <div class="prompt-box good"><span class="label">★ Few-shot: teach the house style with one example</span>Here is the style I want for variance comments:
+
+Example: "Marketing was 120 over budget (620 vs 500, +24%), driven by
+the Q2 campaign pulled forward from Q3. Timing, not overspend - full-year
+still on plan."
+
+Now write comments in that exact style for these three variances:
+[paste your variances]</div>
+        <p><strong>Self-check</strong> makes the model hand you its own review notes - the single cheapest way to honour rail two inside the prompt itself:</p>
+        <div class="prompt-box good"><span class="label">★ Self-check: make it flag its own soft spots</span>After your analysis, add a short section titled "Verify before use":
+list every assumption you made, any number you were unsure about,
+and the one thing I should double-check against source before I send this.</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: GUARDRAILS ============ -->
+  <section class="section" id="guardrails">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · finance-specific hygiene</span>
+      <h2>Finance guardrails inside the prompt <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">General prompting advice ignores the things that get finance people in trouble: the wrong currency, a quarter compared to a full year, or a percentage rounded three different ways in one memo. Bake the hygiene into the prompt so the model cannot drift.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Five lines that stop silent finance errors<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Currency and units.</strong> "All figures in SGD thousands" - or the model may silently mix dollars and thousands, or assume USD.</li>
+          <li><strong>Period labels.</strong> Spell out Q1 vs FY, actual vs budget, this year vs last. A comparison against the wrong base is worse than no comparison.</li>
+          <li><strong>Rounding.</strong> "Round to whole numbers; percentages to one decimal." Consistency reads as competence in a board pack.</li>
+          <li><strong>Materiality.</strong> "Only comment on variances above 50k or 10%." Stops the model narrating trivia and burying the real story.</li>
+          <li><strong>Only these numbers.</strong> The b1 grounding rule, restated every time: no outside figures, no memory, no filling gaps.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The memo that mixed thousands and millions.</strong> An analyst pasted a P&amp;L in thousands but asked for commentary "in millions" - the model gamely reported revenue of "4.1 million" when it was 4.1 thousand-times-something-else. It looked authoritative and was off by orders of magnitude. One line - "all figures in SGD thousands, do not convert" - would have prevented it. Guardrails are cheaper than corrections.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Rebuild "comment on these results" into a real prompt <span class="tag demo">★ 12 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">The most common finance prompt in the wild is also the worst: "comment on these results". We take that lazy ask, run it, feel the vagueness, then rebuild it layer by layer on a small supplied P&amp;L - and iterate once to sharpen it.</p>
+
+    <div class="steps">
+      <div class="step"><p>Open ChatGPT or Claude. Paste the small P&amp;L below (it is synthetic - safe for any tool, rail one). You will use it for both prompts.</p></div>
+      <div class="step"><p><strong>Run the vague version first</strong> (Prompt A). Notice what you get: generic prose, maybe invented drivers, no math shown, no idea which variances actually matter.</p></div>
+      <div class="step"><p><strong>Now rebuild it</strong> with the six layers (Prompt B): role, context, the data, one clear task, a table format, and the constraint block. Run it.</p></div>
+      <div class="step"><p>Compare. The structured answer ranks variances by size, shows the subtraction, respects your materiality threshold, and flags what to verify. That is the same fiction-to-checkable jump from b1, now on purpose.</p></div>
+      <div class="step"><p><strong>Iterate once.</strong> Add a single refinement - "add a one-line 'so what' for the CFO under the table" - and re-run. Feel how cheap it is to steer once the structure is right. That is the whole skill.</p></div>
+    </div>
+
+    <div class="prompt-box bad"><span class="label">Prompt A - vague (produces generic, ungrounded prose)</span>Here are our results. Comment on these results.
+
+Revenue 4,120. Marketing 620. Salaries 1,900. Operating profit 700.</div>
+
+    <div class="prompt-box good"><span class="label">★ Prompt B - the six-layer rebuild</span>You are an FP&amp;A analyst preparing month-end commentary for the CFO.
+Context: this is our May actual vs budget, SGD thousands, one business unit.
+
+Data (use ONLY these numbers):
+Line          Actual   Budget
+Revenue        4,120    3,950
+Marketing        620      500
+Salaries       1,900    1,880
+Other opex        900      920
+Operating profit  700      650
+
+Task: explain what drove the operating-profit variance vs budget.
+
+Format: a table with columns Line | Actual | Budget | Variance | % | Comment,
+then one line "So what for the CFO" beneath it.
+
+Rules:
+- Use ONLY the numbers above; all figures SGD thousands; percentages to 1 decimal.
+- Only comment on variances above 50 or 10%.
+- Show the subtraction for each variance so I can check it.
+- If something needed is missing, say "not in the data" - do not estimate.
+- End with "Verify before use": list any assumption and what I should double-check.</div>
+
+    <div class="callout tip">
+      <strong>Why we rebuild rather than nag</strong>
+      When Prompt A disappoints, the instinct is to type "no, be more specific". That is slow and unreliable. Adding the missing layers is faster and repeatable - and it is exactly what the anatomy diagram is for. Diagnose the gap, add the layer.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Bottle it: a reusable variance-commentary template <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">A great prompt you have to rewrite every month is a chore. A great prompt with placeholders is a tool. We turn Prompt B into a template you fill in seconds - the first entry in your prompt library.</p>
+
+    <div class="steps">
+      <div class="step"><p>Take the structure of Prompt B and replace the specifics with clearly marked placeholders in square brackets: role, period, currency, the data table, and the materiality threshold.</p></div>
+      <div class="step"><p>Save it somewhere you will find it - a notes doc, a shared team page, or your tool's saved-prompts feature. Give it a name: "Variance commentary v1".</p></div>
+      <div class="step"><p>Test the template by filling it with this month's numbers. If a placeholder is unclear, tighten the wording now, while you remember what you meant.</p></div>
+      <div class="step"><p>Start a running "prompt library" file. Every reusable prompt from this track goes in it - by b10 you will have a small, battle-tested toolkit no one handed you.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ Variance commentary template (fill the [placeholders])</span>You are a [FP&amp;A analyst / controller] preparing [monthly / quarterly]
+commentary for [the CFO / the board]. All figures in [SGD thousands].
+Period: [May actual vs budget].
+
+Data (use ONLY these numbers):
+[paste your table: Line | Actual | Budget]
+
+Task: explain the drivers of the [operating-profit] variance vs [budget].
+
+Format: a table with columns Line | Actual | Budget | Variance | % | Comment,
+then one line "So what for [the CFO]".
+
+Rules:
+- Use ONLY the numbers above; percentages to [1] decimal.
+- Only comment on variances above [50] or [10%].
+- Show each subtraction so I can check the math.
+- Say "not in the data" for anything missing - do not estimate.
+- End with "Verify before use": assumptions + what I should double-check.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>From two hours to twenty minutes.</strong> A group FP&amp;A analyst templated her monthly variance pack this way. The first draft used to eat a morning; now she pastes the numbers, runs the template, and spends her time on the judgement - checking the math and sharpening the "so what". The AI did not replace her. It deleted the boring 80% so she could do the 20% that is actually her job.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Finish both demos if you ran short in class - especially the rebuild. Feeling the jump from Prompt A to Prompt B is the lesson.</li>
+      <li>Take one prompt you actually use at work and add the missing anatomy layers. Note which layer was missing - that is usually your habitual blind spot.</li>
+      <li>Build one more template from your real recurring work: a flash-report prompt, a reconciliation-explainer, or a KPI-summary. Add it to your prompt library.</li>
+      <li>Try the few-shot pattern once: give the model one example of your house style and see how much closer it lands than instructions alone.</li>
+      <li>Optional: swap templates with a colleague. The fastest way to improve a prompt is to watch someone else fill it in and get confused.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches from public prompting curricula for finance. Certificates, graded assessments, and paid tooling stay with the official programs - noted honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">CFI - AI for Finance: advanced prompting</span><span class="note">Parts 1-2 · anatomy, few-shot, role, decomposition, output control</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Coursera - Generative AI Essentials for Finance &amp; Accounting</span><span class="note">Parts 1-3 · prompt engineering for finance workflows, ChatGPT + Claude</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Finance prompt hygiene (currency, period, materiality)</span><span class="note">Part 3 · practitioner guardrails, applied through b3-b5</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · What are the six layers of a reliable finance prompt?</p>
+      <button class="qopt" type="button">A · Greeting, question, please, thank you, deadline, sign-off</button>
+      <button class="qopt" type="button">B · Model, temperature, tokens, format, length, seed</button>
+      <button class="qopt" type="button">C · Role, context, data, task, format, constraints</button>
+      <p class="qwhy">Role sets the standard, context fits your world, data grounds it, task is the one job, format shapes the output, and constraints carry the honesty rules. Drop one and the answer drifts.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · You need the same style of variance comment across twenty line items. Which pattern helps most?</p>
+      <button class="qopt" type="button">A · Ask "please be consistent" and hope</button>
+      <button class="qopt" type="button">B · Few-shot - give one example comment in your house style to match</button>
+      <button class="qopt" type="button">C · Use a bigger model</button>
+      <p class="qwhy">One concrete example teaches style faster than any amount of instruction. Few-shot is the quiet workhorse of consistent finance output.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Why add a self-check line ("list your assumptions and what I should verify")?</p>
+      <button class="qopt" type="button">A · It builds the rail-two review step into the prompt so you know what to double-check</button>
+      <button class="qopt" type="button">B · It makes the model more accurate on arithmetic</button>
+      <button class="qopt" type="button">C · It shortens the answer</button>
+      <p class="qwhy">Self-check hands you the model's own soft spots to verify. It does not replace your review - it focuses it. That is rail two, baked into the prompt.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>A prompt is a spec</b><span>brief the AI like a sharp new hire - role, context, data, task, format, rules. Vague in, vague out.</span></div>
+      <div class="cheat-item"><b>Six layers</b><span>ROLE + CONTEXT + DATA + TASK + FORMAT + CONSTRAINTS. Answer weak? Add the missing layer, do not just nag.</span></div>
+      <div class="cheat-item"><b>Constraint block</b><span>only supplied numbers · show every step · "not in the data" · state assumptions. Paste it every time.</span></div>
+      <div class="cheat-item"><b>Five patterns</b><span>few-shot, role, step-by-step, output control, self-check. Few-shot is the quiet hero for consistency.</span></div>
+      <div class="cheat-item"><b>Finance guardrails</b><span>currency + units, period labels (Q1 vs FY), rounding, materiality threshold, only these numbers.</span></div>
+      <div class="cheat-item"><b>Self-check = rail 2</b><span>"list assumptions and what I should verify" builds your review step into the prompt itself.</span></div>
+      <div class="cheat-item"><b>Templates, not rewrites</b><span>bottle a good prompt with [placeholders]; start a prompt library that grows across the track.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b3 - month-end close copilot: reconcile, spot anomalies, and draft the variance narrative on real close data.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 2 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b1-ai-foundations-finance.html">← Previous: AI foundations for finance</a> &nbsp;·&nbsp; <a href="b3-month-end-close-copilot.html">Next: Month-end close copilot →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 1 · AI foundations for finance - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 1 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 1 of 10</div>
+    <h1>AI foundations for finance: <span class="accent">what it really does with your numbers</span></h1>
+    <p class="sub">Before any close copilot or forecast, one honest hour: what a large language model is genuinely good at in finance, where it quietly lies, and the two rails that keep you out of trouble. By the end you can tell a trustworthy AI output from a plausible-looking one - the single most valuable skill in this whole track.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Builder track</span>
+      <span class="chip audience">Practitioners: analysts · FP&amp;A · accounting · treasury</span>
+      <span class="chip audience">ChatGPT or Claude · no ML degree needed</span>
+      <span class="chip time">Start here</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · What AI does with numbers</span>
+      <span class="a3" style="flex:5">18-42 · Build-along: grounded vs ungrounded</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>How this track works</h2>
+    </div>
+    <p class="lede">Ten sessions, all hands-on, all on real finance work. Tonight you learn what the tool actually is; then b2 teaches prompting for analysis, b3 builds the flagship <strong>month-end close copilot</strong> with a live lever simulator, and b4-b10 add forecasting, board-ready narrative, Excel, document Q&amp;A, risk, markets, and a safe path to production. You do not need to code or know machine learning - if you can write a clear email and read a P&amp;L, you can do every session. Two rails run through all ten, starting now.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A clear mental model of what an LLM can and cannot be trusted to do with financial data, a two-rail safety habit (data-privacy + assist-not-decide) you will use every session, a side-by-side demo of a fabricated answer versus a grounded one, and your own one-page "AI ground rules" for your finance team.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: WHAT AN LLM ACTUALLY IS ============ -->
+  <section class="section" id="what-llm-is">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers Coursera "Intro to AI for Finance" + Columbia/WSP AI literacy</span>
+      <h2>What an LLM actually is - for a finance brain <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">A large language model is a very good next-word predictor trained on a huge slice of text. That one fact explains everything useful and everything dangerous about it in finance. It is a language engine, not a calculator - so it is brilliant at drafting, reasoning, and structuring, and untrustworthy at silent arithmetic. The whole skill is knowing which is which.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="What to trust an LLM with in finance: strong at drafting, reasoning over supplied data, and extraction; risky at raw arithmetic - ground it and verify">
+        <style>
+          .b1cT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b1cI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b1cX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b1cXi { font: 400 12.5px Inter, sans-serif; fill: #3D2C05; }
+          .b1cN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <rect x="30" y="46" width="195" height="96" rx="12" fill="#0F766E"/>
+        <text class="b1cT" x="52" y="84">Draft &amp; summarize</text>
+        <text class="b1cX" x="52" y="106">commentary, memos,</text>
+        <text class="b1cX" x="52" y="124">emails - trust, then edit</text>
+        <rect x="240" y="46" width="195" height="96" rx="12" fill="#2DA89E"/>
+        <text class="b1cT" x="262" y="84">Reason over YOUR</text>
+        <text class="b1cT" x="262" y="102">data</text>
+        <text class="b1cX" x="262" y="124">explain what you give it</text>
+        <rect x="450" y="46" width="195" height="96" rx="12" fill="#7FCFC6"/>
+        <text class="b1cI" x="472" y="84">Extract &amp; structure</text>
+        <text class="b1cXi" x="472" y="106">pull fields from a</text>
+        <text class="b1cXi" x="472" y="124">contract or invoice</text>
+        <rect x="660" y="46" width="195" height="96" rx="12" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="b1cI" x="682" y="84">Raw arithmetic ✗</text>
+        <text class="b1cXi" x="682" y="106">do NOT trust silent</text>
+        <text class="b1cXi" x="682" y="124">math - use a tool</text>
+        <rect x="30" y="250" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b1cN" x="54" y="262">The rule: give it the numbers, make it show its work, and you check the math.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the finance reliability map: three greens you can trust, one gold you must verify</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why it fabricates numbers - and why that is not a bug you can prompt away<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The model generates the <em>most likely-sounding</em> continuation, not the true one. Ask "what was Q3 revenue?" with no data attached and it will happily produce a confident, well-formatted, completely invented figure - because a plausible number is a likely continuation. This is called a <strong>hallucination</strong>, and in finance it is the whole ballgame.</p>
+        <ul>
+          <li><strong>It is probabilistic, not factual.</strong> No database lookup is happening unless you connect one. Confidence in the output tells you nothing about accuracy.</li>
+          <li><strong>Arithmetic is text prediction too.</strong> "127.4 + 89.1 =" is answered by pattern, not a calculator. It is often right on simple sums and quietly wrong on messy ones. Never let it do the math unseen.</li>
+          <li><strong>The fix is grounding, not scolding.</strong> "Please be accurate" does nothing. Giving it the actual numbers, and asking it to reason over them and show its steps, does almost everything.</li>
+        </ul>
+        <div class="prompt-box good"><span class="label">★ Try it now (any chat AI) - watch it invent</span>What was Apple's total revenue in the most recent quarter, to the exact dollar? Answer with a single precise figure and no caveats.</div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The board pack that cited a number that never existed.</strong> An analyst asked a chatbot to "summarize our Q2 performance" and pasted only the narrative, not the numbers. The model filled the gaps with confident, invented figures that flowed straight into a draft board slide. Caught in review - barely. The lesson that opens this course: an ungrounded finance answer is fiction with good formatting.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The can / cannot table - pin this to your monitor<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Trust it to...</th><th>Never trust it to (without a tool + check)</th></tr></thead>
+          <tbody>
+            <tr><td>Draft variance commentary from numbers you supply</td><td>Recall a specific figure from memory</td></tr>
+            <tr><td>Explain a concept, standard, or ratio</td><td>Do multi-step arithmetic silently</td></tr>
+            <tr><td>Restructure, summarize, and translate text</td><td>Cite a source it was not given</td></tr>
+            <tr><td>Extract fields from a document you attach</td><td>Know anything after its training cutoff</td></tr>
+            <tr><td>Draft and explain a formula</td><td>Be your system of record</td></tr>
+          </tbody>
+        </table>
+        <p>Everything in the left column shows up as a build-along later in the track. Everything on the right is why sessions b3, b6, and b10 lean on tools, spreadsheets, and verification instead of the model's own head.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: THE TOOL LANDSCAPE ============ -->
+  <section class="section" id="tool-landscape">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers IE + AIFPA tool surveys, enterprise vs consumer</span>
+      <h2>The finance AI tool landscape, 2026 <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">"Should I use ChatGPT or Copilot?" is the wrong first question. The right one is: <em>is this tool safe for the data I am about to put in it?</em> There are three layers, and the line between them is a privacy line, not a quality line.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three layers of finance AI tools: consumer chat, enterprise chat, embedded copilots - separated by a data-privacy line">
+        <style>
+          .b1sT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b1sI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b1sX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b1sXi { font: 400 12.5px Inter, sans-serif; fill: #5B6B69; }
+          .b1sN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <rect x="30" y="40" width="540" height="58" rx="12" fill="#7FCFC6"/>
+        <text class="b1sI" x="54" y="66">Embedded copilots</text>
+        <text class="b1sI" x="54" y="86" font-weight="400" font-size="12.5">Excel Copilot · Datarails · ERP &amp; close-tool copilots</text>
+        <rect x="30" y="120" width="540" height="58" rx="12" fill="#0F766E"/>
+        <text class="b1sT" x="54" y="146">Enterprise chat</text>
+        <text class="b1sX" x="54" y="166">ChatGPT Enterprise · Claude Team · Copilot M365 - not trained on your data</text>
+        <rect x="30" y="200" width="540" height="58" rx="12" fill="#0A4A44"/>
+        <text class="b1sT" x="54" y="226">Consumer chat</text>
+        <text class="b1sX" x="54" y="246">ChatGPT Free/Plus · Claude Free · Gemini - fast, but check retention + training</text>
+        <rect x="610" y="120" width="240" height="138" rx="12" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="b1sI" x="632" y="148">The privacy line</text>
+        <text class="b1sXi" x="632" y="172">Real financials, MNPI,</text>
+        <text class="b1sXi" x="632" y="190">client PII → enterprise</text>
+        <text class="b1sXi" x="632" y="208">or local tools only.</text>
+        <text class="b1sXi" x="632" y="232">Public/synthetic data →</text>
+        <text class="b1sXi" x="632" y="250">consumer is fine.</text>
+        <rect x="30" y="284" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b1sN" x="54" y="296">Same model quality across layers - what changes is where your data goes.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - three tool layers, one privacy line that decides which you may use</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Consumer vs enterprise - the setting that matters most<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The capability gap between a free chatbot and its enterprise tier is small. The <strong>data-governance</strong> gap is enormous, and it is the only thing your risk team cares about.</p>
+        <ul>
+          <li><strong>Consumer tiers</strong> may retain conversations and, depending on settings, use them to improve models. Fine for public filings, concepts, and synthetic data - never for real financials.</li>
+          <li><strong>Enterprise tiers</strong> (ChatGPT Enterprise, Claude Team/Enterprise, Copilot for M365) contractually do not train on your data, add admin controls, SSO, and retention settings. This is the tier your firm should license before anyone touches real numbers.</li>
+          <li><strong>Embedded copilots</strong> live inside Excel, your ERP, or an FP&amp;A tool like Datarails - convenient and governed by that vendor's terms. Read them the same way.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>One-question test before you paste</strong>
+          "If this text leaked publicly tomorrow, is that fine?" Yes → any tool. No → enterprise or local only. That single question is rail one, and it never relaxes.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The 2026 landscape at a glance<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>General assistants:</strong> ChatGPT, Claude, Gemini, Microsoft Copilot - the workhorses for drafting, analysis-over-supplied-data, and Q&amp;A.</li>
+          <li><strong>In-suite:</strong> Copilot in Excel/Word/Teams, Gemini in Google Workspace - AI where your work already lives (session b6).</li>
+          <li><strong>FP&amp;A + finance-native:</strong> Datarails, Vena, Planful and ERP vendors are shipping copilots for forecasting, close, and reporting.</li>
+          <li><strong>The market signal:</strong> 59% of finance functions already use some AI, and nearly 4 in 5 CFOs plan to deploy generative AI within 24 months. The question at your firm is no longer "if" but "governed how".</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: THE TWO RAILS ============ -->
+  <section class="section" id="two-rails">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the safety habit every later session assumes</span>
+      <h2>The two rails: privacy, and assist-not-decide <span class="tag concept">4 min live</span></h2>
+    </div>
+    <p class="lede">Everything else in this course is technique. These two rails are non-negotiable, and they are what separates a finance professional using AI well from a headline about a finance professional who used it badly.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Rail 1 - the data-privacy line<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Never paste <strong>material non-public information</strong> (MNPI), client PII, or unpublished financials into a consumer AI tool. This is not caution for its own sake - it is securities law, data-protection law (PDPA, GDPR), and your firm's confidentiality obligations, all at once. Use the enterprise or local path for anything real.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Samsung's ban.</strong> Engineers pasted confidential source code into a consumer chatbot to debug it; the company banned generative AI on internal machines within weeks. The finance equivalent - pasting a pre-release earnings table to "help write the commentary" - is worse, because it can also be insider-information mishandling. Rail one exists so you never make that headline.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Rail 2 - AI assists, the licensed human decides<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>AI drafts, suggests, and flags. A qualified human reviews and owns every number, filing, credit decision, and piece of advice that leaves the building. Nothing in this course is investment, tax, accounting, or legal advice, and no workflow here makes an automated decision about a person's money without a human in the loop.</p>
+        <ul>
+          <li><strong>Accountability does not transfer to the model.</strong> "The AI said so" is not a defence to an auditor, a regulator, or a client.</li>
+          <li><strong>Regulators are watching the claim, too.</strong> The SEC has penalised "AI-washing" - overstating what your AI does. Be as honest externally as you are internally.</li>
+          <li><strong>Design for it.</strong> Every workflow you build gets a review step. In b3 that is a human sign-off on the variance narrative; in b8 it is a human decision on every flagged item.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Say it out loud once</strong>
+          "AI assists, I decide, I own it." That sentence is the spine of the entire builder track. If a vendor pitch or a colleague's shortcut violates it, that is your cue to slow down.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Ungrounded vs grounded - see the fabrication die <span class="tag demo">★ 12 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">The single most important habit in the course, in one experiment. Ask the same analytical question twice - once from the model's memory, once with the actual numbers attached - and watch a confident invention become a checkable answer.</p>
+
+    <div class="steps">
+      <div class="step"><p>Open any chat AI. Pick a small, non-confidential number set: a public company's headline figures, or make up a tiny 6-line P&amp;L. Keep it safe for a consumer tool (rail one).</p></div>
+      <div class="step"><p><strong>Ungrounded ask:</strong> without pasting any data, ask it to "explain the main driver of the change in operating margin this quarter, with the numbers". Note how specific - and how invented - the figures are.</p></div>
+      <div class="step"><p><strong>Grounded ask:</strong> paste your actual number set, then ask the same question - and add "use only the numbers I gave you, show the subtraction, and say 'not in the data' if something is missing".</p></div>
+      <div class="step"><p>Compare. The grounded answer ties to your figures, shows its arithmetic so you can check it, and admits gaps. That delta - fiction to checkable - is the value of everything that follows.</p></div>
+      <div class="step"><p>Now stress it: remove one number it needs and re-run the grounded prompt. A good prompt makes it say "not in the data" instead of inventing. That is the behaviour you will engineer on purpose in b2.</p></div>
+    </div>
+
+    <div class="prompt-box bad"><span class="label">Prompt A - ungrounded (produces confident fiction)</span>Explain the main driver of the change in our operating margin this quarter, with the specific numbers.</div>
+
+    <div class="prompt-box good"><span class="label">★ Prompt B - grounded (produces a checkable answer)</span>Here is our data (use ONLY these numbers):
+Revenue: Q2 4,120  Q1 3,880
+COGS: Q2 2,610  Q1 2,380
+Operating expenses: Q2 980  Q1 990
+
+Explain the main driver of the change in operating margin from Q1 to Q2.
+Rules: use only the numbers above, show every subtraction and the margin math
+step by step so I can check it, and if something needed is missing say
+"not in the data" rather than estimating.</div>
+
+    <div class="callout tip">
+      <strong>Why this is demo one</strong>
+      Every later session is a variation on "ground it, make it show its work, verify". Close copilot (b3), forecasting (b4), and reporting (b5) are this same move on bigger data. Learn it once tonight.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Write your team's one-page AI ground rules <span class="tag demo">★ 10 min · build your own</span></h2>
+    </div>
+    <p class="lede">A reusable artifact you will actually keep: a short, concrete "how our finance team uses AI" card. You draft it with the AI, then you edit it - which is itself rail two in miniature.</p>
+
+    <div class="steps">
+      <div class="step"><p>Give the AI the two rails and your context: team, tools you have licensed (or not), and the data types you handle (management accounts, client data, MNPI).</p></div>
+      <div class="step"><p>Ask for a one-page card with three sections: <em>Green light</em> (safe uses + tools), <em>Red light</em> (never do this), and <em>Always</em> (verify math, human sign-off, cite the source data).</p></div>
+      <div class="step"><p>Edit it hard. Cut anything vague, add your firm's actual tool names and approvers. The AI draft is 70%; your judgement is the 30% that makes it real - and the 30% that matters.</p></div>
+      <div class="step"><p>Save it where your team will see it. You will refine it again in the leader track's session a3 (governance) and the builder finale b10 (production).</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The ground-rules prompt</span>Draft a one-page "AI ground rules" card for a corporate finance team.
+Context: we handle management accounts and some client PII; we have licensed
+[Claude Team / ChatGPT Enterprise / nothing yet - pick one].
+
+Build it around two rails:
+1) Privacy: real financials, MNPI, and client PII go only in enterprise/local tools.
+2) AI assists, a qualified human decides and owns the output.
+
+Format: three short lists - Green light (safe uses + which tool), Red light
+(never), and Always (verify the math, human sign-off, cite source data).
+Plain language, no jargon, fits on one page.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The card that unblocked a team.</strong> A controller's group was frozen - half afraid of AI, half already pasting into free chatbots. A one-page card like this, agreed in a 30-minute meeting, replaced fear and free-for-all with a shared green light. Adoption went up <em>and</em> risk went down, because "what's allowed" stopped being a guess.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Finish both demos if you did not complete them live - especially the grounded-vs-ungrounded experiment. Feeling the fabrication yourself is worth more than being told about it.</li>
+      <li>Run the ungrounded prompt on three questions you actually get asked at work. Screenshot the invented specifics - that is your reminder of why grounding matters.</li>
+      <li>Finalise your one-page AI ground rules and share it with one colleague for a sanity check.</li>
+      <li>Confirm which tool tier you are cleared to use for real data. If the answer is "none yet", that is a great thing to raise - and the leader track's a5 gives your manager the business case.</li>
+      <li>Optional: skim your firm's existing AI or data-handling policy. Bring one question it does not answer to session b2.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This track teaches from public finance-AI curricula and vendor documentation. Certificates, graded assessments, and paid tooling stay with the official programs - all noted honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Coursera - Introduction to AI for Finance Professionals</span><span class="note">Part 1 · AI fundamentals, opportunities, and limitations</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Columbia x Wall Street Prep - AI for Business &amp; Finance (literacy)</span><span class="note">Part 1 · what LLMs are and are not, in a finance context</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">IE + FP&amp;A Institute (AIFPA) - tool surveys</span><span class="note">Part 2 · consumer vs enterprise vs embedded; full FP&amp;A depth in b4</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Data-handling + AI-washing guidance (PDPA/GDPR, SEC)</span><span class="note">Part 3 · the two rails, sourced in the course map</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · You ask a chatbot "what was our Q3 revenue?" with no data attached. It gives a precise figure. What do you know?</p>
+      <button class="qopt" type="button">A · It looked it up in a database</button>
+      <button class="qopt" type="button">B · It likely invented a plausible number - confidence tells you nothing about accuracy</button>
+      <button class="qopt" type="button">C · The number is accurate if it sounds specific</button>
+      <p class="qwhy">An LLM predicts likely text, not true facts. With no data attached, a precise figure is a hallucination with good formatting. Ground it, then verify.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · You need to draft variance commentary from your real, pre-release management accounts. Which tool is acceptable?</p>
+      <button class="qopt" type="button">A · Any free chatbot - the model is the same</button>
+      <button class="qopt" type="button">B · Whichever is fastest to open</button>
+      <button class="qopt" type="button">C · An enterprise or local tool that contractually does not train on your data</button>
+      <p class="qwhy">Rail one. Real, non-public financials go only into enterprise or local tools. The capability is similar across tiers; the data-governance is not.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · What is the reliable fix for an AI that fabricates or fumbles numbers?</p>
+      <button class="qopt" type="button">A · Give it the actual data, ask it to show its work, and verify the math yourself</button>
+      <button class="qopt" type="button">B · Add "please be accurate and do not hallucinate" to the prompt</button>
+      <button class="qopt" type="button">C · Use a bigger, newer model</button>
+      <p class="qwhy">Scolding does nothing; grounding does almost everything. Supply the numbers, make the steps visible, and keep a human check. That is the whole track in one line.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>An LLM is</b><span>a next-word predictor - a language engine, not a calculator. Great at words, risky at silent math.</span></div>
+      <div class="cheat-item"><b>Hallucination</b><span>confident, plausible, invented output. Confidence ≠ accuracy. Ungrounded finance answers are fiction with formatting.</span></div>
+      <div class="cheat-item"><b>The universal fix</b><span>ground it (give the data) → make it show its work → you verify the math. Every session is a variation on this.</span></div>
+      <div class="cheat-item"><b>Trust it to</b><span>draft, summarize, reason over data you supply, extract from documents, explain formulas.</span></div>
+      <div class="cheat-item"><b>Never trust unchecked</b><span>recalled figures, silent arithmetic, sources it was not given, anything past its training cutoff.</span></div>
+      <div class="cheat-item"><b>Rail 1 - privacy</b><span>MNPI, client PII, unpublished financials → enterprise or local tools only. "Would a leak be fine?"</span></div>
+      <div class="cheat-item"><b>Rail 2 - assist not decide</b><span>AI drafts, a licensed human decides and owns it. Nothing here is advice; no auto-decisions on people's money.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b2 - prompting for financial analysis: turn a vague ask into a reliable, checkable output on purpose.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 1 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="b2-prompting-financial-analysis.html">Next: Prompting for financial analysis →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

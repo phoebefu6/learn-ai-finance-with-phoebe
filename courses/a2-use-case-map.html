@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 2 · The use-case map - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Leader session 2 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Leader track · Session 2 of 6</div>
+    <h1>The use-case map: <span class="accent">score the bets, not the demos</span></h1>
+    <p class="sub">Everyone can name ten places AI "could help" in finance. Fewer can say which one to do first, and why. This session gives you a simple scoring grid - value against risk - and a use-case inventory across the whole function, so you leave with a shortlist you can defend to your board and your auditors. No code, ever. You walk out with a scored top-5 and one deliberate first bet.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Leader track</span>
+      <span class="chip audience">Leaders: CFOs · controllers · FP&amp;A leads</span>
+      <span class="chip audience">No code, ever</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The scoring grid</span>
+      <span class="a3" style="flex:4">18-33 · The inventory</span>
+      <span class="a4" style="flex:3">33-45 · Sequence + score</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>From "AI could help everywhere" to "do this first"</h2>
+    </div>
+    <p class="lede">In a1 you mapped where AI is real in a finance function and named your three biggest time-sinks. Tonight you turn that raw list into a ranked shortlist. Most AI programs do not fail because the technology was weak - they fail because the team started with a hard, high-risk, high-visibility use-case, got burned, and lost the room. The fix is boring and powerful: score every candidate the same way, then sequence deliberately.</p>
+    <div class="legend">
+      <span class="pill solid">Live - discussed in session</span>
+      <span class="pill light">Self-study - read after</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A scored shortlist of AI bets for your function - each rated on value and risk, plotted on a simple 2x2, and ranked. You leave able to say, out loud and with a reason, "this is our first bet, this is second, and these two we are deliberately not doing yet." That single artifact is what a3 governs, a4 staffs, and a5 turns into an ROI story.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: VALUE VS RISK GRID ============ -->
+  <section class="section" id="scoring-grid">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers IE Business School use-case identification</span>
+      <h2>Value vs risk: the scoring grid <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">Two questions decide the order of every AI bet in finance. How much value does it create, and how much risk does it carry if it goes wrong? Score both on a simple low-medium-high scale, plot the candidate on a 2x2, and the sequence almost writes itself. High value plus low risk is where you start. High value plus high risk is where you go later, with governance in place. Everything else waits or is dropped.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A value-versus-risk 2x2 grid for finance AI use-cases. Variance commentary sits high value low risk as a quick win. Close reconciliation is high value medium risk. Credit decisioning is high value high risk, a big bet to govern hard. Auto-file to a regulator is low value high risk, to avoid.">
+        <style>
+          .a2xT { font: 700 14px Inter, sans-serif; fill: #10201E; }
+          .a2xX { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+          .a2xL { font: 700 11px Inter, sans-serif; fill: #5B6B69; letter-spacing: .06em; }
+          .a2xQ { font: 700 12px Inter, sans-serif; fill: #0F766E; letter-spacing: .04em; }
+          .a2xN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <defs>
+          <marker id="a2xAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 Z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <!-- quadrant tints -->
+        <rect x="130" y="55" width="345" height="130" rx="10" fill="#E6F4F2"/>
+        <rect x="475" y="55" width="345" height="130" rx="10" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1"/>
+        <!-- axes -->
+        <line x1="130" y1="315" x2="835" y2="315" stroke="#BCD3CF" stroke-width="2" marker-end="url(#a2xAh)"/>
+        <line x1="130" y1="315" x2="130" y2="45" stroke="#BCD3CF" stroke-width="2" marker-end="url(#a2xAh)"/>
+        <text class="a2xL" x="560" y="338">RISK LOW → HIGH</text>
+        <text class="a2xL" x="150" y="40">VALUE HIGH ↑</text>
+        <!-- quadrant labels -->
+        <text class="a2xQ" x="150" y="76">QUICK WIN · START HERE</text>
+        <text class="a2xQ" x="495" y="76" fill="#CA8A04">BIG BET · GOVERN HARD</text>
+        <!-- dots + labels -->
+        <circle cx="205" cy="125" r="9" fill="#0F766E"/>
+        <text class="a2xT" x="222" y="122">Variance commentary</text>
+        <text class="a2xX" x="222" y="140">FP&amp;A · draft over your data</text>
+        <circle cx="420" cy="150" r="9" fill="#0F766E"/>
+        <text class="a2xT" x="437" y="147">Close reconciliation</text>
+        <text class="a2xX" x="437" y="165">accounting · verify each match</text>
+        <circle cx="690" cy="120" r="9" fill="#CA8A04"/>
+        <text class="a2xT" x="560" y="122">Credit decisioning</text>
+        <text class="a2xX" x="560" y="140">decides on a person's money</text>
+        <circle cx="720" cy="270" r="9" fill="#CA8A04"/>
+        <text class="a2xT" x="560" y="267">Auto-file to regulator</text>
+        <text class="a2xX" x="560" y="285">low value · unaccountable</text>
+        <!-- note -->
+        <rect x="130" y="366" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="a2xN" x="154" y="378">Start top-left: high value, low risk, internal. Govern the top-right hard before you touch it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the value vs risk grid: where each finance AI bet lands and which to do first</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>How to score value - and be honest about it<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Value is not "how impressive the demo was". It is the concrete good the use-case creates for your function, measured four ways. Score each candidate low, medium, or high on the whole picture - and be honest, because you will have to defend the number in a5.</p>
+        <ul>
+          <li><strong>Time saved.</strong> Hours per month this returns to your team. A weekly report that takes six hours and drops to one is real, recurring value.</li>
+          <li><strong>Error and rework reduction.</strong> Fewer restated numbers, fewer late-night corrections, fewer manual re-keys. Quality counts even when the clock does not move much.</li>
+          <li><strong>Capacity freed.</strong> What your best people do instead - analysis and judgement rather than copy-paste. This is the value CFOs care most about but measure least.</li>
+          <li><strong>Dollars.</strong> Where it is honestly attributable - faster collections, caught duplicate payments, avoided penalties. Do not inflate it, but do not ignore it.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Questions to ask your team</strong>
+          For each candidate: how many hours a month does the task really cost today, and what would our best people do with that time back? If nobody can answer, that is a signal to measure before you pilot.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>How to score risk - the axis that keeps you off the front page<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Risk is why two use-cases with identical value belong in different quarters. Drafting a variance note and deciding someone's credit limit are worlds apart, even though both "use AI on financial data". Score risk on three dimensions and take the highest of the three.</p>
+        <table class="clean">
+          <thead><tr><th>Risk dimension</th><th>Low</th><th>High</th></tr></thead>
+          <tbody>
+            <tr><td>Data sensitivity</td><td>Already-public or synthetic data</td><td>MNPI, client PII, unpublished financials</td></tr>
+            <tr><td>Decision impact</td><td>A human reads a draft and decides</td><td>The output decides on money or a person</td></tr>
+            <tr><td>Regulatory exposure</td><td>Internal note, no filing</td><td>Feeds a filing, a regulator, or a customer</td></tr>
+          </tbody>
+        </table>
+        <p>Notice the pattern: risk climbs the moment a use-case touches sensitive data, makes a decision instead of a draft, or reaches outside the building. Anything scoring high on any one dimension is not banned - it is a "govern first" bet for a3, not a first pilot.</p>
+        <div class="callout tip">
+          <strong>Questions to ask your team</strong>
+          For each candidate: what is the worst realistic outcome if the AI is wrong and nobody catches it? And does this output ever leave the building - to a customer, an auditor, or a regulator - without a human signing it?
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: THE INVENTORY ============ -->
+  <section class="section" id="inventory">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers IE + AIFPA use-case inventory across functions</span>
+      <h2>The use-case inventory <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">Here is a starter map across the whole finance function, already scored the way Part 1 describes. Do not treat the verdicts as gospel - your data sensitivity and your controls will shift a row up or down. Treat it as a worked example of the scoring, and as a checklist so you do not miss a candidate hiding in treasury or tax.</p>
+
+    <table class="clean">
+      <thead><tr><th>Use-case (function)</th><th>Value</th><th>Risk</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>Variance commentary (FP&amp;A)</td><td>High</td><td>Low</td><td>Start here - quick win</td></tr>
+        <tr><td>Forecasting assist (FP&amp;A)</td><td>High</td><td>Medium</td><td>Strong - human owns the number</td></tr>
+        <tr><td>Close reconciliation (accounting)</td><td>High</td><td>Medium</td><td>Strong - verify every match</td></tr>
+        <tr><td>AP invoice extraction (AP/AR)</td><td>Med-High</td><td>Low</td><td>Quick win - easy pilot</td></tr>
+        <tr><td>Cash-position summary (treasury)</td><td>Medium</td><td>Low</td><td>Easy pilot - internal only</td></tr>
+        <tr><td>Credit scoring (risk / credit)</td><td>High</td><td>High</td><td>Big bet - govern hard (a3)</td></tr>
+        <tr><td>Fraud / AML flags (risk)</td><td>High</td><td>High</td><td>Assist only - human decides</td></tr>
+        <tr><td>Earnings summary (investor relations)</td><td>Medium</td><td>Med-High</td><td>Internal draft only - MNPI care</td></tr>
+        <tr><td>Tax research assist (tax)</td><td>Medium</td><td>Medium</td><td>Assist - licensed sign-off</td></tr>
+      </tbody>
+    </table>
+    <p>Read the table top to bottom and the sequencing story is obvious. The rows verdicted "quick win" and "easy pilot" are internal, low-sensitivity, and draft-and-analyse - exactly the safe first bets from a1. The "govern hard" and "human decides" rows carry decision impact and regulatory exposure; they are real opportunities, but they belong after you have earned trust and stood up governance, not on day one.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why the same task scores differently in two firms<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The inventory is a starting point, not a verdict for your firm. The same use-case can be a quick win in one function and a govern-first bet in another, and the difference is almost always on the risk axis.</p>
+        <ul>
+          <li><strong>Data changes the score.</strong> An earnings summary built from an already-published 10-K is low risk. The same summary built from a pre-release draft is MNPI handling - high risk - even though the task looks identical.</li>
+          <li><strong>Controls change the score.</strong> Fraud flags where a human reviews every alert are an assist. The same model auto-declining transactions is a decision - and a regulated one.</li>
+          <li><strong>So score your version.</strong> Do not import a verdict from a webinar. Take the candidate, run it through your data, your decision impact, and your regulatory exposure, and place your own dot on the grid.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Two treasury teams, one use-case.</strong> Both want an AI cash-position summary. Team A feeds it yesterday's already-reconciled balances for an internal morning note - low risk, ship it. Team B wants it to move funds between accounts automatically - now it is a decision touching money, needs approval gates, and lands in a3's territory. Same words on the slide, different quadrant.</p>
+        </div>
+        <div class="callout tip">
+          <strong>Questions to ask your team</strong>
+          Take our top three candidates from a1: on our data, with our controls, does each one still sit where this table puts it? Where would ours move up or down, and why?
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: SEQUENCING ============ -->
+  <section class="section" id="sequencing">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the through-line into a3 and a6</span>
+      <h2>Sequencing: earn trust before you climb <span class="tag concept">4 min live</span></h2>
+    </div>
+    <p class="lede">A scored shortlist is only half the answer. The other half is order. The teams that win start high-value and low-risk, keep it internal, and build a verification habit before anything reaches a customer or regulator. The teams that stall try to prove the program with the hardest, most visible use-case first - and one public mistake sets them back a year.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A three-stage sequence for finance AI adoption, left to right. Stage one is internal use over your own data. Stage two is building a verification habit where a human checks each result. Stage three is customer or regulator facing decisions. Earn trust at each stage before climbing.">
+        <style>
+          .a2sT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .a2sTi { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .a2sX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .a2sXi { font: 400 12.5px Inter, sans-serif; fill: #10201E; }
+          .a2sN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <defs>
+          <marker id="a2sAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 Z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <rect x="25" y="120" width="235" height="92" rx="12" fill="#7FCFC6"/>
+        <text class="a2sTi" x="47" y="156">1 · Internal, your data</text>
+        <text class="a2sXi" x="47" y="180">draft &amp; analyse data</text>
+        <text class="a2sXi" x="47" y="198">you supply</text>
+        <line x1="266" y1="166" x2="316" y2="166" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#a2sAh)"/>
+        <rect x="323" y="120" width="235" height="92" rx="12" fill="#2DA89E"/>
+        <text class="a2sT" x="345" y="156">2 · Verify every output</text>
+        <text class="a2sX" x="345" y="180">a human checks each</text>
+        <text class="a2sX" x="345" y="198">result, every time</text>
+        <line x1="564" y1="166" x2="614" y2="166" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#a2sAh)"/>
+        <rect x="620" y="120" width="235" height="92" rx="12" fill="#0F766E"/>
+        <text class="a2sT" x="642" y="156">3 · Customer / regulator</text>
+        <text class="a2sX" x="642" y="180">decisions that leave</text>
+        <text class="a2sX" x="642" y="198">the firm - govern first</text>
+        <rect x="25" y="256" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="a2sN" x="49" y="268">Earn trust at each stage before you climb. Never start where a mistake reaches a regulator.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the sequence: internal drafting, then a verification habit, then anything customer or regulator facing</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The order that earns trust - and the order that loses it<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Stage 1 - internal, over your own data.</strong> Drafting and analysis your team reads and uses, on data you supply. Variance commentary, an invoice-extraction pilot, an internal cash note. Low blast radius, fast to value, builds confidence.</li>
+          <li><strong>Stage 2 - build the verification habit.</strong> Before you climb, make "a human checks each result" the default, not the exception. This habit is the thing that lets you safely take on harder use-cases later - and it is what a3 formalises into governance.</li>
+          <li><strong>Stage 3 - customer or regulator facing.</strong> Only now do you approach decisions that leave the building. By this point you have wins to point to, a team that trusts the tools, and the controls to govern the blast radius.</li>
+        </ul>
+        <p>This is the same climb as a1's three eras, seen from the sequencing angle: get excellent at assistive and augmented work internally, before you let anything agentic or customer-facing run. a6 turns this into a dated 24-month roadmap.</p>
+        <div class="callout tip">
+          <strong>Questions to ask your team</strong>
+          Look at our shortlist: is our proposed first bet genuinely a stage-one, internal, low-risk use-case? Or are we tempted to prove the program with something visible and hard because it would impress the board?
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ EXERCISE ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Exercise · produce your scored shortlist</span>
+      <h2>Score 5 candidates and pick your first bet <span class="tag exercise">◐ 15 min · with your team</span></h2>
+    </div>
+    <p class="lede">No code, just the grid and a conversation. This is the artifact a3 governs and a5 turns into an ROI story - so do it honestly, not optimistically.</p>
+    <div class="steps">
+      <div class="step"><p>List five real candidate use-cases from your function - start with the three time-sinks you brought from a1, then add two more from the inventory in Part 2 that apply to you.</p></div>
+      <div class="step"><p>Score each one on value (low / medium / high) using the four value dimensions, and on risk (take the highest of data sensitivity, decision impact, regulatory exposure).</p></div>
+      <div class="step"><p>Plot all five on the 2x2 grid. Circle the one sitting furthest into the top-left - high value, low risk, internal. That is your first bet.</p></div>
+      <div class="step"><p>Write one sentence for each of the other four: is it "second", "later, after governance", or "not now"? Being able to say why you are <em>not</em> doing something is as important as your first bet.</p></div>
+    </div>
+    <div class="callout tip">
+      <strong>Questions to ask your team</strong>
+      Does everyone in the room agree on the first bet - and if not, is the disagreement about the value score or the risk score? And for the "later" pile: what specifically has to be true before we would move one of them up?
+    </div>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches the use-case identification and scoring approach from public finance-AI curricula. Certificates, graded assessments, and paid tooling stay with the official programs - noted honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">IE Business School - AI-Powered Finance</span><span class="note">Parts 1-3 · high-impact use-case identification, FP&amp;A + treasury</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">FP&amp;A Professional Institute - AIFPA</span><span class="note">Parts 1-2 · use-cases across the function, adoption maturity</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Regulatory canon (EU AI Act, MAS FEAT)</span><span class="note">Part 1-2 · why credit and fraud score high on risk; full depth in a3</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · What makes a strong <em>first</em> AI bet for a finance function?</p>
+      <button class="qopt" type="button">A · The one that most impresses the board in a demo</button>
+      <button class="qopt" type="button">B · High value, low risk, and internal-facing - drafting or analysis over data you supply</button>
+      <button class="qopt" type="button">C · The hardest, most regulated use-case, to prove the program is serious</button>
+      <p class="qwhy">Start top-left on the grid: high value, low risk, internal. It delivers fast, has a low blast radius, and builds the trust you need before climbing to harder bets.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Two use-cases create identical value. Why can the risk axis still put them in different quarters?</p>
+      <button class="qopt" type="button">A · It can't - equal value means equal priority</button>
+      <button class="qopt" type="button">B · Because newer use-cases are always riskier than older ones</button>
+      <button class="qopt" type="button">C · Because risk climbs with data sensitivity, decision impact, and regulatory exposure - a draft and a credit decision are worlds apart</button>
+      <p class="qwhy">Risk is scored on data sensitivity, decision impact, and regulatory exposure. A use-case that decides on a person's money or feeds a regulator must be governed first, whatever its value.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · What is the right sequence for rolling out AI across the function?</p>
+      <button class="qopt" type="button">A · Internal over your own data → build a verification habit → then customer or regulator facing</button>
+      <button class="qopt" type="button">B · Customer-facing first, so the value is visible, then tidy up internally</button>
+      <button class="qopt" type="button">C · Everything at once, to move fast before competitors do</button>
+      <p class="qwhy">Earn trust before you climb. Get excellent at internal, low-risk work and make human verification the default, then approach decisions that leave the building - which a3 governs and a6 sequences.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Score, don't guess</b><span>rate every candidate on value and risk, then rank. Most AI programs fail on picking, not building.</span></div>
+      <div class="cheat-item"><b>Value = 4 things</b><span>time saved, error/rework reduction, capacity freed, and honest dollars. Be able to defend the number in a5.</span></div>
+      <div class="cheat-item"><b>Risk = 3 things</b><span>data sensitivity, decision impact, regulatory exposure. Take the highest of the three.</span></div>
+      <div class="cheat-item"><b>The 2x2</b><span>high value + low risk = quick win, start here. High value + high risk = big bet, govern hard. Low value + high risk = avoid.</span></div>
+      <div class="cheat-item"><b>Score your version</b><span>the same task differs by firm - public 10-K vs pre-release draft, human review vs auto-decline. Don't import a verdict.</span></div>
+      <div class="cheat-item"><b>Sequence to earn trust</b><span>internal over your data → build a verification habit → then customer/regulator facing. Never start where a mistake reaches a regulator.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>a3 - trust, risk &amp; governance: model risk, explainability, and the audit trail behind your govern-hard bets.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 2 of 6 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a1-ai-first-finance.html">← Previous: The AI-first finance function</a> &nbsp;·&nbsp; <a href="a3-trust-risk-governance.html">Next: Trust, risk &amp; governance →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

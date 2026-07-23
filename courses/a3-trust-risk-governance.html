@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 3 · Trust, risk & governance - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Leader session 3 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Leader track · Session 3 of 6</div>
+    <h1>Trust, risk &amp; governance: <span class="accent">how to say yes to AI without betting the firm</span></h1>
+    <p class="sub">You do not need to code to govern AI - but you do need to know the finance-specific ways it fails, the regulations already pointing at you, and the small stack of controls that lets you move fast safely. This session gives you a governance gap-scan you can run against your own team on Monday.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Leader track</span>
+      <span class="chip audience">Leaders: CFO · risk · controllership</span>
+      <span class="chip audience">No code, ever</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Why this matters</span>
+      <span class="a2" style="flex:4">3-18 · Finance-specific risks</span>
+      <span class="a3" style="flex:4">18-33 · Regulation + the stack</span>
+      <span class="a4" style="flex:2">33-45 · Gap-scan + Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Governance is how leaders say yes</h2>
+    </div>
+    <p class="lede">Most finance leaders think governance is the brake. It is the opposite - it is the thing that lets you take your foot off the brake. A team with no rules either freezes out of fear or pastes confidential numbers into a free chatbot; a team with a clear, light governance stack can adopt quickly because everyone knows where the lines are. Tonight is not about writing policy from scratch. It is about knowing the seven ways AI hurts a finance function, the four regulatory regimes already watching, and the six controls that cover almost all of it - then scanning your own team against them.</p>
+    <div class="legend">
+      <span class="pill solid">Live - discussed in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Questions to ask</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A plain-English map of the finance-specific AI risks, a leader's view of SR 11-7, the EU AI Act, MAS FEAT, and SEC AI-washing scrutiny, and a filled-in governance gap-scan: for each of the six core controls, where your team stands today and the single next move to close the gap.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: FINANCE-SPECIFIC RISKS ============ -->
+  <section class="section" id="risks">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers Coursera Intro (risks) + AIFPA foundations</span>
+      <h2>The finance-specific risks <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">Every industry worries about AI errors. Finance has its own flavours, because a wrong number here flows into a filing, a credit decision, or a board pack - and someone is legally accountable for it. These are the seven that should be on your risk register, and they layer into a stack of controls you can actually manage.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The finance AI governance stack, bottom to top: data controls, model risk management, human oversight, audit trail, and policy - each layer catches what the layer below cannot">
+        <defs>
+          <marker id="a3xAh" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+        <style>
+          .a3xT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .a3xI { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .a3xX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .a3xXi { font: 400 12.5px Inter, sans-serif; fill: #10201E; }
+          .a3xN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <rect x="110" y="34" width="600" height="50" rx="10" fill="#E6F4F2" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="a3xI" x="132" y="56">5 · Policy &amp; acceptable use</text>
+        <text class="a3xXi" x="132" y="74" font-size="12.5">the rules everyone signs up to - the top of the stack</text>
+        <rect x="110" y="98" width="600" height="50" rx="10" fill="#7FCFC6"/>
+        <text class="a3xI" x="132" y="120">4 · Audit trail &amp; logging</text>
+        <text class="a3xXi" x="132" y="138" font-size="12.5">who asked what, what came back, who approved it</text>
+        <rect x="110" y="162" width="600" height="50" rx="10" fill="#2DA89E"/>
+        <text class="a3xT" x="132" y="184">3 · Human oversight on every decision</text>
+        <text class="a3xX" x="132" y="202">a licensed person reviews and owns the output</text>
+        <rect x="110" y="226" width="600" height="50" rx="10" fill="#0F766E"/>
+        <text class="a3xT" x="132" y="248">2 · Model risk management</text>
+        <text class="a3xX" x="132" y="266">inventory the models, validate them, monitor drift</text>
+        <rect x="110" y="290" width="600" height="50" rx="10" fill="#0A4A44"/>
+        <text class="a3xT" x="132" y="312">1 · Data controls &amp; privacy</text>
+        <text class="a3xX" x="132" y="330">no MNPI or client PII in ungoverned tools</text>
+        <line x1="70" y1="330" x2="70" y2="56" stroke="#BCD3CF" stroke-width="2.5" marker-end="url(#a3xAh)"/>
+        <text class="a3xN" x="742" y="188" transform="rotate(90 742 188)">builds up from data</text>
+        <rect x="110" y="356" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="a3xN" x="134" y="368">Each layer catches what the one below misses. Skip a layer and risk leaks straight through.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the governance stack: five layers, bottom-up, that together cover almost every finance AI risk</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Fabricated figures and model risk - the two that hit a P&amp;L<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The first family of risk is about wrong numbers reaching a decision. Two forms matter most to you.</p>
+        <ul>
+          <li><strong>Hallucinated or fabricated figures.</strong> As the builder track shows in b1, an ungrounded model invents confident, well-formatted numbers. In finance that fiction can land in a board slide, a forecast, or a filing before anyone checks it.</li>
+          <li><strong>Model risk.</strong> Any model used in a decision - a forecast, a credit score, a fraud flag - can be wrong in ways that are systematic, not random. Regulators treat this as its own discipline (that is what SR 11-7 is about, Part 2).</li>
+          <li><strong>Over-reliance.</strong> The quieter danger. When the output looks polished, people stop checking. A team that trusts the draft blindly has re-created the fabrication risk with extra steps.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The confident forecast nobody questioned.</strong> A planning team let an AI assistant generate a driver-based forecast and, because it read cleanly, pushed it to the CFO with light review. A sign flip in one driver had inverted a segment's trajectory. It survived two meetings before a controller re-derived the math by hand. The fix was never a better model - it was a mandatory human check on any number that leaves the team.</p>
+        </div>
+        <div class="callout tip">
+          <strong>★ Questions to ask your team</strong>
+          Which numbers produced with AI help reached a decision last quarter without a human re-deriving them? Where would a fabricated figure do the most damage before we would catch it?
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Explainability, data leakage, and bias - the ones that draw regulators<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The second family is about defensibility and fairness - and it is where the law is most explicit.</p>
+        <ul>
+          <li><strong>Explainability.</strong> The leader's version of this question is blunt: <em>can you defend this number to an auditor or a regulator?</em> "The AI produced it" is not an answer. If you cannot trace how an output was reached, you cannot stand behind it.</li>
+          <li><strong>Data leakage.</strong> Pasting real financials, MNPI, or client PII into an ungoverned tool can breach securities law, PDPA/GDPR, and confidentiality obligations at once. This is rail one, and it is the bottom layer of the stack for a reason.</li>
+          <li><strong>Bias in credit and fraud.</strong> A model that scores creditworthiness or flags fraud can encode discrimination against protected groups - which is exactly why the EU AI Act treats credit scoring as high-risk (Part 2).</li>
+        </ul>
+        <div class="callout tip">
+          <strong>★ Questions to ask your team</strong>
+          If our regulator asked us to explain one AI-assisted number, could we? Do we have a written line about what data may never enter a consumer tool - and does anyone check?
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>AI-washing - the risk that points outward<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every risk above is about AI harming your own numbers. <strong>AI-washing</strong> is the mirror image: overstating what your AI does, to clients, investors, or the market. The SEC has already penalised firms for it. For a finance leader this shows up in marketing copy, investor decks, and product claims - and the rule is simple: be exactly as honest externally about your AI as you are internally. If your team would not say it in a control review, do not put it in a brochure.</p>
+        <div class="callout tip">
+          <strong>★ Questions to ask your team</strong>
+          Does any client-facing or investor-facing material claim an AI capability we could not demonstrate in a room? Who signs off on AI claims before they go out?
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: REGULATORY MAP ============ -->
+  <section class="section" id="regulation">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers SR 11-7, EU AI Act, MAS FEAT, SEC guidance</span>
+      <h2>The regulatory map <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">You do not need to read the statutes - your compliance and legal teams do. But you do need the leader's-eye view, so you can ask the right questions and recognise when a use case has crossed into regulated territory. Four regimes shape almost every finance AI conversation today.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>What each regime actually demands of finance<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Regime</th><th>What it demands of a finance function</th></tr></thead>
+          <tbody>
+            <tr><td><strong>US Fed SR 11-7</strong> - model risk management</td><td>Keep an inventory of models in use, validate them independently, and monitor them over time. Treats any model driving decisions as a governed asset, not a spreadsheet.</td></tr>
+            <tr><td><strong>EU AI Act</strong> - risk tiers</td><td>Classifies AI used for credit scoring as <em>high-risk</em>, triggering extra duties: documentation, human oversight, data quality, and transparency. Higher risk = more obligations.</td></tr>
+            <tr><td><strong>Singapore MAS FEAT / Veritas</strong></td><td>Four principles for AI in financial services: Fairness, Ethics, Accountability, Transparency. Principles-based - asks you to show you took them seriously.</td></tr>
+            <tr><td><strong>SEC / FINRA</strong> - marketing + AI-washing</td><td>Scrutinises overstated AI claims in marketing and disclosures. Say only what you can demonstrate; accountability for the claim stays with the firm.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <strong>These move fast - treat dates as perishable</strong>
+          EU AI Act timelines phase in over several years, and MAS and SEC guidance updates regularly. Use this table for the shape of the obligations, and have your compliance team re-verify specifics before any decision rests on them.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The pattern underneath all four<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Read together, the four regimes are asking for the same handful of things in different accents:</p>
+        <ul>
+          <li><strong>Know your models.</strong> An inventory - what AI is in use, for what, owned by whom (SR 11-7).</li>
+          <li><strong>Match effort to risk.</strong> A credit model gets more scrutiny than a memo drafter (EU AI Act tiers).</li>
+          <li><strong>Keep a human accountable.</strong> Someone owns the decision, always (FEAT accountability, SR 11-7).</li>
+          <li><strong>Be able to explain and evidence it.</strong> Documentation, audit trail, honest external claims (FEAT transparency, SEC).</li>
+        </ul>
+        <p>If your governance stack (Part 3) delivers those four, you are most of the way to defensible under any of these regimes - which is exactly why the stack is worth more than memorising any single rule.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: THE STACK ============ -->
+  <section class="section" id="stack">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the leader mirror of builder b10</span>
+      <h2>The governance stack you actually need <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">Here is the good news: you do not need a governance function the size of a bank's to be responsible. Six controls cover the vast majority of finance AI risk, and each one is a management decision, not a technical build. This is the leader's mirror of what the builder track constructs in b10.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The six controls, in the order to build them<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Acceptable-use policy.</strong> One page: what AI may and may not be used for, which data may never go in, who to ask when unsure. The thing everyone signs up to.</li>
+          <li><strong>Tool tiers.</strong> Decide which tools are cleared for which data - consumer (public/synthetic only), enterprise (real financials, contractually no training), local (most sensitive). The privacy line made concrete.</li>
+          <li><strong>Human-in-the-loop on all decisions.</strong> Every workflow that produces a number, decision, or external output has a named human who reviews and owns it. Rail two as an org rule.</li>
+          <li><strong>Logging and audit trail.</strong> Keep a record of significant AI-assisted work: the ask, the output, the approver. This is what lets you answer the auditor's question.</li>
+          <li><strong>Model inventory.</strong> A living list of AI tools and models in use, what they do, and who owns each. You cannot govern what you have not written down.</li>
+          <li><strong>Review cadence + incident plan.</strong> A regular check that the above is being followed, and a pre-agreed plan for when something goes wrong - who is told, what stops, how you remediate.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Six controls in an afternoon.</strong> A mid-size finance team stood up all six in a single workshop: a one-page policy, three tool tiers, a sign-off rule, a shared log, a model list in a spreadsheet, and a quarterly review on the calendar. None of it was technical. It was enough to move from "quietly nervous" to "openly adopting" - and enough to satisfy their first internal audit.</p>
+        </div>
+        <div class="callout tip">
+          <strong>★ Questions to ask your team</strong>
+          Of these six, which do we already have in some form? Which single one, if we added it this quarter, would reduce the most risk? Who would own each?
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Right-sizing the stack to your risk<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Not every team needs the heaviest version of every control. Match the weight to the risk:</p>
+        <ul>
+          <li><strong>Drafting and summarising</strong> (commentary, memos) → policy + tool tiers + a light human edit is enough.</li>
+          <li><strong>Analysis and forecasting</strong> → add human sign-off on any number that leaves the team, plus logging.</li>
+          <li><strong>Credit, fraud, or anything about a person's money</strong> → the full stack, plus model inventory and validation, because this is where SR 11-7 and the EU AI Act bite hardest.</li>
+        </ul>
+        <p>The art of governance is not maximum control everywhere - it is proportionate control, heaviest where a mistake hurts a person or breaks a law.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ EXERCISE ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Exercise</span>
+      <h2>Run a governance gap-scan on your team <span class="tag exercise">◐ 20-30 min</span></h2>
+    </div>
+    <p class="lede">No code, no tools - a table and an honest conversation. Score your team against the six controls, then turn the two biggest gaps into named owners and dates. This is the artifact you take back to your risk or exec meeting.</p>
+    <ul>
+      <li><strong>Score each control.</strong> For all six - policy, tool tiers, human-in-loop, logging, model inventory, review cadence + incident plan - mark your team as <em>Solid</em>, <em>Partial</em>, or <em>Missing</em>. Be honest; "we talked about it once" is Missing.</li>
+      <li><strong>Find the leak.</strong> Where is real financial data or client PII most likely to reach an ungoverned tool today? That gap goes to the top of the list regardless of its score.</li>
+      <li><strong>Pick two to close this quarter.</strong> Choose the two gaps that reduce the most risk for the least effort. Give each a named owner and a date. Two done beats six planned.</li>
+      <li><strong>Draft the vendor questions.</strong> Before you license or renew any AI tool, you should be able to answer: does it train on our data? What is the data retention? Can it explain its outputs? Does it keep audit logs we can access? Write your version of these into a standing procurement checklist.</li>
+    </ul>
+    <div class="callout tip">
+      <strong>★ Questions to ask any AI vendor</strong>
+      Do you train your models on our inputs, and can we contractually opt out? How long is our data retained, and where? For any decision-support feature, how do we explain an output to an auditor? What audit logs do we get, and can we export them?
+    </div>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches the leader's working view of the finance-AI regulatory canon. The statutes, official guidance, and any binding interpretation stay with the regulators and your own legal and compliance teams - said honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">US Fed SR 11-7 - Guidance on Model Risk Management</span><span class="note">Parts 1-3 · inventory, validation, monitoring as a leader concept</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">EU AI Act - risk-tier classification</span><span class="note">Part 2 · credit scoring as high-risk and what that triggers</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Singapore MAS FEAT / Veritas principles</span><span class="note">Part 2 · Fairness, Ethics, Accountability, Transparency</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">SEC / FINRA - marketing rule &amp; AI-washing guidance</span><span class="note">Part 1 · outward-facing honesty; re-verify as guidance evolves</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · At its core, what is US Fed SR 11-7 about?</p>
+      <button class="qopt" type="button">A · Banning AI from any credit decision</button>
+      <button class="qopt" type="button">B · Model risk management - inventory your models, validate them, and monitor them over time</button>
+      <button class="qopt" type="button">C · Data-privacy rules for consumer chatbots</button>
+      <p class="qwhy">SR 11-7 treats any model driving decisions as a governed asset: know what models you run, validate them independently, and watch them for drift. It is the backbone of the model-risk layer in your stack.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Why does the EU AI Act single out credit scoring for extra duties?</p>
+      <button class="qopt" type="button">A · Because credit models are always more accurate than humans</button>
+      <button class="qopt" type="button">B · Because it wants to encourage more lending</button>
+      <button class="qopt" type="button">C · Because it classifies credit scoring as high-risk - decisions that materially affect people, so more oversight and documentation apply</button>
+      <p class="qwhy">The Act scales obligations to risk. Credit scoring affects a person's access to money, so it lands in the high-risk tier, triggering documentation, human oversight, data-quality, and transparency duties.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Your team used AI to help produce a number in a filing. Why does an audit trail matter?</p>
+      <button class="qopt" type="button">A · So you can defend and explain the number to an auditor or regulator - trace what was asked, what came back, and who approved it</button>
+      <button class="qopt" type="button">B · So the model can learn from its mistakes automatically</button>
+      <button class="qopt" type="button">C · It does not matter if the number turned out correct</button>
+      <p class="qwhy">"The AI produced it" is not a defence. An audit trail - the ask, the output, the human approver - is what lets you explain and stand behind an AI-assisted number when someone asks how you got there.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Governance = permission to go fast</b><span>clear lines let a team adopt quickly instead of freezing or going rogue. It is the accelerator, not the brake.</span></div>
+      <div class="cheat-item"><b>Finance-specific risks</b><span>fabricated figures, model risk, weak explainability, data leakage, bias in credit/fraud, over-reliance, AI-washing.</span></div>
+      <div class="cheat-item"><b>SR 11-7</b><span>model risk management: inventory your models, validate them, monitor them. Any decision model is a governed asset.</span></div>
+      <div class="cheat-item"><b>EU AI Act</b><span>credit scoring = high-risk → extra documentation, human oversight, data-quality and transparency duties.</span></div>
+      <div class="cheat-item"><b>MAS FEAT</b><span>Fairness, Ethics, Accountability, Transparency - the principles test for AI in financial services.</span></div>
+      <div class="cheat-item"><b>AI-washing</b><span>SEC scrutinises overstated AI claims. Be exactly as honest externally as you are in a control review.</span></div>
+      <div class="cheat-item"><b>The six controls</b><span>policy · tool tiers · human-in-loop · logging/audit trail · model inventory · review cadence + incident plan.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>a4 - the AI-ready finance team: the skills to build, the roles that shift, and how to lead the change.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 3 of 6 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a2-use-case-map.html">← Previous: The use-case map</a> &nbsp;·&nbsp; <a href="a4-ai-ready-team.html">Next: The AI-ready finance team →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

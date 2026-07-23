@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>learn AI + finance with phoebe - a two-track course for finance that embraces AI</title>
+<link rel="stylesheet" href="assets/style.css?v=1">
+<style>
+  .stats-row { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .72rem; opacity: .85; text-transform: uppercase; letter-spacing: .09em; font-weight: 600; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .course-card {
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--diff, var(--indigo));
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .course-card:hover { border-color: var(--indigo-soft); border-top-color: var(--diff, var(--indigo)); box-shadow: 0 8px 28px rgba(15,118,110,.14); transform: translateY(-3px); }
+  .course-card .cicon { font-size: 1.7rem; line-height: 1; }
+  .course-card .cnum { font-size: .72rem; font-weight: 700; color: var(--indigo); text-transform: uppercase; letter-spacing: .1em; }
+  .course-card h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+  .course-card p { font-size: .85rem; color: var(--muted); flex: 1; }
+  .course-card .meta { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+  .diff-legend { display: flex; gap: 1rem; margin-top: 1.6rem; font-size: .74rem; color: var(--muted); font-weight: 600; flex-wrap: wrap; }
+  .diff-legend i { display: inline-block; width: .85rem; height: .35rem; border-radius: 999px; margin-right: .35rem; vertical-align: middle; }
+
+  .paths { margin-top: 2.6rem; }
+  .paths h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+  .paths .plede { color: var(--muted); font-size: .92rem; margin-bottom: .8rem; }
+  .path { display: flex; gap: .55rem; align-items: center; padding: .75rem 0; border-bottom: .5px solid var(--hairline); flex-wrap: wrap; }
+  .path:last-child { border-bottom: none; }
+  .path b { min-width: 15.5rem; font-size: .9rem; }
+  .path .pstep { background: var(--indigo-50); color: var(--indigo); border-radius: 999px; padding: .16rem .68rem; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .12s ease; }
+  .path .pstep:hover { background: var(--indigo); color: #fff; }
+  .path .parr { color: var(--faint); font-weight: 700; }
+
+  .mm-section { margin-top: 1.6rem; }
+  .mm-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+  .mm-section .mm-lede { color: var(--muted); font-size: .92rem; margin-bottom: .4rem; }
+  .mm-wrap { border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff,#EAF5F3); padding: .6rem; overflow-x: auto; }
+  .mm-svg { width: 100%; height: auto; display: block; max-width: 60rem; margin: 0 auto; min-width: 34rem; }
+  .mm-link { cursor: pointer; text-decoration: none; }
+  .mm-node rect { transition: opacity .15s ease, filter .15s ease; }
+  .mm-node text { pointer-events: none; }
+  .mm-link:hover .mm-node rect { filter: brightness(1.06); }
+  .mm-edge { transition: opacity .15s ease; }
+
+  .rail { margin-top: 1.4rem; border: 1px solid var(--hairline); border-left: 4px solid var(--amber); border-radius: var(--radius); background: var(--amber-50); padding: 1rem 1.2rem; font-size: .9rem; }
+  .rail b { color: var(--amber-ink); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe</div>
+    <h1>Two tracks for the finance function that <span class="accent">embraces AI</span></h1>
+    <p class="sub">A leader track that teaches CFOs, controllers, and managers to steer AI in finance without a line of code - and a builder track that puts real generative-AI workflows into an analyst's hands, from a month-end close copilot to forecasting, reporting, risk, and markets. 59% of finance teams already use AI and nearly 4 in 5 CFOs plan to deploy generative AI within 24 months - this is how you get ahead of that, responsibly.</p>
+    <div class="stats-row">
+      <div class="stat"><b data-count="2">2</b><span>tracks</span></div>
+      <div class="stat"><b data-count="16">16</b><span>sessions</span></div>
+      <div class="stat"><b data-count="45">45</b><span>min per session</span></div>
+      <div class="stat"><b data-count="59">59</b><span>% finance teams already use AI</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>The leader track 🤝 <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· for CFOs, controllers, FP&amp;A leads &amp; managers · 6 x 45 min · no code, ever</span></h2>
+      <p class="plede">Thinking mode: where AI actually pays off in finance, how to govern it, how to build the team, and how to prove ROI - each session ends with the questions to ask your team and your vendors.</p>
+    </div>
+    <div class="course-grid">
+      <a class="course-card" href="courses/a1-ai-first-finance.html" style="--diff:#34D399">
+        <span class="cicon">🏦</span>
+        <span class="cnum">Leader 1 · easy</span>
+        <h3>The AI-first finance function</h3>
+        <p>Why now, the real landscape beyond the hype, and the map of where AI creates value across the finance function.</p>
+        <span class="meta"><span class="pill amber">▶ Leaders start here</span></span>
+      </a>
+      <a class="course-card" href="courses/a2-use-case-map.html" style="--diff:#34D399">
+        <span class="cicon">🗺️</span>
+        <span class="cnum">Leader 2 · easy</span>
+        <h3>The use-case map: score the bets</h3>
+        <p>A scoring grid across FP&amp;A, accounting, treasury, risk, and markets - so you fund the high-value, low-risk wins first.</p>
+        <span class="meta"><span class="pill light">Prioritization exercise</span></span>
+      </a>
+      <a class="course-card" href="courses/a3-trust-risk-governance.html" style="--diff:#FBBF24">
+        <span class="cicon">🛡️</span>
+        <span class="cnum">Leader 3 · medium</span>
+        <h3>Trust, risk &amp; governance</h3>
+        <p>Hallucination, model risk, explainability, and the audit trail - mapped to SR 11-7, the EU AI Act, and MAS guidance.</p>
+        <span class="meta"><span class="pill light">Governance checklist</span></span>
+      </a>
+      <a class="course-card" href="courses/a4-ai-ready-team.html" style="--diff:#FBBF24">
+        <span class="cicon">👥</span>
+        <span class="cnum">Leader 4 · medium</span>
+        <h3>The AI-ready finance team</h3>
+        <p>New roles, the skills to hire and grow, and the change-management moves that turn skeptics into power users.</p>
+        <span class="meta"><span class="pill light">Skills-map exercise</span></span>
+      </a>
+      <a class="course-card" href="courses/a5-roi-business-case.html" style="--diff:#FB923C">
+        <span class="cicon">💰</span>
+        <span class="cnum">Leader 5 · deciding</span>
+        <h3>ROI &amp; the business case</h3>
+        <p>How to measure value honestly, move a pilot to scale, and make the buy-vs-build call without vendor spin.</p>
+        <span class="meta"><span class="pill light">Business-case exercise</span></span>
+      </a>
+      <a class="course-card" href="courses/a6-strategy-roadmap.html" style="--diff:#FB923C">
+        <span class="cicon">🧭</span>
+        <span class="cnum">Leader 6 · deciding</span>
+        <h3>Strategy &amp; the 24-month roadmap</h3>
+        <p>The agentic future, what to sequence when, and the board narrative that gets an AI-in-finance program funded.</p>
+        <span class="meta"><span class="pill light">Roadmap exercise</span></span>
+      </a>
+    </div>
+
+    <div class="paths">
+      <h2>The builder track 🛠️ <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· for analysts &amp; practitioners · 10 x 45 min · ChatGPT / Claude, no ML degree needed</span></h2>
+      <p class="plede">Hands on real finance work: prompt patterns for analysis, a month-end close copilot, forecasting, board-ready narrative, Excel, document Q&amp;A, and risk - every session builds a workflow you can use Monday.</p>
+    </div>
+    <div class="course-grid">
+      <a class="course-card" href="courses/b1-ai-foundations-finance.html" style="--diff:#34D399">
+        <span class="cicon">🤖</span>
+        <span class="cnum">Builder 1 · easy</span>
+        <h3>AI foundations for finance</h3>
+        <p>What LLMs can and cannot do with numbers, the tool landscape, and the honesty rails that keep you out of trouble.</p>
+        <span class="meta"><span class="pill amber">▶ Builders start here</span></span>
+      </a>
+      <a class="course-card" href="courses/b2-prompting-financial-analysis.html" style="--diff:#34D399">
+        <span class="cicon">✍️</span>
+        <span class="cnum">Builder 2 · easy</span>
+        <h3>Prompting for financial analysis</h3>
+        <p>Context, few-shot, and role patterns applied to real finance tasks - turn a vague ask into a reliable, checkable output.</p>
+        <span class="meta"><span class="pill light">Prompt library</span></span>
+      </a>
+      <a class="course-card" href="courses/b3-month-end-close-copilot.html" style="--diff:#FBBF24">
+        <span class="cicon">📆</span>
+        <span class="cnum">Builder 3 · medium</span>
+        <h3>Month-end close copilot</h3>
+        <p>Reconcile, flag anomalies, and draft the variance narrative - the flagship build, with a live lever simulator.</p>
+        <span class="meta"><span class="pill light">★ interactive: finance-live</span></span>
+      </a>
+      <a class="course-card" href="courses/b4-fpa-forecasting.html" style="--diff:#FBBF24">
+        <span class="cicon">📈</span>
+        <span class="cnum">Builder 4 · medium</span>
+        <h3>FP&amp;A: forecasting &amp; scenarios</h3>
+        <p>Driver-based forecasts, rolling re-forecasts, and sensitivity analysis with AI as a fast, auditable co-pilot.</p>
+        <span class="meta"><span class="pill light">Forecast workbook</span></span>
+      </a>
+      <a class="course-card" href="courses/b5-reporting-narrative.html" style="--diff:#FBBF24">
+        <span class="cicon">📝</span>
+        <span class="cnum">Builder 5 · medium</span>
+        <h3>Reporting &amp; narrative generation</h3>
+        <p>MD&amp;A, board decks, and variance commentary drafted from your numbers - fast first drafts, human final word.</p>
+        <span class="meta"><span class="pill light">Board-pack draft</span></span>
+      </a>
+      <a class="course-card" href="courses/b6-excel-sheets-ai.html" style="--diff:#34D399">
+        <span class="cicon">📊</span>
+        <span class="cnum">Builder 6 · easy</span>
+        <h3>Excel / Sheets + AI</h3>
+        <p>Generate formulas, clean messy data, and run copilot analysis on a workbook without leaving the grid.</p>
+        <span class="meta"><span class="pill light">Formula &amp; cleanup drills</span></span>
+      </a>
+      <a class="course-card" href="courses/b7-documents-data-rag.html" style="--diff:#FB923C">
+        <span class="cicon">📚</span>
+        <span class="cnum">Builder 7 · hands-on</span>
+        <h3>Documents &amp; data: RAG</h3>
+        <p>Ask a 10-K, a contract, or a policy stack real questions - extraction and grounded Q&amp;A that cites its sources.</p>
+        <span class="meta"><span class="pill light">10-K Q&amp;A</span></span>
+      </a>
+      <a class="course-card" href="courses/b8-risk-fraud-credit.html" style="--diff:#FB923C">
+        <span class="cicon">🚨</span>
+        <span class="cnum">Builder 8 · hands-on</span>
+        <h3>Risk, fraud &amp; credit</h3>
+        <p>Anomaly detection, credit scoring, and fraud/AML flags - with the compliance rail that keeps a human in the decision.</p>
+        <span class="meta"><span class="pill light">Anomaly triage</span></span>
+      </a>
+      <a class="course-card" href="courses/b9-markets-investing.html" style="--diff:#F87171">
+        <span class="cicon">📉</span>
+        <span class="cnum">Builder 9 · hardest</span>
+        <h3>Markets &amp; investing with AI</h3>
+        <p>Research assistant, screening, and earnings analysis - a survey of what works, and a hard line: assist, never advise.</p>
+        <span class="meta"><span class="pill light">Research memo</span></span>
+      </a>
+      <a class="course-card" href="courses/b10-governance-security-production.html" style="--diff:#F87171">
+        <span class="cicon">🔒</span>
+        <span class="cnum">Builder 10 · hardest</span>
+        <h3>Governance, security &amp; production</h3>
+        <p>Model risk, prompt injection, data leakage, and auditability - how to take a finance AI workflow safely to production.</p>
+        <span class="meta"><span class="pill light">Production checklist</span></span>
+      </a>
+    </div>
+    <div class="diff-legend">
+      <span><i style="background:#34D399"></i>easy - everyone</span>
+      <span><i style="background:#FBBF24"></i>medium</span>
+      <span><i style="background:#FB923C"></i>hands-on / deciding</span>
+      <span><i style="background:#F87171"></i>hardest</span>
+    </div>
+
+    <div class="rail">
+      <b>The one rule this whole course runs on:</b> AI assists, the licensed human decides. Nothing here is investment, tax, or legal advice - and you never paste material non-public information, client PII, or unpublished financials into a public AI tool.
+    </div>
+
+    <div class="paths">
+      <h2>Choose your path 🗺️</h2>
+      <p class="plede">Two doors, one course. Leaders never touch code; builders never sit through governance theory they have not first felt in a demo.</p>
+      <div class="path"><b>🤝 Leader (no code, ever)</b>
+        <a class="pstep" href="courses/a1-ai-first-finance.html">a1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a2-use-case-map.html">a2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a3-trust-risk-governance.html">a3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a4-ai-ready-team.html">a4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a5-roi-business-case.html">a5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a6-strategy-roadmap.html">a6</a>
+      </div>
+      <div class="path"><b>🛠️ Builder (hands-on analyst)</b>
+        <a class="pstep" href="courses/b1-ai-foundations-finance.html">b1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b2-prompting-financial-analysis.html">b2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b3-month-end-close-copilot.html">b3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b4-fpa-forecasting.html">b4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b5-reporting-narrative.html">b5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b6-excel-sheets-ai.html">b6</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b7-documents-data-rag.html">b7</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b8-risk-fraud-credit.html">b8</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b9-markets-investing.html">b9</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b10-governance-security-production.html">b10</a>
+      </div>
+      <div class="path"><b>🌱 Curious follower (a taste)</b>
+        <a class="pstep" href="courses/a1-ai-first-finance.html">a1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a2-use-case-map.html">a2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b1-ai-foundations-finance.html">b1</a>
+      </div>
+      <div class="path"><b>🚀 Full journey (lead AND build)</b>
+        <a class="pstep" href="courses/a1-ai-first-finance.html">a1-a6</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b1-ai-foundations-finance.html">b1-b10</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section mm-section">
+    <h2>The knowledge map 🧠</h2>
+    <p class="mm-lede">Both tracks at a glance - hover a session to spotlight its concepts, click any node to jump in.</p>
+    <div class="mm-wrap"><div id="mindmap"></div></div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a> · sources: CFI · Columbia x Wall Street Prep · IE Business School · FP&amp;A Institute · Coursera · Wharton + regulator guidance (SR 11-7, EU AI Act, MAS)</span>
+  </footer>
+</main>
+
+<script>
+window.MINDMAP_DATA = {
+  title: "AI +\nFinance",
+  centerColor: "#0A4A44",
+  sessions: [
+    { label: "AI-first\nfinance", href: "courses/a1-ai-first-finance.html", color: "#34D399",
+      concepts: [
+        { label: "Why now", href: "courses/a1-ai-first-finance.html" },
+        { label: "Beyond the hype", href: "courses/a1-ai-first-finance.html" },
+        { label: "Value map", href: "courses/a1-ai-first-finance.html" } ] },
+    { label: "Use-case\nmap", href: "courses/a2-use-case-map.html", color: "#34D399",
+      concepts: [
+        { label: "Score the bets", href: "courses/a2-use-case-map.html" },
+        { label: "Value vs risk", href: "courses/a2-use-case-map.html" } ] },
+    { label: "Trust +\ngovernance", href: "courses/a3-trust-risk-governance.html", color: "#FBBF24",
+      concepts: [
+        { label: "Model risk", href: "courses/a3-trust-risk-governance.html" },
+        { label: "Explainability", href: "courses/a3-trust-risk-governance.html" },
+        { label: "Audit trail", href: "courses/a3-trust-risk-governance.html" } ] },
+    { label: "AI-ready\nteam", href: "courses/a4-ai-ready-team.html", color: "#FBBF24",
+      concepts: [
+        { label: "New roles", href: "courses/a4-ai-ready-team.html" },
+        { label: "Change mgmt", href: "courses/a4-ai-ready-team.html" } ] },
+    { label: "ROI +\nbusiness case", href: "courses/a5-roi-business-case.html", color: "#FB923C",
+      concepts: [
+        { label: "Measure value", href: "courses/a5-roi-business-case.html" },
+        { label: "Buy vs build", href: "courses/a5-roi-business-case.html" } ] },
+    { label: "Strategy +\nroadmap", href: "courses/a6-strategy-roadmap.html", color: "#FB923C",
+      concepts: [
+        { label: "Agentic future", href: "courses/a6-strategy-roadmap.html" },
+        { label: "Board narrative", href: "courses/a6-strategy-roadmap.html" } ] },
+    { label: "AI\nfoundations", href: "courses/b1-ai-foundations-finance.html", color: "#34D399",
+      concepts: [
+        { label: "Can vs can't", href: "courses/b1-ai-foundations-finance.html" },
+        { label: "Tool landscape", href: "courses/b1-ai-foundations-finance.html" },
+        { label: "Honesty rails", href: "courses/b1-ai-foundations-finance.html" } ] },
+    { label: "Prompting\nfor analysis", href: "courses/b2-prompting-financial-analysis.html", color: "#34D399",
+      concepts: [
+        { label: "Context + role", href: "courses/b2-prompting-financial-analysis.html" },
+        { label: "Few-shot", href: "courses/b2-prompting-financial-analysis.html" },
+        { label: "Checkable output", href: "courses/b2-prompting-financial-analysis.html" } ] },
+    { label: "Close\ncopilot", href: "courses/b3-month-end-close-copilot.html", color: "#FBBF24",
+      concepts: [
+        { label: "Reconcile", href: "courses/b3-month-end-close-copilot.html" },
+        { label: "Anomaly flags", href: "courses/b3-month-end-close-copilot.html" },
+        { label: "Variance narrative", href: "courses/b3-month-end-close-copilot.html" } ] },
+    { label: "FP&A\nforecasting", href: "courses/b4-fpa-forecasting.html", color: "#FBBF24",
+      concepts: [
+        { label: "Driver-based", href: "courses/b4-fpa-forecasting.html" },
+        { label: "Scenarios", href: "courses/b4-fpa-forecasting.html" } ] },
+    { label: "Reporting +\nnarrative", href: "courses/b5-reporting-narrative.html", color: "#FBBF24",
+      concepts: [
+        { label: "MD&A", href: "courses/b5-reporting-narrative.html" },
+        { label: "Board decks", href: "courses/b5-reporting-narrative.html" },
+        { label: "Commentary", href: "courses/b5-reporting-narrative.html" } ] },
+    { label: "Excel +\nAI", href: "courses/b6-excel-sheets-ai.html", color: "#34D399",
+      concepts: [
+        { label: "Formula gen", href: "courses/b6-excel-sheets-ai.html" },
+        { label: "Data cleanup", href: "courses/b6-excel-sheets-ai.html" } ] },
+    { label: "Documents\n(RAG)", href: "courses/b7-documents-data-rag.html", color: "#FB923C",
+      concepts: [
+        { label: "10-K Q&A", href: "courses/b7-documents-data-rag.html" },
+        { label: "Extraction", href: "courses/b7-documents-data-rag.html" },
+        { label: "Cite sources", href: "courses/b7-documents-data-rag.html" } ] },
+    { label: "Risk, fraud\n& credit", href: "courses/b8-risk-fraud-credit.html", color: "#FB923C",
+      concepts: [
+        { label: "Anomaly detect", href: "courses/b8-risk-fraud-credit.html" },
+        { label: "Credit scoring", href: "courses/b8-risk-fraud-credit.html" },
+        { label: "Human decides", href: "courses/b8-risk-fraud-credit.html" } ] },
+    { label: "Markets +\ninvesting", href: "courses/b9-markets-investing.html", color: "#F87171",
+      concepts: [
+        { label: "Research assist", href: "courses/b9-markets-investing.html" },
+        { label: "Screening", href: "courses/b9-markets-investing.html" },
+        { label: "Assist not advise", href: "courses/b9-markets-investing.html" } ] },
+    { label: "Governance\n& production", href: "courses/b10-governance-security-production.html", color: "#F87171",
+      concepts: [
+        { label: "Prompt injection", href: "courses/b10-governance-security-production.html" },
+        { label: "Data leakage", href: "courses/b10-governance-security-production.html" },
+        { label: "Auditability", href: "courses/b10-governance-security-production.html" } ] }
+  ]
+};
+</script>
+<script src="assets/mindmap.js?v=1"></script>
+<script src="assets/app.js?v=1"></script>
+</body>
+</html>

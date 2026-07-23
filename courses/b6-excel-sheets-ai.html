@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 6 · Excel / Sheets + AI - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 6 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 6 of 10</div>
+    <h1>Excel / Sheets + AI: <span class="accent">generate formulas you can actually check</span></h1>
+    <p class="sub">The spreadsheet is still where finance lives, and AI now sits right next to it - in a chat window that writes formulas, or as a copilot inside the grid that analyzes and charts in place. Tonight you learn the two modes, what each is genuinely great at, and the one habit that keeps you safe: you describe the intent, the AI drafts the formula, and you test it on rows where you already know the answer. The math stays in the sheet, auditable, never buried in a chat.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Builder track</span>
+      <span class="chip audience">Practitioners: all finance</span>
+      <span class="chip audience">Excel or Google Sheets</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Why the grid + AI</span>
+      <span class="a2" style="flex:4">3-20 · Two modes, strengths, safe pattern</span>
+      <span class="a3" style="flex:5">20-40 · Build-along: formula + cleanup</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>The spreadsheet did not go away - AI moved in next door</h2>
+    </div>
+    <p class="lede">Finance runs on the grid, and it is not going anywhere. What changed is that AI now sits beside it: a chat window that writes and explains a formula you paste back, and a copilot living inside Excel or Sheets that can analyze a range and drop a chart in place. Both are useful. Both can be subtly, confidently wrong. The skill tonight is not "let AI do my spreadsheet" - it is "let AI draft, and me verify". You describe what you want, the AI gives you a formula, and you prove it on a row where you already know the answer before you trust it on the other nine thousand.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The ability to generate and verify a real formula (SUMIFS or XLOOKUP) against a known total, a repeatable pattern for cleaning a messy column with AI, a clear sense of when to use chat-assist versus the in-grid copilot, and the one rule that keeps you out of trouble - keep the math in the sheet, test it on rows you can check.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: TWO MODES ============ -->
+  <section class="section" id="modes">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers CFI AI for Excel</span>
+      <h2>Two modes of AI in the grid <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">There are two ways AI shows up around your spreadsheet, and they solve different problems. Knowing which one you are using stops the most common frustration - waiting for the grid to "just do it" when you are actually in a chat window, or pasting sensitive data into a consumer chat when a governed in-grid copilot was right there.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two modes of AI in the spreadsheet: chat-assist writes a formula you paste back, and the in-grid copilot analyzes and charts inside the sheet - with when to use each">
+        <style>
+          .b6xT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b6xTi { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b6xX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b6xXi { font: 400 12.5px Inter, sans-serif; fill: #10201E; }
+          .b6xN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+          .b6xB { font: 700 14px Inter, sans-serif; fill: #10201E; }
+        </style>
+        <defs>
+          <marker id="b6xAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0 L9 4.5 L0 9 z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+
+        <!-- Panel A: chat-assist -->
+        <rect x="30" y="30" width="380" height="56" rx="9" fill="#0A4A44"/>
+        <text class="b6xT" x="50" y="55">AI IN CHAT (chat-assist)</text>
+        <text class="b6xX" x="50" y="74">ChatGPT · Claude - beside the sheet</text>
+
+        <rect x="30" y="98" width="380" height="72" rx="9" fill="#0F766E"/>
+        <text class="b6xX" x="50" y="123">You describe the task in words.</text>
+        <text class="b6xX" x="50" y="143">It writes a formula and explains it.</text>
+        <text class="b6xX" x="50" y="160">You paste the formula back into the grid.</text>
+
+        <rect x="30" y="182" width="380" height="66" rx="9" fill="#E6F4F2"/>
+        <text class="b6xB" x="50" y="206">Great for: XLOOKUP, SUMIFS,</text>
+        <text class="b6xXi" x="50" y="226">nested IF, "why is this broken?",</text>
+        <text class="b6xXi" x="50" y="242">learning what a formula does.</text>
+
+        <!-- Panel B: in-grid copilot -->
+        <rect x="470" y="30" width="380" height="56" rx="9" fill="#2DA89E"/>
+        <text class="b6xT" x="490" y="55">COPILOT IN THE GRID</text>
+        <text class="b6xX" x="490" y="74">Excel Copilot · Gemini in Sheets</text>
+
+        <rect x="470" y="98" width="380" height="72" rx="9" fill="#7FCFC6"/>
+        <text class="b6xXi" x="490" y="123">Lives inside the workbook itself.</text>
+        <text class="b6xXi" x="490" y="143">Analyzes a range and charts it,</text>
+        <text class="b6xXi" x="490" y="160">summarizes tabs, all in place.</text>
+
+        <rect x="470" y="182" width="380" height="66" rx="9" fill="#E6F4F2"/>
+        <text class="b6xB" x="490" y="206">Great for: quick pivots, trends,</text>
+        <text class="b6xXi" x="490" y="226">"explain this workbook", a fast</text>
+        <text class="b6xXi" x="490" y="242">chart without leaving the sheet.</text>
+
+        <!-- flow arrows -->
+        <path d="M220 170 L220 182" fill="none" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b6xAh)"/>
+        <path d="M660 170 L660 182" fill="none" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b6xAh)"/>
+
+        <!-- when to use band -->
+        <rect x="30" y="270" width="820" height="52" rx="9" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
+        <text class="b6xB" x="50" y="294">When to use which:</text>
+        <text class="b6xXi" x="200" y="294">chat-assist when you need a formula written or fixed;</text>
+        <text class="b6xXi" x="200" y="312">the in-grid copilot when you want fast in-place analysis or a chart.</text>
+
+        <!-- warm note -->
+        <rect x="30" y="344" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b6xN" x="54" y="356">Either mode - the math still lands in the sheet, and you still verify it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - chat-assist writes formulas you paste back; the in-grid copilot analyzes in place</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Chat-assist versus in-grid copilot<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Same AI family, two very different working styles. Pick by what you are trying to do.</p>
+        <ul>
+          <li><strong>Chat-assist</strong> - you are in ChatGPT or Claude, beside the sheet. You describe the task, it hands you a formula and an explanation, you paste the formula into the cell. The grid does the actual math. This is where formula generation, debugging, and "teach me what this does" live.</li>
+          <li><strong>In-grid copilot</strong> - Excel Copilot or Gemini in Google Sheets sits inside the workbook. It can read a selected range, build a quick pivot or chart, and summarize what a tab is doing, all without you leaving the file. Great for fast exploration and a first-pass chart.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The privacy line runs through both</strong>
+          Chat-assist in a consumer tool sees whatever you paste - so paste structure and synthetic numbers, not real financials or client data. A governed in-grid copilot inside your company tenant is usually the safer place for real figures. Same rail as b1: know where the data goes before you send it.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Which one for the job in front of you<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A quick gut-check when you are not sure which mode you want.</p>
+        <ul>
+          <li>"I need a formula and I do not remember the syntax" - chat-assist.</li>
+          <li>"This XLOOKUP returns #N/A and I cannot see why" - chat-assist, paste the formula and a sample row.</li>
+          <li>"Give me a chart of monthly spend by category, now" - in-grid copilot.</li>
+          <li>"What is this inherited workbook even doing?" - in-grid copilot to summarize, chat-assist to decode the ugly formulas.</li>
+        </ul>
+        <p>You will often bounce between the two in one task, and that is fine. Just stay aware of which window you are in and what it can see.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: STRENGTHS ============ -->
+  <section class="section" id="strengths">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers CFI AI for Excel</span>
+      <h2>What it is genuinely great at <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">AI in the grid is not magic and it is not useless - it is very good at a specific, boring set of jobs that eat your afternoons. Lean into these, and stay skeptical of the one place it will quietly hurt you: a formula that looks right and is off by a subtle logic error.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The jobs it earns its keep on<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Task</th><th>How AI helps</th></tr></thead>
+          <tbody>
+            <tr><td>Formula generation</td><td>Describe the lookup or aggregation in words; get XLOOKUP, SUMIFS, or a nested IF with the syntax right</td></tr>
+            <tr><td>Formula debugging</td><td>Paste a broken formula and a sample row; it explains the #N/A, #REF, or wrong result and suggests the fix</td></tr>
+            <tr><td>Data cleanup</td><td>Parse a jumbled column, dedupe, standardize dates and text case - as a formula or a step list</td></tr>
+            <tr><td>Pivot and analysis</td><td>In-grid copilot builds a quick pivot, ranks, or trends a range and charts it in place</td></tr>
+            <tr><td>Explain this workbook</td><td>Summarize what an inherited or tangled workbook does before you touch it</td></tr>
+          </tbody>
+        </table>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The SUMIFS that was subtly wrong.</strong> An analyst asked AI for a SUMIFS to total Q2 costs by department. The formula looked perfect and returned a clean number - but the criteria range was off by one column, so it summed the wrong field. It matched the total by luck on the first department and was wrong on the rest. Nobody noticed until the reconciliation broke. The fix was not a better prompt - it was testing the formula on one department whose total was known.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Where it quietly fails - and the tell<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The danger is not the obvious error - a broken formula throws #REF and you catch it. The danger is the <strong>plausible</strong> error: a formula that runs clean and returns a number that is simply wrong.</p>
+        <ul>
+          <li><strong>Off-by-one ranges.</strong> The lookup or sum points one column or row off. Runs fine, wrong answer.</li>
+          <li><strong>Wrong match mode.</strong> Approximate match where you needed exact, so it grabs the nearest instead of the right row.</li>
+          <li><strong>Silent type coercion.</strong> Text that looks like a number ("1,200") does not sum, and the AI does not always warn you.</li>
+        </ul>
+        <p>The tell is always the same: it looks authoritative and it did not show you a check. So you build the check in - test on rows where you already know the answer. That is the whole of Part 3.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: SAFE PATTERN ============ -->
+  <section class="section" id="pattern">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · finance-specific hygiene</span>
+      <h2>The safe pattern: describe, generate, test, keep it in the sheet <span class="tag concept">4 min live</span></h2>
+    </div>
+    <p class="lede">One habit protects you from every subtle-wrong-formula story above. It costs about ninety seconds and it is not optional in finance. Describe the intent, get the formula, test it on rows where you know the answer, and keep the math in the sheet where it can be audited - never trapped in a chat log nobody can trace.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The safe pattern in four steps: describe the intent, get the formula, test it on rows where you know the answer, and keep the math in the sheet">
+        <style>
+          .b6yT { font: 700 15px Inter, sans-serif; fill: #FFFFFF; }
+          .b6yTi { font: 700 15px Inter, sans-serif; fill: #10201E; }
+          .b6yX { font: 400 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b6yXi { font: 400 12.5px Inter, sans-serif; fill: #10201E; }
+          .b6yN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+        </style>
+        <defs>
+          <marker id="b6yAh" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0 L9 4.5 L0 9 z" fill="#BCD3CF"/>
+          </marker>
+        </defs>
+
+        <rect x="24" y="46" width="185" height="86" rx="10" fill="#0A4A44"/>
+        <text class="b6yT" x="42" y="82">1 · Describe</text>
+        <text class="b6yX" x="42" y="102">say the intent in</text>
+        <text class="b6yX" x="42" y="119">plain words</text>
+
+        <rect x="239" y="46" width="185" height="86" rx="10" fill="#0F766E"/>
+        <text class="b6yT" x="257" y="82">2 · Generate</text>
+        <text class="b6yX" x="257" y="102">get the formula +</text>
+        <text class="b6yX" x="257" y="119">an explanation</text>
+
+        <rect x="454" y="46" width="185" height="86" rx="10" fill="#2DA89E"/>
+        <text class="b6yT" x="472" y="82">3 · Test</text>
+        <text class="b6yX" x="472" y="102">check on rows you</text>
+        <text class="b6yX" x="472" y="119">already know</text>
+
+        <rect x="669" y="46" width="187" height="86" rx="10" fill="#7FCFC6"/>
+        <text class="b6yTi" x="687" y="82">4 · Keep it in</text>
+        <text class="b6yXi" x="687" y="102">math lives in the</text>
+        <text class="b6yXi" x="687" y="119">sheet, auditable</text>
+
+        <path d="M209 89 L239 89" fill="none" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b6yAh)"/>
+        <path d="M424 89 L454 89" fill="none" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b6yAh)"/>
+        <path d="M639 89 L669 89" fill="none" stroke="#BCD3CF" stroke-width="2" marker-end="url(#b6yAh)"/>
+
+        <rect x="24" y="164" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b6yN" x="48" y="176">The LLM is not a calculator - it drafts the formula, the sheet does the arithmetic.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - describe, generate, test on known rows, keep the math in the sheet</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why the math stays in the sheet<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>This is the rule that separates a spreadsheet you can defend from a number you cannot trace.</p>
+        <ul>
+          <li><strong>Describe the intent.</strong> "Sum Q2 marketing spend by region, exact match on region code." The clearer the intent, the fewer subtle-wrong outcomes.</li>
+          <li><strong>Generate the formula.</strong> Get the formula and the explanation. Read the explanation - that is where you catch a wrong match mode or the wrong range.</li>
+          <li><strong>Test on known rows.</strong> Run it where you already know the answer: one region whose total you totalled by hand, or a filtered subtotal. If it matches there, your confidence is earned, not assumed.</li>
+          <li><strong>Keep the math in the sheet.</strong> The formula lives in the cell, referencing your data. Anyone can click it and see the logic. Never let the AI just tell you "the total is 4.1m" in chat - that number is untraceable and unverifiable.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>LLMs are not calculators</strong>
+          A chat model predicts text; it does not reliably do arithmetic on numbers it reads. Ask it for "the sum of this column" in chat and it may be close and wrong. Ask it for the SUMIFS formula, paste it into the grid, and let the spreadsheet compute. AI drafts the logic, the sheet does the math. That division of labour is the entire safety story.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Generate and verify a SUMIFS against a known total <span class="tag demo">★ 12 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">We take a real task - total spend by category for one month - and walk the safe pattern end to end. You describe the intent, get a SUMIFS, then prove it against a total you already know before you trust it anywhere else.</p>
+
+    <div class="steps">
+      <div class="step"><p>In Excel or Google Sheets, paste the small synthetic expense table below into cells A1:C11 (it is safe for any tool - rail one). Column A is category, B is region, C is amount in SGD.</p></div>
+      <div class="step"><p><strong>Get a known answer first.</strong> Manually total the "Marketing" rows: 620 + 300 = 920. Write 920 in a cell labelled "known Marketing total". This is your check.</p></div>
+      <div class="step"><p><strong>Ask chat-assist</strong> for the formula with the prompt below. It should hand you a SUMIFS (or XLOOKUP variant) plus a one-line explanation of how the criteria work.</p></div>
+      <div class="step"><p>Paste the formula into a cell and point it at "Marketing". Does it return 920? If yes, your formula logic is verified on a known row. If not, read the explanation - the range or the match is off, and now you can see exactly where.</p></div>
+      <div class="step"><p><strong>Now trust it wider.</strong> Drag or re-point it to the other categories. Because you proved it on Marketing, you can rely on it for Salaries and Travel without hand-totalling every one. That is the payoff of the known-row test.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The ask - generate a checkable SUMIFS</span>I have an expense table in Google Sheets. Column A = Category (text),
+Column B = Region (text), Column C = Amount (number), data in rows 2 to 11,
+headers in row 1.
+
+Write me a SUMIFS formula that totals Amount (column C) for a given
+Category in column A. I will put the category I want in cell E1 and the
+formula in F1.
+
+Rules:
+- Use an EXACT match on the category, not approximate.
+- Explain in one line what each argument does so I can check the ranges.
+- Do not compute any totals yourself - just give me the formula for the sheet.</div>
+
+    <div class="prompt-box bad"><span class="label">The synthetic data to paste (A1:C11)</span>Category    Region   Amount
+Marketing   APAC     620
+Salaries    APAC     1900
+Travel      APAC     140
+Marketing   EMEA     300
+Salaries    EMEA     880
+Travel      EMEA     90
+Marketing   AMER     0
+Salaries    AMER     720
+Travel      AMER     210
+Software    APAC     450</div>
+
+    <div class="callout tip">
+      <strong>The check is the deliverable, not the formula</strong>
+      Anyone can paste a SUMIFS. What makes you the trustworthy one in the room is the labelled "known Marketing total = 920" cell sitting next to it, proving the formula matches a number you calculated independently. Leave that check in the sheet - it is your audit trail and your future self will thank you.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Clean a messy column and verify a sample <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">Real finance data is filthy - dates in three formats, inconsistent text case, stray spaces. AI is excellent at proposing the cleanup, and you stay excellent at spot-checking it. We standardize a jumbled date column and then verify a handful of rows by eye.</p>
+
+    <div class="steps">
+      <div class="step"><p>Paste the messy date column below into a new column. Notice the problem: same dates, four different formats, one with a trailing space. A PivotTable or SUMIFS by month will treat these as different values.</p></div>
+      <div class="step"><p><strong>Ask chat-assist</strong> for a cleanup approach with the prompt below. Ask for a formula if one will do, or a short step list if the mess needs more than one move.</p></div>
+      <div class="step"><p>Apply the suggested formula or steps into an adjacent "clean date" column. Keep the original column untouched beside it - never overwrite raw data, so you can always compare.</p></div>
+      <div class="step"><p><strong>Verify a sample by eye.</strong> Pick three rows across the different original formats and confirm the cleaned value is the correct date. If "03/04/2026" resolved to the wrong day-versus-month, you catch it now - date ambiguity is where cleanup quietly goes wrong.</p></div>
+      <div class="step"><p>Only once the sample checks out do you use the clean column for grouping, pivots, or lookups. Verified sample first, trust second.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The ask - propose a cleanup and tell me the risk</span>I have a column of transaction dates that were entered inconsistently.
+Here are the raw values (each is meant to be a real date):
+
+2026-04-03
+3 Apr 2026
+04/03/2026
+Apr-3-2026
+ 2026-04-03  (has trailing spaces)
+
+I want them all standardized to YYYY-MM-DD in an adjacent column, with the
+original column left untouched.
+
+Please:
+- Give me a formula (Google Sheets) if one will do it, or numbered steps if not.
+- Flag any value that is AMBIGUOUS (e.g. day-vs-month order) so I can check it manually.
+- Do not guess silently on ambiguous ones - tell me which rows to eyeball.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The month that split in two.</strong> A team pasted a year of expenses and grouped by month for the board pack. Two months showed suspiciously low totals - because the same month had been entered as both "Mar-2026" and "2026-03" and the pivot counted them separately. AI cleaned the column in seconds once asked; the win was the analyst spot-checking three rows and catching that one "03/04" was European day-first, not US month-first. AI did the tedious 90%; her eyes caught the 10% that would have embarrassed the whole pack.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Finish both demos if you ran short - especially the known-row test in Demo 1. Feeling a formula prove itself against a number you calculated is the lesson.</li>
+      <li>Take one real (synthetic or public) formula you struggle with at work - a nested IF, an INDEX/MATCH, a tricky SUMIFS - and have chat-assist write and explain it. Then test it on a row you know.</li>
+      <li>Clean one genuinely messy column from your own work using the Demo 2 pattern. Keep the raw column, verify three rows by eye before you trust the clean one.</li>
+      <li>Try the in-grid copilot once (Excel Copilot or Gemini in Sheets) on a range: ask it to chart monthly spend, and sanity-check the chart against a number you know.</li>
+      <li>Add your best formula prompt to the prompt library you started in b2 - "generate and verify a SUMIFS" is a keeper.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">This session teaches from public AI-for-spreadsheets curricula. Certificates, graded assessments, and vendor tooling stay with the official programs - noted honestly. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">CFI - AI for Finance: AI for Excel</span><span class="note">Parts 1-3 + both demos · formula generation, debugging, cleanup, copilot analysis</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">In-grid copilots (Excel Copilot, Gemini in Sheets)</span><span class="note">Part 1 · vendor tools move fast - concepts here, feature specifics stay with the vendor docs</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · When AI helps with a spreadsheet, where should the actual math live?</p>
+      <button class="qopt" type="button">A · In the chat window - just trust the total the AI reports</button>
+      <button class="qopt" type="button">B · In the sheet - AI drafts the formula, the spreadsheet computes it</button>
+      <button class="qopt" type="button">C · In a separate calculator to be safe</button>
+      <p class="qwhy">LLMs are not calculators - they predict text and can be confidently wrong on arithmetic. Keep the formula in the cell so the sheet does the math and anyone can audit the logic.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · An AI-generated SUMIFS runs clean and returns a tidy number. What do you do before trusting it?</p>
+      <button class="qopt" type="button">A · Nothing - a clean result with no error means it is correct</button>
+      <button class="qopt" type="button">B · Ask the AI "are you sure?" and accept the reply</button>
+      <button class="qopt" type="button">C · Test it on a row whose answer you already know</button>
+      <p class="qwhy">The dangerous errors are the plausible ones - off-by-one ranges or the wrong match mode that run fine and return the wrong number. Testing against a known total is the only reliable catch.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · You want a quick chart of monthly spend without leaving your workbook. Which mode fits?</p>
+      <button class="qopt" type="button">A · In-grid copilot (Excel Copilot / Gemini in Sheets) - it analyzes and charts in place</button>
+      <button class="qopt" type="button">B · Chat-assist - describe it, get a formula, paste it back</button>
+      <button class="qopt" type="button">C · Neither - AI cannot make charts</button>
+      <p class="qwhy">The in-grid copilot lives inside the workbook and can pivot, trend, and chart a range in place. Chat-assist is for writing and debugging the formulas you paste back into the grid.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Two modes</b><span>chat-assist writes formulas you paste back · in-grid copilot analyzes and charts inside the sheet.</span></div>
+      <div class="cheat-item"><b>When to use which</b><span>need a formula written or fixed? chat-assist. want fast in-place analysis or a chart? the copilot.</span></div>
+      <div class="cheat-item"><b>Great at</b><span>XLOOKUP / SUMIFS / nested IF, debugging, data cleanup, pivots, "explain this workbook".</span></div>
+      <div class="cheat-item"><b>The subtle risk</b><span>formulas that run clean and are wrong - off-by-one ranges, wrong match mode, text-as-number.</span></div>
+      <div class="cheat-item"><b>The safe pattern</b><span>describe intent → generate → test on rows you know → keep the math in the sheet, auditable.</span></div>
+      <div class="cheat-item"><b>LLMs are not calculators</b><span>never trust a total the chat "computes" - get the formula, let the grid do the arithmetic.</span></div>
+      <div class="cheat-item"><b>Cleanup rule</b><span>keep the raw column, clean into an adjacent one, verify a sample by eye - watch date ambiguity.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b7 - documents &amp; data (RAG): ask questions of 10-Ks and filings, and extract with a citation trail.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 6 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b5-reporting-narrative.html">← Previous: Reporting &amp; narrative generation</a> &nbsp;·&nbsp; <a href="b7-documents-data-rag.html">Next: Documents &amp; data - RAG →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

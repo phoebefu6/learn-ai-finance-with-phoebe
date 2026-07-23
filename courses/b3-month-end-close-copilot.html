@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Builder session 3 · Month-end close copilot - learn AI + finance with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<style>
+  /* ---- finance-live simulator (scoped fl-*) ---- */
+  .fl-shell { display: grid; grid-template-columns: 15.5rem 1fr; gap: 1rem; border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff,#EAF5F3); padding: 1rem; margin: 1.2rem 0 .4rem; }
+  @media (max-width: 720px) { .fl-shell { grid-template-columns: 1fr; } }
+  .fl-ctitle { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--indigo); margin-bottom: .6rem; }
+  .fl-levers { display: flex; flex-direction: column; gap: .5rem; }
+  .fl-lever { display: flex; align-items: center; gap: .6rem; text-align: left; border: 1px solid var(--hairline); background: #fff; border-radius: 12px; padding: .55rem .7rem; cursor: pointer; transition: all .14s ease; font: inherit; color: var(--ink); }
+  .fl-lever:hover { border-color: var(--indigo-soft); }
+  .fl-lever.fl-active { border-color: var(--indigo); background: var(--indigo-50); }
+  .fl-sw { flex: none; width: 2rem; height: 1.15rem; border-radius: 999px; background: var(--faint); position: relative; transition: background .14s ease; }
+  .fl-sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: calc(1.15rem - 4px); height: calc(1.15rem - 4px); border-radius: 50%; background: #fff; transition: transform .14s ease; box-shadow: 0 1px 2px rgba(16,32,30,.3); }
+  .fl-lever.fl-active .fl-sw { background: var(--indigo); }
+  .fl-lever.fl-active .fl-sw::after { transform: translateX(.85rem); }
+  .fl-ltext { display: flex; flex-direction: column; line-height: 1.25; }
+  .fl-ltext b { font-size: .84rem; font-weight: 700; }
+  .fl-ltext span { font-size: .72rem; color: var(--muted); }
+  .fl-modes { display: flex; gap: .4rem; margin-top: .9rem; }
+  .fl-mode { flex: 1; border: 1px solid var(--hairline); background: #fff; border-radius: 999px; padding: .38rem .5rem; font-size: .74rem; font-weight: 700; cursor: pointer; color: var(--muted); transition: all .14s ease; }
+  .fl-mode.fl-on { background: var(--indigo); color: #fff; border-color: var(--indigo); }
+  .fl-stage { min-width: 0; }
+  .fl-meters { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: .8rem; }
+  .fl-meter { flex: 1; min-width: 9rem; border: 1px solid var(--hairline); border-radius: 12px; background: #fff; padding: .6rem .8rem; }
+  .fl-mlabel { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--muted); }
+  .fl-mval { font-size: 1.7rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.2; color: var(--ink); }
+  .fl-mval.fl-good { color: var(--indigo); }
+  .fl-bar { height: 7px; border-radius: 999px; background: var(--hairline); margin-top: .35rem; overflow: hidden; }
+  .fl-bar i { display: block; height: 100%; background: linear-gradient(90deg,var(--indigo-mid),var(--indigo)); transition: width .3s ease; }
+  .fl-draftlabel, .fl-scorehead { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--indigo); margin-bottom: .4rem; }
+  .fl-scorehead { text-transform: none; font-size: .95rem; letter-spacing: 0; color: var(--ink); }
+  .fl-draft { border: 1px solid var(--hairline); border-left: 3px solid var(--indigo); border-radius: 10px; background: #fff; padding: .8rem 1rem; }
+  .fl-line { font-size: .9rem; margin: 0 0 .55rem; line-height: 1.6; }
+  .fl-line:last-child { margin-bottom: 0; }
+  .fl-line.fl-warn { color: var(--amber-ink); background: var(--amber-50); border-radius: 8px; padding: .5rem .65rem; }
+  .fl-flags { margin-top: .7rem; display: flex; flex-direction: column; gap: .4rem; }
+  .fl-fl { display: flex; gap: .55rem; align-items: flex-start; border-radius: 8px; padding: .5rem .65rem; font-size: .86rem; }
+  .fl-fl span { font-weight: 800; }
+  .fl-fl p { margin: 0; line-height: 1.5; }
+  .fl-fl-flag { background: var(--amber-50); color: var(--amber-ink); }
+  .fl-fl-ok { background: var(--indigo-50); color: var(--indigo-deep); }
+  .fl-fl-muted { background: #F3F5F5; color: var(--muted); }
+  .fl-table { width: 100%; border-collapse: collapse; margin: .3rem 0 .5rem; font-size: .86rem; }
+  .fl-table th { text-align: left; text-transform: uppercase; font-size: .66rem; letter-spacing: .07em; color: var(--muted); padding: .35rem .5rem; border-bottom: 1px solid var(--hairline); }
+  .fl-table td { padding: .4rem .5rem; border-bottom: .5px solid var(--hairline); }
+  .fl-rmark { font-weight: 800; text-align: center; }
+  .fl-r-ok .fl-rmark { color: var(--indigo); }
+  .fl-r-no .fl-rmark { color: var(--faint); }
+  .fl-note, .fl-rail { font-size: .78rem; color: var(--muted); line-height: 1.55; }
+  .fl-rail { margin-top: .8rem; border-top: 1px dashed var(--hairline); padding-top: .6rem; font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-finance-with-phoebe</a> / Builder session 3 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI + Finance with Phoebe · Builder track · Session 3 of 10</div>
+    <h1>The month-end close copilot: <span class="accent">reconcile, flag, narrate</span></h1>
+    <p class="sub">The flagship build of the track. You will assemble an AI copilot that triages reconciliations, flags the anomalies that matter, and drafts board-grade variance commentary - then you will drive a live simulator that shows exactly why context and guardrails, not a fancier model, are what make the output trustworthy.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Builder track</span>
+      <span class="chip audience">Practitioners: accounting · controllership · FP&amp;A</span>
+      <span class="chip audience">ChatGPT or Claude · a spreadsheet</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-17 · The close &amp; the copilot</span>
+      <span class="a3" style="flex:5">17-42 · Simulator + build-along</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why the close is the perfect first copilot</h2>
+    </div>
+    <p class="lede">Month-end close is repetitive, deadline-bound, and drowning in variance explanations that read the same every month - which is exactly why it is the highest-value, lowest-drama place to put AI to work. Nothing here replaces the accountant; it clears the busywork so judgment gets the time. Tonight you build the copilot in a chat tool, then use a live simulator to feel the one lesson that carries the whole track: a trustworthy answer is grounded and guardrailed, not just well-written.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Try it now prompt</span>
+      <span class="pill inkpill">Official sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A three-job close copilot (reconcile-triage, anomaly-flag, variance-narrative), a reusable grounded prompt that drafts commentary you can defend, hands-on time with the lever simulator that proves grounding beats model-size, and the habit of a human sign-off on every number.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE CLOSE + WHERE AI FITS ============ -->
+  <section class="section" id="the-close">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers Coursera GenAI Essentials for Finance &amp; Accounting + IE close use-cases</span>
+      <h2>The close, and where AI actually fits <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">The close is a pipeline: gather the data, reconcile and tie out, analyse the variances, write the commentary, and review before sign-off. AI earns its place in the messy middle - triage, flagging, drafting - while the human owns the two ends: what the numbers are, and whether they are right.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The month-end close pipeline: gather, reconcile, analyse variance, draft commentary, review and sign-off - AI assists the middle three, a human owns the ends">
+        <style>
+          .b3pT { font: 700 14px Inter, sans-serif; fill: #FFFFFF; }
+          .b3pI { font: 700 14px Inter, sans-serif; fill: #10201E; }
+          .b3pX { font: 400 11.5px Inter, sans-serif; fill: #5B6B69; }
+          .b3pN { font: 600 14px Inter, sans-serif; fill: #3D2C05; }
+          .b3pArr { stroke: #BCD3CF; stroke-width: 2.5; fill: none; marker-end: url(#b3pAh); }
+        </style>
+        <defs>
+          <marker id="b3pAh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#BCD3CF" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <rect x="12" y="70" width="150" height="58" rx="11" fill="#0A4A44"/>
+        <text class="b3pT" x="34" y="96">1 · Gather</text>
+        <text class="b3pX" x="34" y="114" fill="#DCEFEB">human owns</text>
+        <rect x="188" y="70" width="150" height="58" rx="11" fill="#0F766E"/>
+        <text class="b3pT" x="210" y="96">2 · Reconcile</text>
+        <text class="b3pX" x="210" y="114" fill="#DCEFEB">AI triages</text>
+        <rect x="364" y="70" width="150" height="58" rx="11" fill="#0F766E"/>
+        <text class="b3pT" x="386" y="96">3 · Analyse</text>
+        <text class="b3pX" x="386" y="114" fill="#DCEFEB">AI flags</text>
+        <rect x="540" y="70" width="150" height="58" rx="11" fill="#0F766E"/>
+        <text class="b3pT" x="562" y="96">4 · Narrate</text>
+        <text class="b3pX" x="562" y="114" fill="#DCEFEB">AI drafts</text>
+        <rect x="716" y="70" width="152" height="58" rx="11" fill="#0A4A44"/>
+        <text class="b3pT" x="738" y="96">5 · Sign-off</text>
+        <text class="b3pX" x="738" y="114" fill="#DCEFEB">human owns</text>
+        <line class="b3pArr" x1="164" y1="99" x2="186" y2="99"/>
+        <line class="b3pArr" x1="340" y1="99" x2="362" y2="99"/>
+        <line class="b3pArr" x1="516" y1="99" x2="538" y2="99"/>
+        <line class="b3pArr" x1="692" y1="99" x2="714" y2="99"/>
+        <rect x="12" y="210" width="14" height="14" rx="3" fill="#CA8A04"/>
+        <text class="b3pN" x="34" y="222">AI owns the middle busywork; a human still owns what the numbers are and whether they are right.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the close pipeline: AI assists the middle three steps, a human owns both ends</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The three jobs of a close copilot<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Everything a close copilot does falls into three jobs, each a grounded task you already met in b1 and b2:</p>
+        <ul>
+          <li><strong>Reconcile-triage:</strong> given two lists (ledger vs bank, sub-ledger vs GL), surface the items that do not tie and rank them by size, so you look at the 10 that matter, not all 400.</li>
+          <li><strong>Anomaly-flag:</strong> given actuals vs budget and prior, flag what breaches a materiality threshold or breaks a pattern - and say WHY it was flagged.</li>
+          <li><strong>Variance-narrative:</strong> given the reconciled numbers plus business context, draft the "what changed, why, and outlook" commentary in your house style.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Four days to two.</strong> A mid-market controller pointed a copilot at the recurring variance write-ups - the ones that say the same thing every month with new numbers. First drafts that used to eat two days of senior time came back in minutes, leaving the team to do the judgement part: challenge the drivers, chase the odd ones. The close did not get less rigorous. It got faster where rigor was not the point.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What stays with the human - always<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The copilot drafts and triages; it never signs. The non-negotiables, straight from the two rails:</p>
+        <ul>
+          <li><strong>The numbers themselves</strong> come from your system of record, not the model. AI reasons over figures you supply; it does not source them.</li>
+          <li><strong>Every figure in the commentary is checked</strong> against the reconciled data before it goes anywhere near a board pack (remember b1: ungrounded numbers are fiction with formatting).</li>
+          <li><strong>Sign-off is human.</strong> "The copilot wrote it" is not an answer to an auditor. You own the words and the numbers.</li>
+          <li><strong>Real data needs a safe tool</strong> (rail one): pre-close management figures go in an enterprise or local tool, never a consumer chatbot.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ INTERACTIVE: THE SIMULATOR ============ -->
+  <section class="section" id="simulator">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · the lever simulator</span>
+      <h2>Drive it yourself: watch trust get built <span class="tag demo">★ 8 min · everyone plays</span></h2>
+    </div>
+    <p class="lede">Here is the whole lesson of the track in one control panel. The copilot is drafting month-end variance commentary on a small P&amp;L. Every lever you turn on feeds it more context or a tighter guardrail. Turn them on one at a time and watch the commentary go from confident fiction to a checkable, board-grade draft - and flip to the scorecard to watch accuracy climb across a golden set. Notice what never moves the needle: the size of the model.</p>
+
+    <div id="finance-live"></div>
+
+    <div class="callout tip">
+      <strong>What the simulator is teaching</strong>
+      Start with everything off: the copilot invents numbers, just like an ungrounded chatbot. Add the data and it gets real but flat. Add prior period, business context, and account mapping and it starts to explain and classify. Add guardrails and it finally catches the Marketing overspend and the one-off legal item, and filters the immaterial noise. Grounding and guardrails did that - not a bigger brain.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 1 ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Build the variance-narrative prompt for real <span class="tag demo">★ 12 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">Now rebuild what the simulator does, in your own chat tool, on your own small P&amp;L. This is the reusable prompt you will run every close.</p>
+
+    <div class="steps">
+      <div class="step"><p>Take a small, safe P&amp;L (public numbers or a synthetic 5-line set). Include Budget, Actual, and Prior for each line. Rail one: real pre-close numbers go only in an enterprise or local tool.</p></div>
+      <div class="step"><p>Give the copilot a role and the data, then ask for "what changed / why / outlook" commentary - and add every guardrail from the simulator: use only these numbers, show the variance math, apply a materiality threshold, and flag anomalies.</p></div>
+      <div class="step"><p>Add business context (a launch, a one-off cost) and watch attribution sharpen - the same jump the "business context" lever makes in the simulator.</p></div>
+      <div class="step"><p>Verify: check every figure against your data, confirm the flagged items are the real ones, and edit the wording to your house style. You own the final.</p></div>
+      <div class="step"><p>Save the prompt as your reusable "month-end commentary" template. Next month it is a two-minute job.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The close-copilot commentary prompt</span>You are a senior management accountant drafting month-end variance commentary.
+Use ONLY the figures I provide - do not add or estimate any number.
+
+Data ($000): Revenue A 4,120 / B 4,000 / P 3,880; COGS A 2,610 / B 2,500 / P 2,380;
+Marketing A 470 / B 300 / P 290; G&amp;A A 405 / B 400 / P 395; Legal A 180 / B 0 / P 0.
+
+Write commentary as: (1) what changed vs budget and vs prior, showing the variance
+math; (2) why, using this context - Marketing reflects the Q2 launch campaign, Legal
+is a one-off settlement; (3) a one-line outlook.
+Rules: flag any line more than 15% OR 100 over budget as an anomaly to investigate,
+note the Legal item as an unbudgeted one-off below the line, treat variances under
+the threshold as immaterial, and if anything needed is missing say "not in the data".</div>
+
+    <div class="callout tip">
+      <strong>Notice the overlap</strong>
+      That prompt is the simulator with every lever on: data, prior, context, mapping (below-the-line), and guardrails (threshold + flag + "not in the data"). The simulator is just this prompt made clickable.
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2 ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Reconcile-triage: find the 10 that matter <span class="tag demo">★ 8 min · build your own</span></h2>
+    </div>
+    <p class="lede">The other everyday close job: two lists that should agree but do not. The copilot triages; you investigate.</p>
+
+    <div class="steps">
+      <div class="step"><p>Make two short synthetic lists that should tie - e.g. a sub-ledger and a GL balance per account, with a few deliberate mismatches (a timing difference, a transposition, a missing entry).</p></div>
+      <div class="step"><p>Ask the copilot to compare them, list only the items that do NOT reconcile, rank by absolute difference, and suggest the likely reason for each (timing, transposition, missing) - as a hypothesis to check, not a conclusion.</p></div>
+      <div class="step"><p>Add the guardrail: "show the arithmetic for each difference and say 'cannot determine' rather than guessing a cause you cannot support".</p></div>
+      <div class="step"><p>Investigate the top items yourself. The copilot narrowed 400 lines to the handful that matter; the judgement call on each is still yours.</p></div>
+    </div>
+
+    <div class="prompt-box good"><span class="label">★ The reconcile-triage prompt</span>Here are two lists that should agree: [SUB-LEDGER] and [GL].
+Compare them and return ONLY the accounts that do not reconcile, as a table:
+account, sub-ledger, GL, difference (show the subtraction), and a likely-cause
+hypothesis (timing / transposition / missing entry) to investigate.
+Rank by absolute difference, largest first. If you cannot support a cause, say
+"cannot determine". Do not invent accounts or balances not in the lists.</div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The transposition that hid for three months.</strong> A team fed their intercompany recs to a copilot as a triage step. It ranked a 540 vs 450 difference to the top with "possible transposition" - a digit swap that manual eyes had skated past two closes running. AI did not fix it; it just put it where a human would finally look. That is the whole value: attention, aimed.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Run the variance-narrative prompt on a real (safe) month, then do a strict verify pass - tick every number against source. Note anything the draft got wrong; that is your reminder to always check.</li>
+      <li>Play the simulator again and predict the quality score before you toggle each lever. Being able to predict it means you understand what drives trust.</li>
+      <li>Adapt the reconcile-triage prompt to one real reconciliation you own. Keep it as a monthly template.</li>
+      <li>Draft a two-line "human sign-off" note you would attach to any AI-assisted commentary: what you checked, and that you own it.</li>
+      <li>Optional: time how long the commentary took this month vs last. Bring the number to session b5, where we go deeper on board-grade narrative.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Official sources covered</h2>
+    </div>
+    <p class="lede">Taught from public finance-AI curricula and vendor documentation; graded assessments and paid tooling stay with the official programs. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Coursera - Generative AI Essentials for Finance &amp; Accounting</span><span class="note">Parts 1-2 · automating close workflows, commentary drafting</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">IE Business School - AI-Powered Finance (close + FP&amp;A use-cases)</span><span class="note">Part 1 · where AI fits in the close pipeline</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Vendor close-copilot patterns (Datarails and similar)</span><span class="note">Simulator + demos model the reconcile / flag / narrate jobs generically</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · In the simulator, what finally makes the copilot catch the Marketing overspend and the one-off legal item?</p>
+      <button class="qopt" type="button">A · Switching to a bigger, newer model</button>
+      <button class="qopt" type="button">B · Asking it more politely</button>
+      <button class="qopt" type="button">C · Attaching the numbers and turning on guardrails (materiality + flag)</button>
+      <p class="qwhy">Grounding plus guardrails catch anomalies; model size does not. That is the lesson the whole track is built on.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · Which parts of the close does the copilot own?</p>
+      <button class="qopt" type="button">A · Everything, including sign-off</button>
+      <button class="qopt" type="button">B · The middle - reconcile-triage, anomaly-flag, narrative draft - never the numbers or the sign-off</button>
+      <button class="qopt" type="button">C · Only the final approval</button>
+      <p class="qwhy">AI assists the messy middle; a human owns what the numbers are and whether they are right. That is rail two in practice.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Your variance prompt should always include which guardrail?</p>
+      <button class="qopt" type="button">A · Use only the supplied numbers, show the variance math, and say "not in the data" if something is missing</button>
+      <button class="qopt" type="button">B · Be creative and fill in reasonable estimates</button>
+      <button class="qopt" type="button">C · Round everything to the nearest million</button>
+      <p class="qwhy">Grounding plus "show your work" plus "admit gaps" is what makes the draft checkable - and keeps invented figures out of the board pack.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Builder session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The close copilot</b><span>three jobs: reconcile-triage, anomaly-flag, variance-narrative. Drafts and triages; never signs.</span></div>
+      <div class="cheat-item"><b>AI owns the middle</b><span>gather + sign-off stay human. The model never sources the numbers or approves them.</span></div>
+      <div class="cheat-item"><b>The simulator lesson</b><span>trust comes from grounding + guardrails, not model size. Levers move the score; a bigger brain does not.</span></div>
+      <div class="cheat-item"><b>Variance prompt spine</b><span>role + data + "what changed/why/outlook" + show the math + materiality threshold + flag + "not in the data".</span></div>
+      <div class="cheat-item"><b>Reconcile-triage</b><span>return only items that do not tie, ranked by size, with a likely-cause hypothesis to check.</span></div>
+      <div class="cheat-item"><b>Always verify</b><span>tick every figure against source before it reaches a board pack. You own the words and numbers.</span></div>
+      <div class="cheat-item"><b>Rail one</b><span>real pre-close figures go in enterprise or local tools only - never a consumer chatbot.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b4 - FP&amp;A forecasting: drivers, scenarios, and the narrative, with AI as a fast co-pilot.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Builder session 3 of 10 · learn-ai-finance-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b2-prompting-financial-analysis.html">← Previous: Prompting for financial analysis</a> &nbsp;·&nbsp; <a href="b4-fpa-forecasting.html">Next: FP&amp;A forecasting →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/finance-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>
