@@ -124,6 +124,32 @@
       <summary><span class="mode live">Live</span>Why free-text "forecasts" are extrapolation, not forecasting<span class="mini">3 min</span><span class="caret">▶</span></summary>
       <div class="body">
         <p>When you paste a history into a chat window and ask for next quarter, the model is pattern-matching text - it eyeballs the trend and continues it. That is extrapolation dressed as analysis. It has no seasonality handling, no confidence interval, no method you can name to your audit committee. Worse, it will sound certain.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before-and-after comparison of forecasting with AI: pasting a history and asking for a number produces an untraceable, overconfident guess, while computing the forecast in the sheet and asking AI to frame the drivers and assumptions keeps every number traceable to a formula.">
+    <style>
+      .b4baH { font: 700 13px Inter, sans-serif; }
+      .b4baB { font: 400 12px Inter, sans-serif; fill: #10201E; }
+      .b4baN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+    <text class="b4baH" x="58" y="84" fill="#991B1B">✗ Ask AI for the number</text>
+    <text class="b4baB" x="58" y="114">Model pattern-matches the trend</text>
+    <text class="b4baB" x="58" y="134">No seasonality, no confidence interval</text>
+    <text class="b4baB" x="58" y="154">Sounds certain, cannot be signed</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b4baH" x="468" y="84" fill="#0A4A44">✓ Compute in the sheet</text>
+    <text class="b4baB" x="468" y="114">Trend and driver math stay in formulas</text>
+    <text class="b4baB" x="468" y="134">AI names drivers, drafts assumptions</text>
+    <text class="b4baB" x="468" y="154">Every number traces to a cell</text>
+
+    <text class="b4baN" x="40" y="276">If AI hands you a number you cannot trace to a formula, it is a guess.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - if a number cannot trace to a formula, it is a guess</figcaption>
+</figure>
+
         <ul>
           <li><strong>Do the numbers with real methods.</strong> Trend, moving average, regression, driver math - in the spreadsheet, where formulas are visible and checkable.</li>
           <li><strong>Use AI for structure and story.</strong> Which drivers matter, how to phrase an assumption, what a bear case should stress, how to narrate the result.</li>
@@ -217,6 +243,28 @@ history suggests matters most.</div>
         <div class="callout example">
           <span class="ex-pill">Real world</span>
           <p><strong>The bull case that hid one heroic assumption.</strong> A team presented a confident bull forecast to the board; the whole upside rested on a single line - "win rate jumps from 22% to 40%" - buried in the model. Asking AI to "tell me which one assumption this scenario depends on most" surfaced it in seconds. They kept the scenario but re-labelled it "aggressive - contingent on win-rate step change", and the board conversation got honest. Stress-testing is cheap insurance.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A gauge showing a bull-case forecast assumption where the win rate jumps from a base of 22 percent to 40 percent, the single assumption the entire bull scenario depended on.">
+    <style>
+      .b4gaT { font: 700 13px Inter, sans-serif; fill: #10201E; }
+      .b4gaD { font: 700 11px Inter, sans-serif; fill: #3D2C05; }
+      .b4gaV { font: 700 20px Inter, sans-serif; fill: #10201E; }
+      .b4gaN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="220" fill="#FFFFFF"/>
+    <text class="b4gaT" x="40" y="28">The bull case's one heroic assumption: win rate</text>
+
+    <rect x="120" y="110" width="640" height="26" rx="13" fill="#E4EEEC"/>
+    <rect x="120" y="110" width="512" height="26" rx="13" fill="#0F766E"/>
+    <line x1="402" y1="92" x2="402" y2="152" stroke="#CA8A04" stroke-width="2.5"/>
+    <text class="b4gaD" x="402" y="84" text-anchor="middle">base: 22%</text>
+    <text class="b4gaV" x="644" y="130">40%</text>
+
+    <text class="b4gaN" x="40" y="196">The whole bull case rested on one line: win rate jumps from 22% to 40%.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - one 22-to-40 point jump was doing all the work</figcaption>
+</figure>
+
         </div>
       </div>
     </details>

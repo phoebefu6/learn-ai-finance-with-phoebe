@@ -97,8 +97,8 @@
         <text class="b2aXi" x="140" y="269">so the output drops straight into your work</text>
         <rect x="30" y="284" width="560" height="46" rx="9" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.5"/>
         <text class="b2aB" x="50" y="305">CONSTRAINTS</text>
-        <text class="b2aXi" x="140" y="305">show work · only supplied numbers</text>
-        <text class="b2aXi" x="140" y="321">say "not in the data" · state assumptions</text>
+        <text class="b2aXi" x="158" y="305">show work · only supplied numbers</text>
+        <text class="b2aXi" x="158" y="321">say "not in the data" · state assumptions</text>
         <path d="M610 24 q22 0 22 22 v240 q0 22 22 22" fill="none" stroke="#BCD3CF" stroke-width="2"/>
         <text class="b2aB" x="644" y="180">= one strong</text>
         <text class="b2aB" x="644" y="200">prompt</text>
@@ -152,7 +152,54 @@
     <details class="card">
       <summary><span class="mode live">Live</span>Pattern picker - when to reach for each<span class="mini">3 min</span><span class="caret">▶</span></summary>
       <div class="body">
-        <table class="clean">
+        
+<figure class="zoomable">
+  <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A decision tree for picking a finance prompting pattern: few-shot when you want consistent style, output control when the answer feeds a doc or a system, and step-by-step decomposition when the task has stages and the math must be visible and ordered.">
+    <style>
+      .b2dtQ { font: 700 12.5px Inter, sans-serif; fill: #10201E; }
+      .b2dtO { font: 700 12.5px Inter, sans-serif; }
+      .b2dtE { font: 600 11px Inter, sans-serif; fill: #5B6B69; }
+      .b2dtN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="340" fill="#E6F4F2"/>
+
+    <rect x="40" y="130" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b2dtQ" x="58" y="153">Do you want consistent</text>
+    <text class="b2dtQ" x="58" y="171">style?</text>
+
+    <rect x="340" y="210" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b2dtQ" x="358" y="233">Does the answer feed</text>
+    <text class="b2dtQ" x="358" y="251">a system?</text>
+
+    <line x1="280" y1="158" x2="640" y2="68" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b2dtE" x="460" y="107" text-anchor="middle">yes</text>
+
+    <line x1="160" y1="186" x2="460" y2="210" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b2dtE" x="310" y="192" text-anchor="middle">no</text>
+
+    <line x1="580" y1="238" x2="640" y2="168" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b2dtE" x="610" y="197" text-anchor="middle">yes</text>
+
+    <line x1="460" y1="266" x2="640" y2="268" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b2dtE" x="550" y="261" text-anchor="middle">no</text>
+
+    <rect x="640" y="40" width="200" height="56" rx="10" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b2dtO" x="656" y="63" fill="#0A4A44">FEW-SHOT: paste one example</text>
+    <text class="b2dtE" x="656" y="80">the quiet hero pattern</text>
+
+    <rect x="640" y="140" width="200" height="56" rx="10" fill="#FFFFFF" stroke="#BCD3CF" stroke-width="1.6"/>
+    <text class="b2dtO" x="656" y="163" fill="#5B6B69">OUTPUT CONTROL: force format</text>
+    <text class="b2dtE" x="656" y="180">table, JSON, fixed columns</text>
+
+    <rect x="640" y="240" width="200" height="56" rx="10" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.6"/>
+    <text class="b2dtO" x="656" y="263" fill="#3D2C05">STEP-BY-STEP: order the math</text>
+    <text class="b2dtE" x="656" y="280">makes the work visible</text>
+
+    <text class="b2dtN" x="40" y="326">Self-check runs every time - list assumptions and what to verify before you use it.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - pick the pattern by what the answer needs to do next</figcaption>
+</figure>
+<table class="clean">
           <thead><tr><th>Pattern</th><th>What it does</th><th>Reach for it when...</th></tr></thead>
           <tbody>
             <tr><td>Few-shot (show an example)</td><td>Give one sample comment in your house style; the model matches it</td><td>You want consistent tone and structure across many outputs</td></tr>
@@ -207,6 +254,32 @@ and the one thing I should double-check against source before I send this.</div>
         <div class="callout example">
           <span class="ex-pill">Real world</span>
           <p><strong>The memo that mixed thousands and millions.</strong> An analyst pasted a P&amp;L in thousands but asked for commentary "in millions" - the model gamely reported revenue of "4.1 million" when it was 4.1 thousand-times-something-else. It looked authoritative and was off by orders of magnitude. One line - "all figures in SGD thousands, do not convert" - would have prevented it. Guardrails are cheaper than corrections.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before-and-after comparison of a finance prompt with no unit guardrail versus one with a currency and unit guardrail: without it a P&amp;L pasted in thousands was reported as 4.1 million, off by a thousand times; with one line stating the figures are in SGD thousands the output matched the real scale.">
+    <style>
+      .b2baH { font: 700 13px Inter, sans-serif; }
+      .b2baB { font: 400 12px Inter, sans-serif; fill: #10201E; }
+      .b2baN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+    <text class="b2baH" x="58" y="84" fill="#991B1B">✗ No unit guardrail</text>
+    <text class="b2baB" x="58" y="114">P&amp;L pasted in thousands</text>
+    <text class="b2baB" x="58" y="134">Asked for commentary in millions</text>
+    <text class="b2baB" x="58" y="154">Got "4.1 million" - off by 1000x</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b2baH" x="468" y="84" fill="#0A4A44">✓ One guardrail line</text>
+    <text class="b2baB" x="468" y="114">"All figures in SGD thousands"</text>
+    <text class="b2baB" x="468" y="134">"Do not convert" stated upfront</text>
+    <text class="b2baB" x="468" y="154">Output matches the real scale</text>
+
+    <text class="b2baN" x="40" y="276">One line - "all figures in SGD thousands, do not convert" - would have prevented it.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - one guardrail line stops a thousand-times error</figcaption>
+</figure>
+
         </div>
       </div>
     </details>

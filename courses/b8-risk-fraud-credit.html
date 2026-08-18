@@ -136,7 +136,54 @@
     <details class="card">
       <summary><span class="mode live">Live</span>The patterns AI flags - and what a human then checks<span class="mini">3 min</span><span class="caret">▶</span></summary>
       <div class="body">
-        <table class="clean">
+        
+<figure class="zoomable">
+  <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A decision tree for anomaly triage: entries that repeat another entry are flagged as duplicates to verify by hand, suspiciously round amounts are flagged as round-number for an invoice check, and everything else near a threshold or from an unusual payee is flagged off-pattern to check against the payee.">
+    <style>
+      .b8dtQ { font: 700 12.5px Inter, sans-serif; fill: #10201E; }
+      .b8dtO { font: 700 12.5px Inter, sans-serif; }
+      .b8dtE { font: 600 11px Inter, sans-serif; fill: #5B6B69; }
+      .b8dtN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="340" fill="#E6F4F2"/>
+
+    <rect x="40" y="130" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b8dtQ" x="58" y="153">Looks like a repeat</text>
+    <text class="b8dtQ" x="58" y="171">entry?</text>
+
+    <rect x="340" y="210" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b8dtQ" x="358" y="233">Amount suspiciously</text>
+    <text class="b8dtQ" x="358" y="251">round?</text>
+
+    <line x1="280" y1="158" x2="640" y2="68" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b8dtE" x="460" y="107" text-anchor="middle">yes</text>
+
+    <line x1="160" y1="186" x2="460" y2="210" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b8dtE" x="310" y="192" text-anchor="middle">no</text>
+
+    <line x1="580" y1="238" x2="640" y2="168" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b8dtE" x="610" y="197" text-anchor="middle">yes</text>
+
+    <line x1="460" y1="266" x2="640" y2="268" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b8dtE" x="550" y="261" text-anchor="middle">no</text>
+
+    <rect x="640" y="40" width="200" height="56" rx="10" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.6"/>
+    <text class="b8dtO" x="656" y="63" fill="#3D2C05">DUPLICATE - verify by hand</text>
+    <text class="b8dtE" x="656" y="80">same vendor + near-date</text>
+
+    <rect x="640" y="140" width="200" height="56" rx="10" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b8dtO" x="656" y="163" fill="#0A4A44">ROUND-NUMBER - check invoice</text>
+    <text class="b8dtE" x="656" y="180">unlike normal spend</text>
+
+    <rect x="640" y="240" width="200" height="56" rx="10" fill="#FFFFFF" stroke="#BCD3CF" stroke-width="1.6"/>
+    <text class="b8dtO" x="656" y="263" fill="#5B6B69">OFF-PATTERN: check payee</text>
+    <text class="b8dtE" x="656" y="280">near a limit, new payee</text>
+
+    <text class="b8dtN" x="40" y="326">Duplicate, round, threshold, or off-pattern - every flag gets a plain reason and a human check.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - every anomaly pattern ends with a human check</figcaption>
+</figure>
+<table class="clean">
           <thead><tr><th>Pattern AI flags</th><th>Plain reason</th><th>What the human checks</th></tr></thead>
           <tbody>
             <tr><td>Duplicate</td><td>Same vendor, amount, and near-date as another entry</td><td>Is it a true double payment, or a legitimate instalment?</td></tr>
@@ -187,6 +234,32 @@
         <div class="callout example">
           <span class="ex-pill">Real world</span>
           <p><strong>"The model said no" is not a reason.</strong> A lender let an automated score drive declines without human-readable reasons attached. When a declined applicant challenged it, the team could not explain the specific factors behind the outcome - and under adverse-action rules, that is the finding, not a detail. The fix was not a better model; it was reintroducing the human gate and generating clear reason codes for every decline. AI ranked the risk. A person had to own - and explain - the no.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before-and-after comparison of a credit decline: an automated score drove the decline with no human-readable reasons, so a challenge could not be explained, while reintroducing a human gate and generating clear reason codes made the decision defensible.">
+    <style>
+      .b8baH { font: 700 13px Inter, sans-serif; }
+      .b8baB { font: 400 12px Inter, sans-serif; fill: #10201E; }
+      .b8baN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+    <text class="b8baH" x="58" y="84" fill="#991B1B">✗ Decline, no reasons</text>
+    <text class="b8baB" x="58" y="114">Automated score drives the decline</text>
+    <text class="b8baB" x="58" y="134">Applicant challenges, team can't say why</text>
+    <text class="b8baB" x="58" y="154">'The model said no' is not a reason</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b8baH" x="468" y="84" fill="#0A4A44">✓ Human gate, reason codes</text>
+    <text class="b8baB" x="468" y="114">Reintroduced human review</text>
+    <text class="b8baB" x="468" y="134">Clear reason codes per decline</text>
+    <text class="b8baB" x="468" y="154">Factors explained, decision holds</text>
+
+    <text class="b8baN" x="40" y="276">AI ranked the risk. A person had to own - and explain - the no.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - a score ranks risk, a person owns and explains the no</figcaption>
+</figure>
+
         </div>
       </div>
     </details>

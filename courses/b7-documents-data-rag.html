@@ -136,7 +136,54 @@
     <details class="card">
       <summary><span class="mode live">Live</span>Where document Q&amp;A earns its keep<span class="mini">3 min</span><span class="caret">▶</span></summary>
       <div class="body">
-        <table class="clean">
+        
+<figure class="zoomable">
+  <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A decision tree for which grounded question to ask a document Q&amp;A tool: cite the policy section for a public 10-K filing, list covenants and thresholds with the clause for a contract, and pull vendor, PO, terms, and total for an invoice.">
+    <style>
+      .b7dtQ { font: 700 12.5px Inter, sans-serif; fill: #10201E; }
+      .b7dtO { font: 700 12.5px Inter, sans-serif; }
+      .b7dtE { font: 600 11px Inter, sans-serif; fill: #5B6B69; }
+      .b7dtN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="340" fill="#E6F4F2"/>
+
+    <rect x="40" y="130" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b7dtQ" x="58" y="153">Is it a public 10-K</text>
+    <text class="b7dtQ" x="58" y="171">filing?</text>
+
+    <rect x="340" y="210" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b7dtQ" x="358" y="233">Is it a contract or</text>
+    <text class="b7dtQ" x="358" y="251">covenant?</text>
+
+    <line x1="280" y1="158" x2="640" y2="68" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b7dtE" x="460" y="107" text-anchor="middle">yes</text>
+
+    <line x1="160" y1="186" x2="460" y2="210" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b7dtE" x="310" y="192" text-anchor="middle">no</text>
+
+    <line x1="580" y1="238" x2="640" y2="168" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b7dtE" x="610" y="197" text-anchor="middle">yes</text>
+
+    <line x1="460" y1="266" x2="640" y2="268" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="b7dtE" x="550" y="261" text-anchor="middle">no</text>
+
+    <rect x="640" y="40" width="200" height="56" rx="10" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b7dtO" x="656" y="63" fill="#0A4A44">Ask: cite the policy, quoted</text>
+    <text class="b7dtE" x="656" y="80">revenue recognition, etc.</text>
+
+    <rect x="640" y="140" width="200" height="56" rx="10" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.6"/>
+    <text class="b7dtO" x="656" y="163" fill="#3D2C05">List covenants + thresholds</text>
+    <text class="b7dtE" x="656" y="180">each tied to its clause</text>
+
+    <rect x="640" y="240" width="200" height="56" rx="10" fill="#FFFFFF" stroke="#BCD3CF" stroke-width="1.6"/>
+    <text class="b7dtO" x="656" y="263" fill="#5B6B69">Pull vendor, PO, terms, total</text>
+    <text class="b7dtE" x="656" y="280">from the document</text>
+
+    <text class="b7dtN" x="40" y="326">Same move every time: point at the source, ask precisely, and demand a citation.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - same move on every document: source, precise question, citation</figcaption>
+</figure>
+<table class="clean">
           <thead><tr><th>Use case</th><th>The grounded question you ask</th></tr></thead>
           <tbody>
             <tr><td>10-K / annual-report Q&amp;A</td><td>"What is the revenue recognition policy? Cite the section."</td></tr>
@@ -185,6 +232,32 @@
         <div class="callout example">
           <span class="ex-pill">Real world</span>
           <p><strong>The covenant that was almost misread.</strong> An analyst asked a doc-Q&amp;A tool for a leverage covenant threshold. The tool returned a clean "4.0x" with a citation - but the cited clause was the <em>definition</em> of leverage, and the actual threshold, in a table two pages later, was 3.5x stepping down to 3.0x. The number looked authoritative. Opening the citation caught it in seconds. The document was the source of truth; the summary was not.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before-and-after comparison of checking a RAG citation: trusting the first citation returned a 4.0x leverage covenant that was actually just the definition, while opening the cited passage found the real threshold two pages later stepping from 3.5x to 3.0x.">
+    <style>
+      .b7baH { font: 700 13px Inter, sans-serif; }
+      .b7baB { font: 400 12px Inter, sans-serif; fill: #10201E; }
+      .b7baN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+    <text class="b7baH" x="58" y="84" fill="#991B1B">✗ Trusted one citation</text>
+    <text class="b7baB" x="58" y="114">Tool returned '4.0x' with a citation</text>
+    <text class="b7baB" x="58" y="134">Cited clause was just the definition</text>
+    <text class="b7baB" x="58" y="154">Looked authoritative, was wrong</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b7baH" x="468" y="84" fill="#0A4A44">✓ Opened the cited passage</text>
+    <text class="b7baB" x="468" y="114">Found the real table two pages later</text>
+    <text class="b7baB" x="468" y="134">Threshold: 3.5x stepping to 3.0x</text>
+    <text class="b7baB" x="468" y="154">Caught in seconds by checking</text>
+
+    <text class="b7baN" x="40" y="276">The document was the source of truth; the summary was not.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - the document is the source of truth, not the summary</figcaption>
+</figure>
+
         </div>
       </div>
     </details>

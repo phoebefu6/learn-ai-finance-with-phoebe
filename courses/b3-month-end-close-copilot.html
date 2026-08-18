@@ -113,6 +113,30 @@
       <h2>The close, and where AI actually fits <span class="tag concept">6 min live</span></h2>
     </div>
     <p class="lede">The close is a pipeline: gather the data, reconcile and tie out, analyse the variances, write the commentary, and review before sign-off. AI earns its place in the messy middle - triage, flagging, drafting - while the human owns the two ends: what the numbers are, and whether they are right.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A bar chart comparing 400 ledger and bank lines that would need manual review against the 10 lines that AI reconcile-triage ranks as needing a human look, showing how the copilot narrows a large reconciliation list down to the handful that matter.">
+    <style>
+      .b3bnT { font: 700 13px Inter, sans-serif; fill: #10201E; }
+      .b3bnL { font: 600 12px Inter, sans-serif; fill: #10201E; }
+      .b3bnV { font: 700 12px Inter, sans-serif; }
+      .b3bnN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+    <text class="b3bnT" x="40" y="28">Reconcile-triage: from every line to the ones that matter</text>
+
+    <text class="b3bnL" x="240" y="94" text-anchor="end">Lines to check by hand</text>
+    <rect x="260" y="75" width="480" height="30" rx="6" fill="#5B6B69"/>
+    <text class="b3bnV" x="272" y="95" fill="#FFFFFF">400</text>
+
+    <text class="b3bnL" x="240" y="164" text-anchor="end">Lines AI flags to check</text>
+    <rect x="260" y="145" width="12" height="30" rx="4" fill="#0F766E"/>
+    <text class="b3bnV" x="282" y="165" fill="#10201E">10</text>
+
+    <text class="b3bnN" x="40" y="276">Reconcile-triage ranks the lines so you check the 10 that matter, not all 400.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - triage turns 400 lines into the 10 that need a human</figcaption>
+</figure>
+
 
     <figure class="zoomable">
       <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The month-end close pipeline: gather, reconcile, analyse variance, draft commentary, review and sign-off - AI assists the middle three, a human owns the ends">
@@ -245,7 +269,33 @@ the threshold as immaterial, and if anything needed is missing say "not in the d
     <div class="steps">
       <div class="step"><p>Make two short synthetic lists that should tie - e.g. a sub-ledger and a GL balance per account, with a few deliberate mismatches (a timing difference, a transposition, a missing entry).</p></div>
       <div class="step"><p>Ask the copilot to compare them, list only the items that do NOT reconcile, rank by absolute difference, and suggest the likely reason for each (timing, transposition, missing) - as a hypothesis to check, not a conclusion.</p></div>
-      <div class="step"><p>Add the guardrail: "show the arithmetic for each difference and say 'cannot determine' rather than guessing a cause you cannot support".</p></div>
+      <div class="step"><p>Add the guardrail: "show the arithmetic for each difference and say 'cannot determine' rather than guessing a cause you cannot support".</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before-and-after comparison of a reconcile-triage guardrail: without it AI guesses a cause with no arithmetic shown, but with the guardrail it flags a 540 versus 450 difference as a possible transposition, showing the math, or says it cannot determine the cause rather than guessing.">
+    <style>
+      .b3baH { font: 700 13px Inter, sans-serif; }
+      .b3baB { font: 400 12px Inter, sans-serif; fill: #10201E; }
+      .b3baN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+    <text class="b3baH" x="58" y="84" fill="#991B1B">✗ Guessing a cause</text>
+    <text class="b3baB" x="58" y="114">AI states a reason, no arithmetic shown</text>
+    <text class="b3baB" x="58" y="134">Confident claim, nothing to check</text>
+    <text class="b3baB" x="58" y="154">A guess dressed as a conclusion</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b3baH" x="468" y="84" fill="#0A4A44">✓ Show the arithmetic</text>
+    <text class="b3baB" x="468" y="114">540 vs 450 = 90, flagged first</text>
+    <text class="b3baB" x="468" y="134">'Possible transposition' - to check</text>
+    <text class="b3baB" x="468" y="154">Or 'cannot determine' - never a guess</text>
+
+    <text class="b3baN" x="40" y="276">AI did not fix it; it just put it where a human would finally look.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - show the arithmetic, or say you cannot determine the cause</figcaption>
+</figure>
+</div>
       <div class="step"><p>Investigate the top items yourself. The copilot narrowed 400 lines to the handful that matter; the judgement call on each is still yours.</p></div>
     </div>
 

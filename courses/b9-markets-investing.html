@@ -153,7 +153,46 @@
     <details class="card">
       <summary><span class="mode live">Live</span>Five uses, each with its verify step<span class="mini">3 min</span><span class="caret">▶</span></summary>
       <div class="body">
-        <table class="clean">
+        
+<figure class="zoomable">
+  <svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A grid of five research-assistant uses of AI in markets - summarising a filing, summarising an earnings call, building a comparison table, screening on criteria, and reading sentiment - each paired with the verify step required before trusting the output.">
+    <style>
+      .b9smT { font: 700 12px Inter, sans-serif; fill: #10201E; }
+      .b9smL { font: 400 11px Inter, sans-serif; fill: #5B6B69; }
+      .b9smN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="260" fill="#FFFFFF"/>
+
+    <rect x="60" y="58" width="148" height="118" rx="8" fill="#E6F4F2" stroke="#E4EEEC"/>
+    <text class="b9smT" x="134" y="78" text-anchor="middle">Filing Q&amp;A</text>
+    <text class="b9smL" x="134" y="112" text-anchor="middle">feed: public 10-K</text>
+    <text class="b9smL" x="134" y="130" text-anchor="middle">verify: open citation</text>
+
+    <rect x="218" y="58" width="148" height="118" rx="8" fill="#E6F4F2" stroke="#E4EEEC"/>
+    <text class="b9smT" x="292" y="78" text-anchor="middle">Earnings call</text>
+    <text class="b9smL" x="292" y="112" text-anchor="middle">feed: transcript</text>
+    <text class="b9smL" x="292" y="130" text-anchor="middle">verify: match the quote</text>
+
+    <rect x="376" y="58" width="148" height="118" rx="8" fill="#E6F4F2" stroke="#E4EEEC"/>
+    <text class="b9smT" x="450" y="78" text-anchor="middle">Comparison</text>
+    <text class="b9smL" x="450" y="112" text-anchor="middle">feed: your own figures</text>
+    <text class="b9smL" x="450" y="130" text-anchor="middle">verify: tie every cell</text>
+
+    <rect x="534" y="58" width="148" height="118" rx="8" fill="#E6F4F2" stroke="#E4EEEC"/>
+    <text class="b9smT" x="608" y="78" text-anchor="middle">Screening</text>
+    <text class="b9smL" x="608" y="112" text-anchor="middle">feed: your criteria</text>
+    <text class="b9smL" x="608" y="130" text-anchor="middle">verify: recheck data</text>
+
+    <rect x="692" y="58" width="148" height="118" rx="8" fill="#E6F4F2" stroke="#E4EEEC"/>
+    <text class="b9smT" x="766" y="78" text-anchor="middle">Sentiment</text>
+    <text class="b9smL" x="766" y="112" text-anchor="middle">feed: public text</text>
+    <text class="b9smL" x="766" y="130" text-anchor="middle">signal, not a fact</text>
+
+    <text class="b9smN" x="40" y="236">AI reads and organises public information fast; you verify every figure before it goes anywhere.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - five assist uses, one verify step each</figcaption>
+</figure>
+<table class="clean">
           <thead><tr><th>Assist use</th><th>What you feed it</th><th>Verify step - non-negotiable</th></tr></thead>
           <tbody>
             <tr><td>Summarise a filing</td><td>public 10-K, 10-Q, annual report</td><td>open cited sections, confirm the summary matches</td></tr>
@@ -205,6 +244,32 @@
         <div class="callout example">
           <span class="ex-pill">Real world</span>
           <p><strong>The confident price that was never real.</strong> An analyst asked a chatbot for a company's latest reported quarterly revenue to seed a comparison. It returned a precise figure with a decimal - and it was wrong, invented from patterns, not the filing. Pasted into a memo it would have poisoned every downstream number and any conclusion drawn from it. One check against the 10-Q caught it in under a minute. The model assisted; the human, by verifying, decided what was true.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before-and-after comparison of a markets research question: asking a chatbot directly for a company's revenue produced an invented, precise-looking figure, while checking the 10-Q first confirmed the real reported number and caught the invention in under a minute.">
+    <style>
+      .b9baH { font: 700 13px Inter, sans-serif; }
+      .b9baB { font: 400 12px Inter, sans-serif; fill: #10201E; }
+      .b9baN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+    <text class="b9baH" x="58" y="84" fill="#991B1B">✗ Asked AI for the number</text>
+    <text class="b9baB" x="58" y="114">Model invented a precise decimal</text>
+    <text class="b9baB" x="58" y="134">Looked authoritative, was fake</text>
+    <text class="b9baB" x="58" y="154">Would have poisoned the memo</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="b9baH" x="468" y="84" fill="#0A4A44">✓ Checked the 10-Q first</text>
+    <text class="b9baB" x="468" y="114">Confirmed the real reported figure</text>
+    <text class="b9baB" x="468" y="134">Caught the invention in a minute</text>
+    <text class="b9baB" x="468" y="154">Model organizes verified numbers</text>
+
+    <text class="b9baN" x="40" y="276">One check against the 10-Q caught it in under a minute.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - one check against the filing catches an invented number</figcaption>
+</figure>
+
         </div>
       </div>
     </details>

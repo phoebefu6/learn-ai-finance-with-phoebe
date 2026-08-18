@@ -146,6 +146,32 @@
         <div class="callout example">
           <span class="ex-pill">Real world</span>
           <p><strong>The pilot that "worked" and delivered nothing.</strong> A team ran a slick forecasting-assistant pilot, declared success, and moved on. A year later the forecast still took the same number of days - because the tool never entered the monthly routine and no one had recorded the original cycle time to compare. The lesson: a demo is not a deployment, and a number you cannot compare is not a return.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A before-and-after comparison of two AI pilots: one ran without a baseline or adoption plan and delivered nothing measurable, while the other was scoped as one narrow use-case with a written baseline and a decision gate, designed from day one to prove value.">
+    <style>
+      .a5baH { font: 700 13px Inter, sans-serif; }
+      .a5baB { font: 400 12px Inter, sans-serif; fill: #10201E; }
+      .a5baN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFFFF"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.6"/>
+    <text class="a5baH" x="58" y="84" fill="#991B1B">✗ Ran, but proved nothing</text>
+    <text class="a5baB" x="58" y="114">No baseline recorded before it started</text>
+    <text class="a5baB" x="58" y="134">Demo worked; adoption never happened</text>
+    <text class="a5baB" x="58" y="154">If it vanished, would anyone notice?</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="a5baH" x="468" y="84" fill="#0A4A44">✓ Proves value before scaling</text>
+    <text class="a5baB" x="468" y="114">One narrow, measurable use-case</text>
+    <text class="a5baB" x="468" y="134">A baseline written down before day one</text>
+    <text class="a5baB" x="468" y="154">A decision gate: a date and a threshold</text>
+
+    <text class="a5baN" x="40" y="276">A pilot with no kill criterion never ends and never scales.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - a pilot without a baseline and a gate never proves anything</figcaption>
+</figure>
+
         </div>
         <div class="callout win">
           <strong>★ Questions to ask your team</strong>
@@ -180,7 +206,54 @@
       <summary><span class="mode live">Live</span>Buy vs build vs blend - the three doors<span class="mini">3 min</span><span class="caret">▶</span></summary>
       <div class="body">
         <p>You rarely need to build. Most finance value today comes from buying governed tools or blending copilots into existing systems. The tradeoff is always the same three dials: cost, control, and speed.</p>
-        <table class="clean">
+        
+<figure class="zoomable">
+  <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A decision tree for sourcing AI capability in finance: build only when nothing off-the-shelf fits and full control is worth the slow, high-cost effort, buy when a good tool already exists, and blend copilots into existing workflows when you want value fast.">
+    <style>
+      .a5dtQ { font: 700 12.5px Inter, sans-serif; fill: #10201E; }
+      .a5dtO { font: 700 12.5px Inter, sans-serif; }
+      .a5dtE { font: 600 11px Inter, sans-serif; fill: #5B6B69; }
+      .a5dtN { font: 400 12px Inter, sans-serif; fill: #5B6B69; }
+    </style>
+    <rect x="0" y="0" width="880" height="340" fill="#E6F4F2"/>
+
+    <rect x="40" y="130" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="a5dtQ" x="58" y="153">Nothing off-the-shelf</text>
+    <text class="a5dtQ" x="58" y="171">fits?</text>
+
+    <rect x="340" y="210" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="a5dtQ" x="358" y="233">Does a good tool</text>
+    <text class="a5dtQ" x="358" y="251">already exist?</text>
+
+    <line x1="280" y1="158" x2="640" y2="68" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="a5dtE" x="460" y="107" text-anchor="middle">yes</text>
+
+    <line x1="160" y1="186" x2="460" y2="210" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="a5dtE" x="310" y="192" text-anchor="middle">no</text>
+
+    <line x1="580" y1="238" x2="640" y2="168" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="a5dtE" x="610" y="197" text-anchor="middle">yes</text>
+
+    <line x1="460" y1="266" x2="640" y2="268" stroke="#5B6B69" stroke-width="1.4"/>
+    <text class="a5dtE" x="550" y="261" text-anchor="middle">no</text>
+
+    <rect x="640" y="40" width="200" height="56" rx="10" fill="#FBF3DA" stroke="#CA8A04" stroke-width="1.6"/>
+    <text class="a5dtO" x="656" y="63" fill="#3D2C05">BUILD: full control, slow</text>
+    <text class="a5dtE" x="656" y="80">high cost, needs engineering</text>
+
+    <rect x="640" y="140" width="200" height="56" rx="10" fill="#FFFFFF" stroke="#BCD3CF" stroke-width="1.6"/>
+    <text class="a5dtO" x="656" y="163" fill="#5B6B69">BUY: fast, vendor-set terms</text>
+    <text class="a5dtE" x="656" y="180">predictable subscription</text>
+
+    <rect x="640" y="240" width="200" height="56" rx="10" fill="#E6F4F2" stroke="#0F766E" stroke-width="1.6"/>
+    <text class="a5dtO" x="656" y="263" fill="#0A4A44">BLEND: value in tools now</text>
+    <text class="a5dtE" x="656" y="280">fastest - it is already there</text>
+
+    <text class="a5dtN" x="40" y="326">Blend first, buy where a specialist tool wins, build only when the need is proven.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - blend first, buy where a specialist wins, build only when proven</figcaption>
+</figure>
+<table class="clean">
           <thead><tr><th>Door</th><th>What it is</th><th>Cost</th><th>Control</th><th>Speed</th><th>Best when</th></tr></thead>
           <tbody>
             <tr><td><strong>Buy</strong></td><td>License an enterprise tool or finance-native platform</td><td>Predictable subscription</td><td>Vendor-set; read the terms</td><td>Fast to start</td><td>The need is common and a good tool exists</td></tr>
